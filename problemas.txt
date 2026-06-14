@@ -1,0 +1,11 @@
+Teoria para resolver:
+1. Campo magnetico de un conductor rectilineo infinitamente largo.
+2. Campo magnetico total de dos conductores paralelos con corrientes entrantes.
+7. Cantidad de vueltas de una bobina circular para producir un campo en su centro.
+
+
+1) Calcule la magnitud del campo magnético en un punto a 100 cm de un conductor infinitamente largo y delgado (de sección despreciable) que lleva una corriente de 1 A. A qué distancia del conductor la magnitud del campo magnético resultante es igual :10-4 T?
+
+2) Dos conductores filiformes paralelos separados una distancia d = 2 cm conducen corrientes  iguales entrantes i =1 A. Determine el campo B para los puntos P1(1, 1) y P2(1.5, 0), medidos en cm .
+
+7) ¿De cuántas vueltas deberá ser una bobina circular delgada de radio 0.1 m para que una corriente de 10 A produzca un campo magnético de 3 X 10-3 T en su centro?
