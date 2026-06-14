@@ -1,0 +1,15 @@
+services:
+  web:
+    build: .
+    container_name: electromagnetismo-web
+
+    ports:
+      - "5000:5000"
+
+    volumes:
+      - .:/app
+
+    env_file:
+      - .env
+
+    restart: unless-stopped
