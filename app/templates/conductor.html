@@ -528,8 +528,40 @@ Campo Magnético: <strong>B = {{ resultado_formateado }} T</strong>
             del conductor.
         </div>
 
-    </div>
+        <hr>
 
+        <h4>Graficando el ejercicio</h4>
+
+        <p>
+            El siguiente gráfico muestra
+            cómo varía el campo magnético
+            con la distancia para una corriente
+            constante de 1 A.   
+        </p>
+
+        <div>
+            {{ grafico_ejercicio_1|safe }}
+        </div>
+        
+        <!-- Fin del grafico -->
+
+        <div class="alert alert-primary mt-4">
+
+            <strong>De la grafica podemos ver que:</strong>
+
+            A una distancia de 1 metro
+            el conductor genera un campo de
+            2 × 10⁻⁷ T.
+            <p>
+            Para obtener un campo mucho mayor,de 10⁻⁴ T,fue necesario acercarse hasta solamente 2 mm del conductor.
+            </p>
+            <p>Esto confirma experimentalmente que el campo magnético disminuye al alejarnos del conductor según:
+            </p>
+            <strong>B ∝ 1/r</strong>
+            
+        </div>
+
+    </div>
 </div>
 
 <div class="card mb-4">
