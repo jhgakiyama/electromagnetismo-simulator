@@ -44,25 +44,37 @@ Simulador de Electromagnetismo
         <ul class="navbar-nav ms-auto">
 
             <li class="nav-item">
-                <a class="nav-link" href="/">
+                <a
+                    class="nav-link {% if request.path == '/' %}active{% endif %}"
+                    href="/"
+                >
                     Inicio
                 </a>
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="/conductor">
+                <a
+                    class="nav-link {% if request.path == '/conductor' %}active{% endif %}"
+                    href="/conductor"
+                >
                     Conductor
                 </a>
             </li>
 
-            <li class="nav-item">
-                <a class="nav-link" href="#">
+           <li class="nav-item">
+                <a
+                    class="nav-link {% if request.path == '/paralelos' %}active{% endif %}"
+                    href="#"
+                >
                     Paralelos
                 </a>
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a
+                    class="nav-link {% if request.path == '/bobina' %}active{% endif %}"
+                    href="#"
+                >
                     Bobina
                 </a>
             </li>
