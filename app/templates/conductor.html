@@ -345,6 +345,24 @@ Campo Magnético: <strong>B = {{ resultado_formateado }} T</strong>
 
 {% endif %}
 
+{% if pasos %}
+
+<div class="card mt-3">
+<div class="card-body">
+
+    <h5>Resolución Paso a Paso</h5>
+
+    <ol>
+        {% for paso in pasos %}
+            <li>
+                {{ paso }}
+            </li>
+        {% endfor %}
+    </ol>
+
+</div>
+</div>
+{% endif %}
 
 </div>
 </div>
