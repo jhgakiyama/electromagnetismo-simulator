@@ -263,10 +263,81 @@ Campo Magnético de un Conductor Rectilíneo
 <div class="card mb-4">
     <div class="card-body">
         <h3>6. Modo Aprender</h3>
-        <p>
-            Pendiente de desarrollo.
-        </p>
-    </div>
+
+<form method="POST">
+
+<div class="mb-3">
+
+    <label class="form-label">
+
+        Corriente (A)
+
+    </label>
+
+    <input
+        type="number"
+        step="any"
+        class="form-control"
+        name="corriente"
+        required
+    >
+
+</div>
+
+<div class="mb-3">
+
+    <label class="form-label">
+
+        Distancia (m)
+
+    </label>
+
+    <input
+        type="number"
+        step="any"
+        class="form-control"
+        name="distancia"
+        required
+    >
+
+</div>
+
+<button
+    class="btn btn-primary"
+    type="submit"
+>
+
+    Calcular
+
+</button>
+
+
+</form>
+
+{% if corriente and distancia %}
+
+<hr>
+
+<h5>
+    Datos recibidos
+</h5>
+
+<ul>
+
+<li>
+    Corriente: {{ corriente }} A
+</li>
+
+<li>
+    Distancia: {{ distancia }} m
+</li>
+
+</ul>
+
+{% endif %}
+
+
+</div>
 </div>
 
 <div class="card mb-4">
