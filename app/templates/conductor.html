@@ -253,10 +253,58 @@ Campo Magnético de un Conductor Rectilíneo
 
 <div class="card mb-4">
     <div class="card-body">
-        <h3>5. Visualización Conceptual</h3>
-        <p>
-            Pendiente de desarrollo.
-        </p>
+
+<h3>5. Visualización Conceptual</h3>
+
+<p>
+    Los siguientes gráficos muestran
+    cómo se relaciona el campo magnético
+    con las variables principales del problema.
+</p>
+
+<hr>
+
+<h5>
+    Relación entre Campo Magnético y Corriente
+</h5>
+
+<p>
+    A distancia constante,
+    el campo magnético aumenta
+    proporcionalmente con la corriente.
+</p>
+
+<div>
+    {{ grafico_b_vs_i|safe }}
+</div>
+
+<div class="alert alert-warning mt-3">
+    Si la corriente se duplica,
+    el campo magnético también se duplica.
+</div>
+
+<hr>
+
+<h5>Relación entre Campo Magnético y Distancia</h5>
+
+<p>
+    Con corriente constante,
+    el campo disminuye al alejarnos
+    del conductor.
+</p>
+
+<div>
+    {{ grafico_b_vs_r|safe }}
+</div>
+
+<div class="alert alert-warning mt-3">
+
+    Al duplicar la distancia,
+    el campo magnético se reduce
+    aproximadamente a la mitad.
+
+</div>
+
     </div>
 </div>
 

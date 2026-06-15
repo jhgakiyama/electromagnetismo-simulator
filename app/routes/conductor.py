@@ -1,7 +1,10 @@
 from flask import Blueprint, render_template, request
 from app.services.conductor_service import calcular_campo_magnetico
 from app.services.utils import formatear_cientifico
-
+from app.plots.conductor_plot import (
+    generar_grafico_b_vs_i,
+    generar_grafico_b_vs_r
+)
 
 conductor_bp = Blueprint(
     "conductor",
@@ -13,7 +16,11 @@ def conductor():
     corriente = None 
     distancia = None
     resultado = None
+    resultado_formateado = None
     pasos = []
+    # Cargo por defecto siempre los 2 graficos
+    grafico_b_vs_i = generar_grafico_b_vs_i()
+    grafico_b_vs_r = generar_grafico_b_vs_r()
 
     if request.method == "POST": 
         corriente = float(request.form.get("corriente"))
@@ -22,7 +29,6 @@ def conductor():
 
         resultado = datos_calculo["resultado"]
         pasos = datos_calculo["pasos"]
-
         resultado_formateado = formatear_cientifico(resultado)
 
     return render_template(
@@ -31,7 +37,9 @@ def conductor():
         distancia=distancia,
         resultado=resultado,
         resultado_formateado=resultado_formateado,
-        pasos=pasos
+        pasos=pasos,
+        grafico_b_vs_i=grafico_b_vs_i,
+        grafico_b_vs_r=grafico_b_vs_r
     )
 
 
