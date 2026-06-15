@@ -1,0 +1,269 @@
+/* =======================================================
+   IDENTIDAD VISUAL UTN FRRe
+======================================================= */
+
+:root {
+
+    --utn-blue: #0057D9;
+    --utn-blue-dark: #0B3E91;
+    --utn-blue-light: #EAF2FF;
+
+    --utn-gray-bg: #F5F5F5;
+    --utn-gray-light: #FAFAFA;
+    --utn-gray-text: #555555;
+
+    --border-radius: 12px;
+}
+
+
+/* =======================================================
+   BODY
+======================================================= */
+
+body {
+
+    background-color: var(--utn-gray-bg);
+
+    color: var(--utn-gray-text);
+
+    font-family:
+        "Segoe UI",
+        Tahoma,
+        Geneva,
+        Verdana,
+        sans-serif;
+}
+
+
+/* =======================================================
+   NAVBAR
+======================================================= */
+
+.navbar-utn {
+
+    background-color: white;
+
+    box-shadow:
+        0 2px 8px rgba(0,0,0,0.08);
+}
+
+.navbar-utn .navbar-brand {
+
+    color: var(--utn-blue-dark);
+
+    font-weight: 700;
+}
+
+.navbar-utn .nav-link {
+
+    color: #444;
+}
+
+.navbar-utn .nav-link:hover {
+
+    color: var(--utn-blue);
+}
+
+.navbar-brand-utn {
+
+    display: flex;
+
+    flex-direction: column;
+
+    line-height: 1.1;
+
+    text-decoration: none;
+
+    color: var(--utn-blue-dark) !important;
+}
+
+.navbar-brand-utn div:first-child {
+
+    font-size: 0.95rem;
+
+    font-weight: 700;
+
+    text-transform: uppercase;
+}
+
+.navbar-brand-utn div:last-child {
+
+    font-size: 0.80rem;
+
+    font-weight: 500;
+
+    text-transform: uppercase;
+}
+
+/* =======================================================
+   HERO
+======================================================= */
+
+.hero-banner {
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--utn-blue),
+            var(--utn-blue-dark)
+        );
+
+    color: white;
+
+    padding: 30px 0;
+
+    margin-bottom: 30px;
+}
+
+.hero-banner h1 {
+
+    font-size: 2.4rem;
+
+    font-weight: 700;
+
+    margin-bottom: 10px;
+}
+
+.hero-banner p {
+
+    margin: 0;
+
+    font-size: 1.1rem;
+
+    opacity: 0.95;
+}
+
+
+/* =======================================================
+   TITULOS
+======================================================= */
+
+h2,
+h3,
+h4,
+h5 {
+
+    color: var(--utn-blue-dark);
+}
+
+
+/* =======================================================
+   CARDS
+======================================================= */
+
+.card {
+
+    border: none;
+
+    border-radius: var(--border-radius);
+
+    box-shadow:
+        0 2px 10px rgba(0,0,0,0.08);
+
+    transition: 0.2s;
+}
+
+.card:hover {
+
+    box-shadow:
+        0 4px 16px rgba(0,0,0,0.12);
+}
+
+.main-content {
+
+    max-width: 1400px;
+
+    margin: auto;
+}
+/* =======================================================
+   FORMULARIOS
+======================================================= */
+
+.form-control {
+
+    border-radius: 10px;
+}
+
+.form-control:focus {
+
+    border-color: var(--utn-blue);
+
+    box-shadow:
+        0 0 0 0.25rem rgba(0,87,217,0.25);
+}
+
+
+/* =======================================================
+   BOTONES
+======================================================= */
+
+.btn-primary {
+
+    background-color: var(--utn-blue);
+
+    border-color: var(--utn-blue);
+}
+
+.btn-primary:hover {
+
+    background-color: var(--utn-blue-dark);
+
+    border-color: var(--utn-blue-dark);
+}
+
+
+/* =======================================================
+   ALERTAS
+======================================================= */
+
+.alert {
+
+    border-radius: 10px;
+}
+
+
+/* =======================================================
+   TABLAS
+======================================================= */
+
+.table {
+
+    background-color: white;
+}
+
+.table thead {
+
+    background-color: var(--utn-blue);
+
+    color: white;
+}
+
+
+/* =======================================================
+   PLOTLY
+======================================================= */
+
+.plot-container {
+
+    background-color: white;
+
+    border-radius: var(--border-radius);
+
+    padding: 10px;
+}
+
+
+/* =======================================================
+   FOOTER
+======================================================= */
+
+.footer {
+
+    text-align: center;
+
+    color: #777;
+
+    margin-top: 50px;
+
+    padding: 20px;
+}
