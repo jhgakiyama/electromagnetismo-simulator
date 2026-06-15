@@ -14,7 +14,14 @@ def generar_grafico_ejercicio_1():
     fig.update_layout(
         title="Campo Magnético vs Distancia → B ∝ 1/r. I es constante",
         xaxis_title="Distancia al conductor (m)",
-        yaxis_title="Campo Magnético (T)"
+        yaxis_title="Campo Magnético (T)",
+        legend=dict(
+            orientation="h",
+            yanchor="top",
+            y=-0.25,
+            xanchor="center",
+            x=0.5
+        ) # Muevo la leyenda debajo del grafico
     )
 
     # Agrego leyenda a la derecha del grafico
@@ -76,7 +83,7 @@ def generar_grafico_ejercicio_1():
         x=[0, 0],
         y=[0, valor_maximo * 1.3],
         mode="lines+text",
-        name="Conductor rectilíneo infinito",
+        name="Conductor rectilíneo  ∞",
         # text=["", "Conductor rectilíneo infinito"],  Quito el texto dentro de la curva
         # textposition="top right",
         line=dict(
