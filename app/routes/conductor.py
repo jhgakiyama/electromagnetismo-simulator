@@ -1,4 +1,6 @@
 from flask import Blueprint, render_template, request
+from app.services.conductor_service import calcular_campo_magnetico
+from app.services.utils import formatear_cientifico
 
 
 conductor_bp = Blueprint(
@@ -10,13 +12,21 @@ conductor_bp = Blueprint(
 def conductor():
     corriente = None 
     distancia = None
-    
+    resultado = None
+
     if request.method == "POST": 
-        corriente = request.form.get( "corriente" ) 
-        distancia = request.form.get( "distancia" )
+        corriente = float(request.form.get("corriente"))
+        distancia = float(request.form.get("distancia"))
+        resultado = calcular_campo_magnetico(corriente,distancia)
+        resultado_formateado = (formatear_cientifico(resultado))
 
     return render_template(
         "conductor.html",
         corriente=corriente,
-        distancia=distancia
+        distancia=distancia,
+        resultado=resultado,
+        resultado_formateado=resultado_formateado
     )
+
+
+

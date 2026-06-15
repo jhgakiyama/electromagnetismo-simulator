@@ -314,25 +314,34 @@ Campo Magnético de un Conductor Rectilíneo
 
 </form>
 
-{% if corriente and distancia %}
+{% if resultado %}
 
 <hr>
 
 <h5>
-    Datos recibidos
+    Resultado
 </h5>
 
 <ul>
 
+
 <li>
-    Corriente: {{ corriente }} A
+    Corriente:
+    {{ corriente }} A
 </li>
 
 <li>
-    Distancia: {{ distancia }} m
+    Distancia:
+    {{ distancia }} m
 </li>
+
 
 </ul>
+
+<div class="alert alert-success">
+
+Campo Magnético: <strong>B = {{ resultado_formateado }} T</strong>
+</div>
 
 {% endif %}
 
