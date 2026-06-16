@@ -287,3 +287,31 @@ h5 {
 
     padding: 20px;
 }
+
+/* =======================================================
+   Para el Home
+======================================================= */
+
+.home-card {
+
+    height: 100%;
+}
+
+.card-footer {
+
+    padding-top: 0;
+}
+
+.badge {
+
+    font-size: 0.85rem;
+}
+
+.card-img-top {
+
+    height: 220px;
+
+    object-fit: cover;
+
+    border-radius: 12px 12px 0 0;
+}

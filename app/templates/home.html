@@ -1,25 +1,167 @@
 {% extends "base.html" %}
 
 {% block title %}
-Inicio
+Inicio - Simulador de Electromagnetismo
 {% endblock %}
 
 {% block content %}
 
-<div class="card">
+<div class="card mb-4">
 
 <div class="card-body">
 
     <h2>
-        Simulador de Electromagnetismo
+        Bienvenido
     </h2>
+    
+    <p>
+        Esta aplicación fue desarrollada como
+        apoyo didáctico para la asignatura
+        Física II de la Universidad Tecnológica Nacional.
+    </p>
 
     <p>
-        Proyecto académico de Física II.
+        El objetivo es visualizar y comprender
+        los conceptos fundamentales de Campo
+        Magnético e Inducción mediante teoría,
+        simulaciones, gráficos interactivos y
+        ejercicios resueltos.
     </p>
 
 </div>
 
 </div>
 
+<div class="row g-4">
+
+<!-- Tema 1 -->
+
+<div class="col-lg-4">
+
+    <div class="card h-100">
+
+        <div class="card-body">
+
+            <span class="badge bg-success mb-3">
+                Disponible
+            </span>
+            
+            <h3>Ejercicio 1</h3>
+            
+            <img src="{{ url_for('static', filename='img/conductor.png') }}" class="card-img-top mb-3" alt="Conductor Rectilíneo">
+
+            <h4>Campo Magnético de un Conductor Rectilíneo</h4>
+
+            <p>
+                Estudio del campo magnético
+                generado por una corriente
+                eléctrica que circula por
+                un conductor infinitamente largo.
+            </p>
+
+            <ul>
+                <li>Campo magnético</li>
+                <li>Regla de la mano derecha</li>
+                <li>Dependencia con I y r</li>
+                <li>Ejercicio resuelto</li>
+            </ul>
+        </div>
+
+        <div class="card-footer bg-white border-0">
+
+            <a
+                href="/conductor"
+                class="btn btn-primary w-100"
+            >
+            Ingresar al Tema
+            </a>
+        </div>
+    </div>
+</div>
+
+<!-- Tema 2 -->
+
+<div class="col-lg-4">
+    <div class="card h-100">
+        <div class="card-body">
+            <span class="badge bg-warning text-dark mb-3">
+                Próximamente
+            </span>
+
+            <h3>Ejercicio 2</h3>
+
+            <img src="{{ url_for('static', filename='img/paralelos.png') }}" class="card-img-top mb-3" alt="Conductores Paralelos">
+
+            <h4>Conductores Paralelos</h4>
+
+            <p>
+                Análisis del campo magnético
+                total generado por dos
+                conductores paralelos con
+                corrientes eléctricas.
+            </p>
+
+            <ul>
+                <li>Superposición</li>
+                <li>Suma vectorial</li>
+                <li>Regla de la mano derecha</li>
+                <li>Visualización de campos</li>
+            </ul>
+        </div>
+
+        <div class="card-footer bg-white border-0">
+            <button
+                class="btn btn-secondary w-100"
+                disabled
+            >
+            En desarrollo
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- Tema 3 -->
+
+<div class="col-lg-4">
+    <div class="card h-100">
+        <div class="card-body">
+            <span class="badge bg-warning text-dark mb-3">
+                Próximamente
+            </span>
+
+            <h3>Ejercicio 3</h3>
+
+            <img src="{{ url_for('static', filename='img/bobina.png') }}" class="card-img-top mb-3" alt="Bobina Circular">
+
+            <h4>Bobina Circular</h4>
+
+            <p>
+                Determinación del campo
+                magnético en el centro
+                de una bobina circular.
+            </p>
+
+            <ul>
+                <li>Espiras</li>
+                <li>Radio</li>
+                <li>Campo magnético</li>
+                <li>Aplicaciones reales</li>
+            </ul>
+
+        </div>
+
+        <div class="card-footer bg-white border-0">
+            <button
+                class="btn btn-secondary w-100"
+                disabled
+            >
+                En desarrollo
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+</div>
 {% endblock %}
