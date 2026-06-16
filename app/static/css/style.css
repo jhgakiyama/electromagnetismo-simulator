@@ -22,7 +22,7 @@
 
 body {
 
-    padding-top: 60px;
+    padding-top: 85px;
 
     background-color: var(--utn-gray-bg);
 
@@ -72,7 +72,9 @@ body {
 
     display: flex;
 
-    flex-direction: column;
+    align-items: center;
+
+    gap: 12px;
 
     line-height: 1.1;
 
@@ -123,6 +125,56 @@ body {
 
     z-index: 2000;
 }
+
+/* =======================================================
+   Logo UTN
+======================================================= */
+
+.utn-logo {
+
+    height: 55px;
+
+    width: auto;
+
+    flex-shrink: 0;
+
+}
+
+
+.utn-text {
+
+    display: flex;
+
+    flex-direction: column;
+
+    line-height: 1.1;
+}
+
+.utn-title {
+
+    font-size: 1rem;
+
+    font-weight: 700;
+
+    text-transform: uppercase;
+
+    color: var(--utn-blue-dark);
+
+
+}
+
+.utn-subtitle {
+
+    font-size: 0.80rem;
+
+    font-weight: 500;
+
+    text-transform: uppercase;
+
+    color: var(--utn-blue-dark);
+
+}
+
 
 /* =======================================================
    HERO
@@ -326,3 +378,4 @@ h5 {
 
     border-radius: 12px 12px 0 0;
 }
+
