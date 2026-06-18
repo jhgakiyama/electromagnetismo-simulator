@@ -792,3 +792,14 @@ Campo Magnético: <strong>B = {{ resultado_formateado }} T</strong>
 </div>
 
 {% endblock %}
+
+{% block scripts %}
+
+<script
+    src="{{ url_for(
+        'static',
+        filename='js/tema1.js'
+    ) }}"
+></script>
+
+{% endblock %}
