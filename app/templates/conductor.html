@@ -595,6 +595,7 @@ Campo Magnético: <strong>B = {{ resultado_formateado }} T</strong>
             <label class="form-label">Corriente (A)</label>
 
             <input
+                id="slider-corriente"
                 type="range"
                 class="form-range"
                 min="0.1"
@@ -604,7 +605,7 @@ Campo Magnético: <strong>B = {{ resultado_formateado }} T</strong>
             >
 
             <p>Valor actual: 
-                <span class="badge bg-primary">
+                <span id="valor-corriente" class="badge bg-primary">
                     1.0 A
                 </span>
             </p>
@@ -612,6 +613,7 @@ Campo Magnético: <strong>B = {{ resultado_formateado }} T</strong>
             <label class="form-label mt-4">Distancia (m)</label>
 
             <input
+                id="slider-distancia"
                 type="range"
                 class="form-range"
                 min="0.01"
@@ -620,7 +622,7 @@ Campo Magnético: <strong>B = {{ resultado_formateado }} T</strong>
                 value="0.5"
             >
             <p>Valor actual: 
-                <span class="badge bg-primary">
+                <span id="valor-distancia" class="badge bg-primary">
                     0.50 m
                 </span>
             </p>
@@ -640,7 +642,7 @@ Campo Magnético: <strong>B = {{ resultado_formateado }} T</strong>
             <h4>Campo Magnético</h4>
             <hr>
 
-            <div class="exploration-value">
+            <div id="resultado-campo" class="exploration-value">
                 0.40 μT
             </div>
 
