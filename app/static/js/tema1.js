@@ -53,8 +53,65 @@ function actualizarExploracion() {
 
     resultadoCampo.textContent =
         `${microTesla.toFixed(2)} μT`;
+
+    generarGraficoExploracion(I,r);
 }
 
+// Funcion para graficar
+function generarGraficoExploracion(corriente,distanciaActual) {
+
+    const distancias = [];
+    const campos = [];
+
+    for (let r = 0.01;r <= 2;r += 0.01) 
+        {
+            const B = (MU0 * corriente)/(2 * Math.PI * r);
+            distancias.push(Number(r.toFixed(2)));
+            campos.push(B * 1e6);
+    }
+
+    const campoActual = ( (MU0 * corriente)/(2 * Math.PI * distanciaActual) ) * 1e6;
+
+    const curva = {x: distancias,y: campos,mode: "lines",name: "B vs r"};
+
+    const puntoActual = { 
+        x: [distanciaActual],
+        y: [campoActual],
+        mode: "markers",
+        name: "B",  
+        text: [ `r = ${distanciaActual.toFixed(2)} m B = ${campoActual.toFixed(2)} μT`],
+        hoverinfo: "text",
+        marker: {size: 12} };
+    
+    const conductor = {
+        textposition: "top center",
+        x: [0, 0],
+        y: [0, Math.max(...campos) * 1.3],
+        mode: "lines+text",
+        name: "Conductor rectilíneo ∞",
+        line: { 
+            dash: "dash",
+            width: 4
+        }        
+    };
+
+    const data = [ curva, puntoActual,conductor];
+
+    const layout = {
+        title: {text:"Campo Magnético vs Distancia"},
+        xaxis: { title: { text: "Distancia (m)"}}, 
+        yaxis: { title: { text:"Campo Magnético (μT)"}}, 
+        legend: {
+            orientation: "h",
+            yanchor:"top",
+            y:-0.25,
+            xanchor:"center",
+            x:0.5
+        }
+    };
+    
+    Plotly.newPlot( "grafico-exploracion", data, layout, {responsive: true});
+}
 
 sliderCorriente.addEventListener(
     "input",
