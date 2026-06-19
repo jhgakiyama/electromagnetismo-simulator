@@ -683,29 +683,10 @@ Campo Magnético: <strong>B = {{ resultado_formateado }} T</strong>
     <!-- FIN Interpretación -->
 </div>
 
-    <div class="card mt-4">
-        <div class="card-body">
-
-            <h4>Campo Magnético vs Distancia</h4>
-
-            <p>Próximamente se mostrará aquí
-                la curva dinámica de exploración.
-            </p>
-
-            <div
-                style="
-                    height:400px;
-                    display:flex;
-                    align-items:center;
-                    justify-content:center;
-                    background:#f8f9fa;
-                    border-radius:10px;
-                "
-            >
-            Próximamente:
-            Exploración interactiva de la relación
-                B ∝ I
-                B ∝ 1/r
+    <div class="order-3 order-lg-4">
+        <div class="card mt-4">
+            <div class="card-body">
+                <div id="grafico-exploracion"></div>
             </div>
         </div>
     </div>
@@ -767,30 +748,14 @@ Campo Magnético: <strong>B = {{ resultado_formateado }} T</strong>
 
         </ul>
 
-        <h5 class="mt-4">
-            Lo observado en los gráficos
-        </h5>
+        <h5 class="mt-4"> Lo observado en los gráficos </h5>
 
         <ul>
-
-            <li>
-                B es proporcional a I.
-            </li>
-
-            <li>
-                B es inversamente proporcional a r.
-            </li>
-
-            <li>
-                La relación con la distancia
-                no es lineal.
-            </li>
-
-        </ul>
-
-       
+            <li> B es proporcional a I.</li>
+            <li> B es inversamente proporcional a r.</li>
+            <li> La relación con la distancia no es lineal.</li>
+        </ul>      
     </div>
-
 </div>
 
 {% endblock %}
