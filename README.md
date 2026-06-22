@@ -1,10 +1,10 @@
-# Simulador de Electromagnetismo
+# ⚡ Simulador de Electromagnetismo
 
 Aplicación web educativa desarrollada como apoyo didáctico para la UT 6 Campo de Inducción Magnética de la cátedra de Física II de la Universidad Tecnológica Nacional - Facultad Regional Resistencia.
 
 ---
 
-## Objetivo
+## 🎯 Objetivo
 
 Facilitar la comprensión de los conceptos fundamentales del electromagnetismo mediante:
 
@@ -18,7 +18,7 @@ El proyecto busca complementar el aprendizaje tradicional permitiendo visualizar
 
 ---
 
-## Tecnologías Utilizadas
+## 🛠️ Tecnologías Utilizadas
 
 * Python 3
 * Flask
@@ -32,7 +32,7 @@ El proyecto busca complementar el aprendizaje tradicional permitiendo visualizar
 
 ---
 
-## Ejecución del Proyecto
+## 🚀 Ejecución del Proyecto
 
 ### Construir la imagen Docker
 
@@ -54,7 +54,7 @@ http://localhost:5000
 
 ---
 
-## Estructura del Proyecto
+## 📁 Estructura del Proyecto
 
 ```text
 electromagnetismo-simulator/
@@ -77,11 +77,11 @@ electromagnetismo-simulator/
 
 ---
 
-## Estado Actual del Proyecto
+## 📚 Estado Actual del Proyecto
 
 ### Tema 1 - Campo Magnético de un Conductor Rectilíneo Infinito
 
-Estado: COMPLETADO
+Estado: ✅ COMPLETADO
 
 Incluye:
 
@@ -99,20 +99,20 @@ Incluye:
 
 ---
 
-## Funcionalidades Implementadas
+## 🔬 Funcionalidades Implementadas
 
-### Modo Aprender
+### 🧮 Modo Aprender
 
 Permite ingresar valores de corriente y distancia para calcular el campo magnético generado por un conductor rectilíneo infinitamente largo.
 
-### Visualización Conceptual
+### 📈 Visualización Conceptual
 
 Gráficos que permiten comprender visualmente las relaciones:
 
 * B ∝ I
 * B ∝ 1/r
 
-### Ejercicio Resuelto
+### 📝 Ejercicio Resuelto
 
 Desarrollo completo del ejercicio propuesto en Física II:
 
@@ -135,11 +135,11 @@ Visualizando simultáneamente:
 
 ---
 
-## Roadmap
+## 🗺️ Roadmap
 
 ### Tema 1 - Campo Magnético de un Conductor Rectilíneo Infinito
 
-* [x] Implementado
+* [✔️] Implementado
 
 ### Tema 2 - Campo Magnético Total de Dos Conductores Paralelos
 
@@ -161,7 +161,7 @@ Incluye:
 
 ---
 
-## Autor
+## 👨‍💻 Autor
 
 Proyecto académico orientado al aprendizaje de Física II y al desarrollo de aplicaciones científicas utilizando Python, Flask y Plotly.
 
