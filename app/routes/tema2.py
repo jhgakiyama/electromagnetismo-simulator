@@ -1,8 +1,10 @@
-# app/routes/tema2.py
-
 from flask import render_template
-from app.plots.tema2_plot import (
-    visualizacion_conceptual_2a
+from flask import Blueprint
+from app.plots.tema2_plot import visualizacion_conceptual_2a
+
+bp = Blueprint(
+    "tema2",
+    __name__
 )
 
 @bp.route("/tema2/demo")

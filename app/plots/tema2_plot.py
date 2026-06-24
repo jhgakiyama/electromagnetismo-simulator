@@ -61,13 +61,16 @@ def visualizacion_conceptual_2a():
 
     # Defino valores fijos
     # I1
-    i1_x = -1 ,i1_y = 0
+    i1_x = -1
+    i1_y = 0
     
     # I2
-    i2_x = 1, i2_y = 0
+    i2_x = 1
+    i2_y = 0
 
     # P
-    p_x = 0.5, p_y = 1
+    p_x = 0.5
+    p_y = 1
 
     fig = go.Figure()
 
