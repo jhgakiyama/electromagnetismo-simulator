@@ -1,4 +1,6 @@
+from math import sqrt
 import plotly.graph_objects as go
+from app.physics.tema2 import vector_perpendicular
 
 
 """
@@ -20,6 +22,25 @@ Sin números - Sin coordenadas - Sin fórmulas
 """
 
 
+def normalizar_vector(x, y):
+    """
+    Objetivo:
+        Obtener un vector unitario a partir de un vector cualquiera.
+
+    Parámetros:
+        x: componente X
+        y: componente Y
+
+    Retorna:
+        ux: componente X normalizada
+        uy: componente Y normalizada
+    """
+
+    norma = sqrt(x**2 + y**2)
+
+    return x / norma, y / norma
+
+
 def visualizacion_conceptual_2a():
     """
     Objetivo:
@@ -35,6 +56,8 @@ def visualizacion_conceptual_2a():
         Utiliza valores genéricos para facilitar
         la comprensión de la superposición de campos.
     """
+    # Longitud fijo
+    L = 0.5
 
     # Defino valores fijos
     # I1
@@ -123,10 +146,26 @@ def visualizacion_conceptual_2a():
 
     fig.update_layout(title="Visualización Conceptual 2A - Superposición de Campos",showlegend=True)
 
+    ''' Hago los calculos geometricos para B1 '''
+     # Calculo Vector Radio
+    dx1 = p_x - i1_x
+    dy1 = p_y - i1_y
+
+    # Direccion de B
+    bx1, by1 = vector_perpendicular(dx1,dy1,"entrante")
+    # Normalizo
+    bx1, by1 = normalizar_vector(bx1,by1)
+
+    # Prueba de Longitud final   
+    bx1 *= L
+    by1 *= L
+
+    '''FIN CALCULOS B1'''
+
     # Agrego para vector de B1
     fig.add_annotation(
-        x=1.0,
-        y=1.4,
+        x=p_x + bx1,
+        y=p_y + by1,
         ax=p_x,
         ay=p_y,
         showarrow=True,
@@ -135,10 +174,25 @@ def visualizacion_conceptual_2a():
         text="B1"
     )
 
+    ''' Hago los calculos geometricos para B1 '''
+     # Calculo Vector Radio
+    dx2 = p_x - i2_x
+    dy2 = p_y - i2_y
+
+    # Direccion de B1
+    bx2, by2 = vector_perpendicular(dx2,dy2,"entrante")
+
+    # Normalizo
+    bx2, by2 = normalizar_vector(bx2,by2)
+
+    bx2 *= L 
+    by2 *= L
+    '''FIN CALCULOS B2'''
+
     # Agrego para vector de B2
     fig.add_annotation(
-        x=0.2,
-        y=1.3,
+        x=p_x + bx2,
+        y=p_y + by2,
         ax=p_x,
         ay=p_y,
         showarrow=True,
@@ -147,10 +201,14 @@ def visualizacion_conceptual_2a():
         text="B2"
     )
 
-    # Btotal
+    # Calculo para Btotal
+    bx_total = bx1 + bx2
+    by_total = by1 + by2
+
+    # Agrego vector Btotal
     fig.add_annotation(
-        x=0.9,
-        y=1.8,
+        x=p_x + bx_total,
+        y=p_y + by_total,       
         ax=p_x,
         ay=p_y,
         showarrow=True,

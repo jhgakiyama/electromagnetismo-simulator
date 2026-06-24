@@ -1,3 +1,4 @@
+# physics sigue sin saber que existe Plotly.
 from math import pi, sqrt
 
 MU0 = 4 * pi * 1e-7
