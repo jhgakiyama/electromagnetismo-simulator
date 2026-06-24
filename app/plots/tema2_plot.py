@@ -57,7 +57,7 @@ def visualizacion_conceptual_2a():
         la comprensión de la superposición de campos.
     """
     # Longitud fijo
-    L = 0.5
+    L = 1
 
     # Defino valores fijos
     # I1
@@ -82,7 +82,7 @@ def visualizacion_conceptual_2a():
             mode="markers+text",
             text=["I1"],
             textposition="top center",
-            name="I1"
+            name="I1 = (-1,0)"
         )
     )
 
@@ -94,7 +94,7 @@ def visualizacion_conceptual_2a():
             mode="markers+text",
             text=["I2"],
             textposition="top center",
-            name="I2"
+            name="I2 = (1,0)"
         )
     )
 
@@ -106,7 +106,7 @@ def visualizacion_conceptual_2a():
             mode="markers+text",
             text=["P"],
             textposition="top center",
-            name="P"
+            name="P = (0.5,1)"
         )
     )
 
@@ -134,21 +134,6 @@ def visualizacion_conceptual_2a():
         )
     )
 
-    # Se ve mejor los ejes
-    fig.update_xaxes(
-        zeroline=True,
-        showgrid=False
-    )
-
-    fig.update_yaxes(
-        zeroline=True,
-        showgrid=False,
-        scaleanchor="x",
-        scaleratio=1
-    )
-
-    fig.update_layout(title="Visualización Conceptual 2A - Superposición de Campos",showlegend=True)
-
     ''' Hago los calculos geometricos para B1 '''
      # Calculo Vector Radio
     dx1 = p_x - i1_x
@@ -169,20 +154,40 @@ def visualizacion_conceptual_2a():
     fig.add_annotation(
         x=p_x + bx1,
         y=p_y + by1,
+        # Agrego porque no se ven los vectores
+        xref="x",
+        yref="y",
+
         ax=p_x,
         ay=p_y,
+
+        # Agrego porque no se ven los vectores
+        axref="x",
+        ayref="y",
+
         showarrow=True,
         arrowhead=3,
-        arrowwidth=1,
-        text="B1"
+        arrowwidth=3,
+        text=""
     )
 
-    ''' Hago los calculos geometricos para B1 '''
+    fig.add_trace(
+        go.Scatter(
+            x=[p_x + bx1 * 0.6],
+            y=[p_y + by1 * 0.6],
+            mode="text",
+            text=["B1"],
+            showlegend=False,
+            textposition="middle right"
+        )
+    )
+
+    ''' Hago los calculos geometricos para B2 '''
      # Calculo Vector Radio
     dx2 = p_x - i2_x
     dy2 = p_y - i2_y
 
-    # Direccion de B1
+    # Direccion de B2
     bx2, by2 = vector_perpendicular(dx2,dy2,"entrante")
 
     # Normalizo
@@ -198,12 +203,26 @@ def visualizacion_conceptual_2a():
         y=p_y + by2,
         ax=p_x,
         ay=p_y,
+        # Agrego porque no se ven los vectores
+        xref="x",
+        yref="y",
+        axref="x",
+        ayref="y",
         showarrow=True,
         arrowhead=3,
-        arrowwidth=1,
-        text="B2"
+        arrowwidth=3,
     )
 
+    fig.add_trace(
+        go.Scatter(
+            x=[p_x + bx2 * 0.6],
+            y=[p_y + by2 * 0.6],
+            mode="text",
+            text=["B2"],
+            showlegend=False,
+            textposition="middle left"
+        )
+    )
     # Calculo para Btotal
     bx_total = bx1 + bx2
     by_total = by1 + by2
@@ -214,11 +233,32 @@ def visualizacion_conceptual_2a():
         y=p_y + by_total,       
         ax=p_x,
         ay=p_y,
+        # Agrego porque no se ven los vectores
+        xref="x",
+        yref="y",
+        axref="x",
+        ayref="y",
         showarrow=True,
         arrowhead=3,
         arrowwidth=3,
-        text="Btotal"
+        text=""
     )
+
+    fig.add_trace(
+        go.Scatter(
+            x=[p_x + bx_total * 0.6],
+            y=[p_y + by_total * 0.6],
+            mode="text",
+            text=["Btotal"],
+            showlegend=False,
+            textposition="top center"
+        )
+    )
+
+    # Se ve mejor los ejes
+    fig.update_xaxes(zeroline=True,showgrid=False)
+    fig.update_yaxes(zeroline=True,showgrid=False,scaleanchor="x",scaleratio=1)
+    fig.update_layout(title="Visualización Conceptual 2A - Superposición de Campos",showlegend=True)
 
     return fig
 
