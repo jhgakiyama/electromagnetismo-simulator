@@ -41,6 +41,133 @@ def normalizar_vector(x, y):
     return x / norma, y / norma
 
 
+# Responsabilidades:
+# Calcular el punto intermedio.
+# Dibujar la componente vertical.
+# Dibujar la componente horizontal.
+# Agregar las etiquetas.
+def dibujar_componentes_vector(
+    fig,
+    origen_x,
+    origen_y,
+    comp_x,
+    comp_y,
+    etiqueta_x,
+    etiqueta_y,
+    color="deeppink",
+    dash="dot"
+):
+    """
+    Objetivo:
+        Dibujar la descomposición ortogonal de un vector
+        mediante sus componentes horizontal y vertical.
+
+    Parámetros:
+        fig:
+            Figura Plotly.
+
+        origen_x:
+            Coordenada X del origen del vector.
+
+        origen_y:
+            Coordenada Y del origen del vector.
+
+        comp_x:
+            Componente horizontal.
+
+        comp_y:
+            Componente vertical.
+
+        etiqueta_x:
+            Nombre de la componente horizontal.
+
+        etiqueta_y:
+            Nombre de la componente vertical.
+
+        color:
+            Color de las líneas auxiliares.
+
+        dash:
+            Estilo de línea (dot, dash, etc.).
+
+    Retorna:
+        None.
+
+    Notas:
+        La construcción utilizada es:
+
+            Vertical
+                ↓
+            Horizontal
+    """
+
+    # ==========================================================
+    # Componente vertical
+    # ==========================================================
+
+    fig.add_trace(
+        go.Scatter(
+            x=[origen_x, origen_x],
+            y=[origen_y, origen_y + comp_y],
+            mode="lines",
+            line=dict(
+                color=color,
+                dash=dash
+            ),
+            showlegend=False,
+            hoverinfo="skip"
+        )
+    )
+
+    # ==========================================================
+    # Componente horizontal
+    # ==========================================================
+
+    fig.add_trace(
+        go.Scatter(
+            x=[origen_x, origen_x + comp_x],
+            y=[origen_y + comp_y, origen_y + comp_y],
+            mode="lines",
+            line=dict(
+                color=color,
+                dash=dash
+            ),
+            showlegend=False,
+            hoverinfo="skip"
+        )
+    )
+
+    # ==========================================================
+    # Etiqueta componente vertical
+    # ==========================================================
+
+    fig.add_trace(
+        go.Scatter(
+            x=[origen_x - 0.05],
+            y=[origen_y + comp_y / 2],
+            mode="text",
+            text=[etiqueta_y],
+            showlegend=False,
+            hoverinfo="skip"
+        )
+    )
+
+    # ==========================================================
+    # Etiqueta componente horizontal
+    # ==========================================================
+
+    fig.add_trace(
+        go.Scatter(
+            x=[origen_x + comp_x / 2],
+            y=[origen_y + comp_y + 0.03],
+            mode="text",
+            text=[etiqueta_x],
+            showlegend=False,
+            hoverinfo="skip"
+        )
+    )
+
+
 def visualizacion_conceptual_2a():
     """
     Objetivo:
@@ -145,8 +272,8 @@ def visualizacion_conceptual_2a():
     bx1, by1 = normalizar_vector(bx1,by1)
 
     # Prueba de Longitud final   
-    bx1 *= L
-    by1 *= L
+    bx1 *= L1
+    by1 *= L1
 
     '''FIN CALCULOS B1'''
 
@@ -276,7 +403,7 @@ def visualizacion_conceptual_2b():
         Permite visualizar la cancelación de
         componentes y el campo resultante.
     """
-        # Longitud fijo
+    # Longitud fijo
     L2 = 0.5
 
     # Defino valores fijos
@@ -418,108 +545,68 @@ def visualizacion_conceptual_2b():
     '''FIN CALCULOS B2'''
 
     # Agrego para vector de B2
-    # fig.add_annotation(
-    #     x=p_x + bx2,
-    #     y=p_y + by2,
-    #     ax=p_x,
-    #     ay=p_y,
-    #     # Agrego porque no se ven los vectores
-    #     xref="x",
-    #     yref="y",
-    #     axref="x",
-    #     ayref="y",
-    #     showarrow=True,
-    #     arrowhead=3,
-    #     arrowwidth=3,
-    # )
+    fig.add_annotation(
+        x=p_x + bx2,
+        y=p_y + by2,
+        ax=p_x,
+        ay=p_y,
+        # Agrego porque no se ven los vectores
+        xref="x",
+        yref="y",
+        axref="x",
+        ayref="y",
+        showarrow=True,
+        arrowhead=3,
+        arrowwidth=3,
+    )
 
-    # fig.add_trace(
-    #     go.Scatter(
-    #         x=[p_x + bx2 * 0.6],
-    #         y=[p_y + by2 * 0.6],
-    #         mode="text",
-    #         text=["B2"],
-    #         showlegend=False,
-    #         textposition="middle left"
-    #     )
-    # )
+    fig.add_trace(
+        go.Scatter(
+            x=[p_x + bx2 * 0.6],
+            y=[p_y + by2 * 0.6],
+            mode="text",
+            text=["B2"],
+            showlegend=False,
+            textposition="middle left"
+        )
+    )
     # Calculo para Btotal
-    # bx_total = bx1 + bx2
-    # by_total = by1 + by2
+    bx_total = bx1 + bx2
+    by_total = by1 + by2
 
     # Agrego vector Btotal
-    # fig.add_annotation(
-    #     x=p_x + bx_total,
-    #     y=p_y + by_total,       
-    #     ax=p_x,
-    #     ay=p_y,
-    #     # Agrego porque no se ven los vectores
-    #     xref="x",
-    #     yref="y",
-    #     axref="x",
-    #     ayref="y",
-    #     showarrow=True,
-    #     arrowhead=3,
-    #     arrowwidth=3,
-    #     text=""
-    # )
-
-    # fig.add_trace(
-    #     go.Scatter(
-    #         x=[p_x + bx_total * 0.6],
-    #         y=[p_y + by_total * 0.6],
-    #         mode="text",
-    #         text=["Btotal"],
-    #         showlegend=False,
-    #         textposition="top center"
-    #     )
-    # )
-
-    # Componentes X de B1
-    fig.add_trace(
-        go.Scatter(
-            x=[p_x, p_x + bx1],
-            y=[p_y + by1,p_y + by1],
-            mode="lines",
-            line=dict(dash="dot"),
-            showlegend=False,
-            text='Bx1'
-        )
+    fig.add_annotation(
+        x=p_x + bx_total,
+        y=p_y + by_total,       
+        ax=p_x,
+        ay=p_y,
+        # Agrego porque no se ven los vectores
+        xref="x",
+        yref="y",
+        axref="x",
+        ayref="y",
+        showarrow=True,
+        arrowhead=3,
+        arrowwidth=3,
+        text=""
     )
-    # Leyenda para Bx1
+
     fig.add_trace(
         go.Scatter(
-            x=[p_x + bx1 / 2],
-            y = [p_y + by1 + 0.03],
+            x=[p_x + bx_total * 0.6],
+            y=[p_y + by_total * 0.6],
             mode="text",
-            text=["Bx1"],
-            showlegend=False
+            text=["Btotal"],
+            showlegend=False,
+            textposition="top center"
         )
     )
 
-    # Componentes Y de B1
-    fig.add_trace(
-        go.Scatter(
-            x=[p_x, p_x],
-            y=[p_y, p_y + by1],
-            mode="lines",
-            line=dict(
-                dash="dot"
-            ),
-            showlegend=False,
-            text='By1'
-        )
-    )
-    # Leyenda para By1
-    fig.add_trace(
-        go.Scatter(
-            x = [p_x - 0.05],
-            y=[p_y + by1 / 2],
-            mode="text",
-            text=["By1"],
-            showlegend=False
-        )
-    )
+    # Dibujo para Bx1 - By1
+    dibujar_componentes_vector(fig,p_x,p_y,bx1,by1,"Bx1","By1")
+
+    # Dibujo para Bx2 - By2
+    dibujar_componentes_vector(fig,p_x,p_y,bx2,by2,"Bx2","By2")
 
     # Se ve mejor los ejes
     fig.update_xaxes(zeroline=True,showgrid=False)
