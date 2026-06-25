@@ -365,8 +365,8 @@ def visualizacion_conceptual_2b():
     bx1, by1 = normalizar_vector(bx1,by1)
 
     # Prueba de Longitud final   
-    bx1 *= L
-    by1 *= L
+    bx1 *= L2
+    by1 *= L2
 
     '''FIN CALCULOS B1'''
 
@@ -418,60 +418,106 @@ def visualizacion_conceptual_2b():
     '''FIN CALCULOS B2'''
 
     # Agrego para vector de B2
-    fig.add_annotation(
-        x=p_x + bx2,
-        y=p_y + by2,
-        ax=p_x,
-        ay=p_y,
-        # Agrego porque no se ven los vectores
-        xref="x",
-        yref="y",
-        axref="x",
-        ayref="y",
-        showarrow=True,
-        arrowhead=3,
-        arrowwidth=3,
-    )
+    # fig.add_annotation(
+    #     x=p_x + bx2,
+    #     y=p_y + by2,
+    #     ax=p_x,
+    #     ay=p_y,
+    #     # Agrego porque no se ven los vectores
+    #     xref="x",
+    #     yref="y",
+    #     axref="x",
+    #     ayref="y",
+    #     showarrow=True,
+    #     arrowhead=3,
+    #     arrowwidth=3,
+    # )
 
-    fig.add_trace(
-        go.Scatter(
-            x=[p_x + bx2 * 0.6],
-            y=[p_y + by2 * 0.6],
-            mode="text",
-            text=["B2"],
-            showlegend=False,
-            textposition="middle left"
-        )
-    )
+    # fig.add_trace(
+    #     go.Scatter(
+    #         x=[p_x + bx2 * 0.6],
+    #         y=[p_y + by2 * 0.6],
+    #         mode="text",
+    #         text=["B2"],
+    #         showlegend=False,
+    #         textposition="middle left"
+    #     )
+    # )
     # Calculo para Btotal
-    bx_total = bx1 + bx2
-    by_total = by1 + by2
+    # bx_total = bx1 + bx2
+    # by_total = by1 + by2
 
     # Agrego vector Btotal
-    fig.add_annotation(
-        x=p_x + bx_total,
-        y=p_y + by_total,       
-        ax=p_x,
-        ay=p_y,
-        # Agrego porque no se ven los vectores
-        xref="x",
-        yref="y",
-        axref="x",
-        ayref="y",
-        showarrow=True,
-        arrowhead=3,
-        arrowwidth=3,
-        text=""
-    )
+    # fig.add_annotation(
+    #     x=p_x + bx_total,
+    #     y=p_y + by_total,       
+    #     ax=p_x,
+    #     ay=p_y,
+    #     # Agrego porque no se ven los vectores
+    #     xref="x",
+    #     yref="y",
+    #     axref="x",
+    #     ayref="y",
+    #     showarrow=True,
+    #     arrowhead=3,
+    #     arrowwidth=3,
+    #     text=""
+    # )
 
+    # fig.add_trace(
+    #     go.Scatter(
+    #         x=[p_x + bx_total * 0.6],
+    #         y=[p_y + by_total * 0.6],
+    #         mode="text",
+    #         text=["Btotal"],
+    #         showlegend=False,
+    #         textposition="top center"
+    #     )
+    # )
+
+    # Componentes X de B1
     fig.add_trace(
         go.Scatter(
-            x=[p_x + bx_total * 0.6],
-            y=[p_y + by_total * 0.6],
-            mode="text",
-            text=["Btotal"],
+            x=[p_x, p_x + bx1],
+            y=[p_y + by1,p_y + by1],
+            mode="lines",
+            line=dict(dash="dot"),
             showlegend=False,
-            textposition="top center"
+            text='Bx1'
+        )
+    )
+    # Leyenda para Bx1
+    fig.add_trace(
+        go.Scatter(
+            x=[p_x + bx1 / 2],
+            y = [p_y + by1 + 0.03],
+            mode="text",
+            text=["Bx1"],
+            showlegend=False
+        )
+    )
+
+    # Componentes Y de B1
+    fig.add_trace(
+        go.Scatter(
+            x=[p_x, p_x],
+            y=[p_y, p_y + by1],
+            mode="lines",
+            line=dict(
+                dash="dot"
+            ),
+            showlegend=False,
+            text='By1'
+        )
+    )
+    # Leyenda para By1
+    fig.add_trace(
+        go.Scatter(
+            x = [p_x - 0.05],
+            y=[p_y + by1 / 2],
+            mode="text",
+            text=["By1"],
+            showlegend=False
         )
     )
 
