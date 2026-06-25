@@ -20,6 +20,40 @@ Líneas punteadas
 
 Sin números - Sin coordenadas - Sin fórmulas
 """
+"""
+==========================================================
+REGLAS DE DISEÑO - COLORES
+==========================================================
+
+Conductor I1
+    Azul
+
+Campo B1
+    Azul
+
+Componentes Bx1 - By1
+    Azul punteado
+
+----------------------------------------------------------
+
+Conductor I2
+    Rojo
+
+Campo B2
+    Rojo
+
+Componentes Bx2 - By2
+    Rojo punteado
+
+----------------------------------------------------------
+
+Campo Total
+
+    Negro
+    (Representa el resultado de todos los campos)
+
+==========================================================
+"""
 
 
 def normalizar_vector(x, y):
@@ -115,6 +149,7 @@ def dibujar_componentes_vector(
                 dash=dash
             ),
             showlegend=False,
+            opacity=0.6 ,
             hoverinfo="skip"
         )
     )
@@ -132,6 +167,7 @@ def dibujar_componentes_vector(
                 color=color,
                 dash=dash
             ),
+            opacity=0.6,
             showlegend=False,
             hoverinfo="skip"
         )
@@ -426,10 +462,15 @@ def visualizacion_conceptual_2b():
         go.Scatter(
             x=[i1_x],
             y=[i1_y],
-            mode="markers+text",
             text=["I1"],
             textposition="top center",
-            name="I1 = (-1,0)"
+            name="I1 = (-1,0)",
+            marker=dict(
+                symbol="diamond",
+                size=10,
+                color="blue",
+                line=dict(width=2)
+            )
         )
     )
 
@@ -438,10 +479,15 @@ def visualizacion_conceptual_2b():
         go.Scatter(
             x=[i2_x],
             y=[i2_y],
-            mode="markers+text",
             text=["I2"],
             textposition="top center",
-            name="I2 = (1,0)"
+            name="I2 = (1,0)",
+            marker=dict(
+                symbol="x",
+                size=10,
+                color="red",
+                line=dict(width=2)
+            )
         )
     )
 
@@ -452,10 +498,15 @@ def visualizacion_conceptual_2b():
             y=[p_y],
             mode="markers+text",
             text=["P"],
-            textposition="top center",
+            textposition="top left",
             name="P = (0.5,1)"
         )
     )
+
+    # textposition = ['top left', 'top center', 'top right', 
+    # 'middle left','middle center', 'middle right', 
+    # 'bottom left', 'bottom center', 'bottom right']
+
 
     # Distancia I1 → P r1
     fig.add_trace(
@@ -511,10 +562,11 @@ def visualizacion_conceptual_2b():
         # Agrego porque no se ven los vectores
         axref="x",
         ayref="y",
-
+        
         showarrow=True,
         arrowhead=3,
         arrowwidth=3,
+        arrowcolor="royalblue",
         text=""
     )
 
@@ -525,7 +577,8 @@ def visualizacion_conceptual_2b():
             mode="text",
             text=["B1"],
             showlegend=False,
-            textposition="middle right"
+            textposition="middle right",
+            textfont=dict(color="royalblue")
         )
     )
 
@@ -558,6 +611,7 @@ def visualizacion_conceptual_2b():
         showarrow=True,
         arrowhead=3,
         arrowwidth=3,
+        arrowcolor="firebrick"
     )
 
     fig.add_trace(
@@ -567,7 +621,8 @@ def visualizacion_conceptual_2b():
             mode="text",
             text=["B2"],
             showlegend=False,
-            textposition="middle left"
+            textposition="middle left",
+            textfont=dict(color="firebrick")
         )
     )
     # Calculo para Btotal
@@ -585,10 +640,13 @@ def visualizacion_conceptual_2b():
         yref="y",
         axref="x",
         ayref="y",
+
         showarrow=True,
         arrowhead=3,
         arrowwidth=3,
-        text=""
+        arrowcolor="black",
+        text="",
+        font=dict(color="black")
     )
 
     fig.add_trace(
@@ -603,10 +661,10 @@ def visualizacion_conceptual_2b():
     )
 
     # Dibujo para Bx1 - By1
-    dibujar_componentes_vector(fig,p_x,p_y,bx1,by1,"Bx1","By1")
+    dibujar_componentes_vector(fig,p_x,p_y,bx1,by1,"Bx1","By1",color="royalblue")
 
     # Dibujo para Bx2 - By2
-    dibujar_componentes_vector(fig,p_x,p_y,bx2,by2,"Bx2","By2")
+    dibujar_componentes_vector(fig,p_x,p_y,bx2,by2,"Bx2","By2",color="firebrick")
 
     # Se ve mejor los ejes
     fig.update_xaxes(zeroline=True,showgrid=False)
