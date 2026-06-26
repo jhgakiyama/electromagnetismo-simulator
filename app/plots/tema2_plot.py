@@ -19,8 +19,7 @@ Ayuda visual:
 Líneas punteadas
 
 Sin números - Sin coordenadas - Sin fórmulas
-"""
-"""
+
 ==========================================================
 REGLAS DE DISEÑO - COLORES
 ==========================================================
@@ -54,6 +53,13 @@ Campo Total
 
 ==========================================================
 """
+
+COLOR_I1 = "royalblue"
+COLOR_I2 = "firebrick"
+COLOR_BTOTAL = "black"
+
+SIMBOLO_CORRIENTE_ENTRANTE = "circle-x-open"
+SIMBOLO_CORRIENTE_SALIENTE = "circle-dot"
 
 
 def normalizar_vector(x, y):
@@ -466,8 +472,8 @@ def visualizacion_conceptual_2b():
             textposition="top center",
             name="I1 = (-1,0)",
             marker=dict(
-                symbol="diamond",
-                size=10,
+                symbol=SIMBOLO_CORRIENTE_ENTRANTE,
+                size=14,
                 color="blue",
                 line=dict(width=2)
             )
@@ -483,8 +489,8 @@ def visualizacion_conceptual_2b():
             textposition="top center",
             name="I2 = (1,0)",
             marker=dict(
-                symbol="x",
-                size=10,
+                symbol=SIMBOLO_CORRIENTE_ENTRANTE,
+                size=14,
                 color="red",
                 line=dict(width=2)
             )
@@ -566,7 +572,7 @@ def visualizacion_conceptual_2b():
         showarrow=True,
         arrowhead=3,
         arrowwidth=3,
-        arrowcolor="royalblue",
+        arrowcolor=COLOR_I1,
         text=""
     )
 
@@ -578,7 +584,7 @@ def visualizacion_conceptual_2b():
             text=["B1"],
             showlegend=False,
             textposition="middle right",
-            textfont=dict(color="royalblue")
+            textfont=dict(color=COLOR_I1)
         )
     )
 
@@ -611,7 +617,7 @@ def visualizacion_conceptual_2b():
         showarrow=True,
         arrowhead=3,
         arrowwidth=3,
-        arrowcolor="firebrick"
+        arrowcolor=COLOR_I2
     )
 
     fig.add_trace(
@@ -622,7 +628,7 @@ def visualizacion_conceptual_2b():
             text=["B2"],
             showlegend=False,
             textposition="middle left",
-            textfont=dict(color="firebrick")
+            textfont=dict(color=COLOR_I2)
         )
     )
     # Calculo para Btotal
@@ -644,9 +650,9 @@ def visualizacion_conceptual_2b():
         showarrow=True,
         arrowhead=3,
         arrowwidth=3,
-        arrowcolor="black",
+        arrowcolor=COLOR_BTOTAL,
         text="",
-        font=dict(color="black")
+        font=dict(color=COLOR_BTOTAL)
     )
 
     fig.add_trace(
@@ -661,10 +667,10 @@ def visualizacion_conceptual_2b():
     )
 
     # Dibujo para Bx1 - By1
-    dibujar_componentes_vector(fig,p_x,p_y,bx1,by1,"Bx1","By1",color="royalblue")
+    dibujar_componentes_vector(fig,p_x,p_y,bx1,by1,"Bx1","By1",color=COLOR_I1)
 
     # Dibujo para Bx2 - By2
-    dibujar_componentes_vector(fig,p_x,p_y,bx2,by2,"Bx2","By2",color="firebrick")
+    dibujar_componentes_vector(fig,p_x,p_y,bx2,by2,"Bx2","By2",color=COLOR_I2)
 
     # Se ve mejor los ejes
     fig.update_xaxes(zeroline=True,showgrid=False)
