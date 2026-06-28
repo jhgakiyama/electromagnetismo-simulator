@@ -1,5 +1,6 @@
 from math import sqrt
 import plotly.graph_objects as go
+from app.physics.tema2 import componentes_campo
 
 
 """
@@ -53,15 +54,15 @@ Campo Total
 ==========================================================
 """
 
-COLOR_I1 = "royalblue"
-COLOR_I2 = "firebrick"
+COLOR_I1 = "firebrick"
+COLOR_I2 = "royalblue"
 COLOR_BTOTAL = "black"
 
 SIMBOLO_CORRIENTE_ENTRANTE = "circle-x-open"
 SIMBOLO_CORRIENTE_SALIENTE = "circle-dot"
 
 
-def normalizar_vector(x, y):
+def normalizar_vector(x, y, longitud=0.8):
     """
     Objetivo:
         Obtener un vector unitario a partir de un vector cualquiera.
@@ -79,6 +80,103 @@ def normalizar_vector(x, y):
 
     return x / norma, y / norma
 
+
+def escalar_vector(x, y, longitud=1):
+    """
+    Objetivo:
+        Escalar un vector unitario a la longitud deseada.
+
+    Parámetros:
+        x: componente X del vector unitario.
+        y: componente Y del vector unitario.
+        longitud: longitud deseada.
+
+    Retorna:
+        x_escalado
+        y_escalado
+    """
+
+    return x * longitud, y * longitud
+
+
+def dibujar_vector(fig,origen_x,origen_y,vx,vy,etiqueta,color,textposition="top center"):
+    """
+    Objetivo:
+        Dibujar un vector sobre una figura Plotly.
+
+    Parámetros:
+        fig:
+            Figura Plotly.
+
+        origen_x, origen_y:
+            Coordenadas del origen del vector.
+
+        vx, vy:
+            Componentes del vector.
+
+        etiqueta:
+            Texto identificador del vector.
+
+        color:
+            Color del vector y de la etiqueta.
+
+        textposition:
+            Posición de la etiqueta respecto del extremo
+            del vector.
+
+    Retorna:
+        None.
+
+    Notas:
+        Esta función únicamente representa el vector.
+        No realiza cálculos físicos.
+    """
+
+    destino_x = origen_x + vx
+    destino_y = origen_y + vy
+
+    texto_x = origen_x + vx * 0.60
+    texto_y = origen_y + vy * 0.60
+
+    # ------------------------------------------------------
+    # Flecha
+    # ------------------------------------------------------
+
+    fig.add_annotation(
+        x=destino_x,
+        y=destino_y,
+        ax=origen_x,
+        ay=origen_y,
+        xref="x",
+        yref="y",
+        axref="x",
+        ayref="y",
+        showarrow=True,
+        arrowhead=3,
+        arrowsize=1,
+        arrowwidth=2,
+        arrowcolor=color
+    )
+
+    # ------------------------------------------------------
+    # Etiqueta
+    # ------------------------------------------------------
+
+    fig.add_trace(
+        go.Scatter(
+            x=[texto_x],
+            y=[texto_y],
+            mode="text",
+            text=[etiqueta],
+            textfont=dict(
+                color=color,
+                size=11
+            ),
+            textposition=textposition,
+            showlegend=False,
+            hoverinfo="skip"
+        )
+    )
 
 # Responsabilidades:
 # Calcular el punto intermedio.
@@ -208,6 +306,90 @@ def dibujar_componentes_vector(
         )
     )
 
+
+def dibujar_radio(fig,origen_x,origen_y,destino_x,destino_y,etiqueta,color,textposition="middle center",estilo_linea="dot"):
+    """
+    Objetivo:
+        Dibujar el vector radio entre un conductor y un
+        punto de observación.
+
+    Parámetros:
+        fig:
+            Figura Plotly.
+
+        origen_x, origen_y:
+            Coordenadas del conductor.
+
+        destino_x, destino_y:
+            Coordenadas del punto de observación.
+
+        etiqueta:
+            Nombre del radio (r1, r2, etc.).
+
+        color:
+            Color de la línea y de la etiqueta.
+
+        textposition:
+            Posición de la etiqueta respecto del punto
+            medio del radio.
+
+    Retorna:
+        None.
+
+    Notas:
+        El radio se representa mediante una línea
+        punteada. No realiza ningún cálculo físico.
+    """
+
+    # ------------------------------------------------------
+    # Línea del radio
+    # ------------------------------------------------------
+
+    fig.add_trace(
+        go.Scatter(
+            x=[origen_x, destino_x],
+            y=[origen_y, destino_y],
+            mode="lines",
+            line=dict(
+                color=color,
+                width=2,
+                dash=estilo_linea
+            ),
+            showlegend=False,
+            hoverinfo="skip"
+        )
+    )
+
+    # ------------------------------------------------------
+    # Punto medio para la etiqueta
+    # ------------------------------------------------------
+
+    medio_x = (origen_x + destino_x) / 2
+    medio_y = (origen_y + destino_y) / 2
+
+    medio_y *= 1.1
+    # ------------------------------------------------------
+    # Etiqueta
+    # ------------------------------------------------------
+
+    fig.add_trace(
+        go.Scatter(
+            x=[medio_x],
+            y=[medio_y],
+            mode="text",
+            text=[etiqueta],
+            textfont=dict(
+                color=color,
+                size=12
+            ),
+            textposition=textposition,
+            showlegend=False,
+            hoverinfo="skip"
+        )
+    )
+
+
+
 def visualizacion_ejercicio_2():
     """
     Objetivo:
@@ -320,8 +502,8 @@ def visualizacion_ejercicio_2():
             mode="markers+text",
             marker=dict(
                 symbol="circle",
-                size=8,
-                color="green"
+                size=6,
+                color="palegreen"
             ),
             text=["P2"],
             textposition="middle right",
@@ -334,64 +516,133 @@ def visualizacion_ejercicio_2():
     # Separación entre conductores
     # ==========================================================
 
-    fig.add_shape(
-        type="line",
-        x0=i1_x,
-        y0=-0.25,
-        x1=i2_x,
-        y1=-0.25,
-        line=dict(color="gray",dash="dot")
+    fig.add_shape(type="line",x0=i1_x,y0=-0.125,x1=i2_x,y1=-0.125,line=dict(color="gray",dash="dot"))
+    fig.add_annotation(x=1,y=-0.2,text="d = 2 cm",showarrow=False,font=dict(size=12))
+
+    # ==========================================================
+    # Layout
+    # ==========================================================
+
+    fig.update_layout(title="Geometría del Problema",template="plotly",height=550,margin=dict(l=40, r=40, t=60, b=40))
+
+    # Actualizo parametros para los ejer X e Y
+    fig.update_xaxes(range=[0, 2.5],showgrid=False,zeroline=False,scaleanchor="y")
+    fig.update_yaxes(range=[-0.5, 1.5],showgrid=False,zeroline=False)
+
+    # Eje X
+    fig.add_shape(type="line",x0=-1.5,y0=0,x1=5,y1=0,line=dict(color="black",width=1))
+
+    # Eje Y
+    fig.add_shape(type="line",x0=0,y0=-0.5,x1=0,y1=1.5,line=dict(color="black",width=1))
+    return fig
+
+
+def visualizacion_resolucion_p1():
+    """
+    Objetivo:
+        Representar el primer paso de la resolución del ejercicio
+        mostrando los campos magnéticos generados por cada conductor
+        sobre el punto P1.
+
+    Retorna:
+        go.Figure
+
+    Notas:
+        Muestra:
+            - Conductores.
+            - Punto P1.
+            - Campo B1.
+            - Campo B2.
+
+        No muestra:
+            - Componentes.
+            - Campo total.
+            - Resultados numéricos.
+    """
+
+    # ==========================================================
+    # Geometría del ejercicio
+    # ==========================================================
+
+    conductor1 = (0, 0)
+    conductor2 = (2, 0)
+
+    punto_p1 = (1, 1)
+
+    corriente1 = 1
+    corriente2 = 1
+
+    # ==========================================================
+    # Cálculo de los campos
+    # ==========================================================
+
+    # Conductor I1 -> P1
+    dx1 = punto_p1[0] - conductor1[0]
+    dy1 = punto_p1[1] - conductor1[1]
+    r1 = sqrt(dx1**2 + dy1**2)
+    bx1, by1 = componentes_campo(corriente1,r1,dx1,dy1,"entrante")
+    
+    # Conductor I2 -> P1
+
+    dx2 = punto_p1[0] - conductor2[0]
+    dy2 = punto_p1[1] - conductor2[1]
+    r2 = sqrt(dx2**2 + dy2**2)
+    bx2, by2 = componentes_campo(corriente2,r2,dx2,dy2,"entrante")
+
+    # Solo para representación gráfica
+    bx1, by1 = normalizar_vector(bx1, by1)
+    bx2, by2 = normalizar_vector(bx2, by2)
+    
+    # Escalo el vector en 0.5, sino sale del layout
+    bx1, by1 = escalar_vector(bx1, by1, 0.5)
+    bx2, by2 = escalar_vector(bx2, by2, 0.5)
+
+    # ==========================================================
+    # Figura base (A6.1)
+    # ==========================================================
+
+    fig = visualizacion_ejercicio_2()
+
+    # ==========================================================
+    # Vector B1
+    # ==========================================================
+
+    dibujar_vector(
+        fig=fig,
+        origen_x=punto_p1[0],
+        origen_y=punto_p1[1],
+        vx=bx1,
+        vy=by1,
+        etiqueta="B1",
+        color=COLOR_I1
     )
 
-    fig.add_annotation(
-        x=1,
-        y=-0.12,
-        text="d = 2 cm",
-        showarrow=False,
-        font=dict(size=12)
+    # Dibujo la distancia entre I1 y P1 >> r1
+    dibujar_radio(fig=fig,origen_x=conductor1[0],origen_y=conductor1[1],destino_x=punto_p1[0],destino_y=punto_p1[1],etiqueta="r1",color=COLOR_I1)
+
+    # ==========================================================
+    # Vector B2
+    # ==========================================================
+
+    dibujar_vector(
+        fig=fig,
+        origen_x=punto_p1[0],
+        origen_y=punto_p1[1],
+        vx=bx2,
+        vy=by2,
+        etiqueta="B2",
+        color=COLOR_I2
     )
+
+    # Dibujo la distancia entre I2 y P2 >> r2
+    dibujar_radio(fig=fig,origen_x=conductor2[0],origen_y=conductor2[1],destino_x=punto_p1[0],destino_y=punto_p1[1],etiqueta="r2",color=COLOR_I2)
 
     # ==========================================================
     # Layout
     # ==========================================================
 
     fig.update_layout(
-        title="Geometría del Problema",
-        template="plotly",
-        height=550,
-        margin=dict(l=40, r=40, t=60, b=40)
+        title="Paso 1 - Campos Magnéticos en P1"
     )
 
-    fig.update_xaxes(
-        range=[0, 2.5],
-        showgrid=False,
-        zeroline=False,
-        scaleanchor="y"
-    )
-
-    fig.update_yaxes(
-        range=[-0.5, 1.5],
-        showgrid=False,
-        zeroline=False
-    )
-
-    # Eje X
-    fig.add_shape(
-        type="line",
-        x0=-1.5,
-        y0=0,
-        x1=5,
-        y1=0,
-        line=dict(color="black", width=1)
-    )
-
-    # Eje Y
-    fig.add_shape(
-        type="line",
-        x0=0,
-        y0=-0.5,
-        x1=0,
-        y1=1.5,
-        line=dict(color="black", width=1)
-    )
     return fig
