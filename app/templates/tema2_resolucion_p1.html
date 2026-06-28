@@ -5,7 +5,7 @@
 <div class="container mt-4">
 
     <h2>Paso 2 - Calcular el campo magnético B₁</h2>
-
+    
     <p class="text-muted">
         En este paso analizaremos únicamente el campo
         magnético generado por el conductor I₁ sobre el
@@ -13,10 +13,6 @@
     </p>
 
     <hr>
-
-    <!-- ============================== -->
-    <!-- Gráfico                        -->
-    <!-- ============================== -->
 
     {{ grafico | safe }}
 
@@ -80,14 +76,14 @@
 
             <pre>
 
-B = μ₀ · I
+B1 = μ₀ · I1
     ───────
-     2π · r
+     2π · r1
 
             </pre>
 
-            <p>I = 1 A</p>
-            <p>r = {{ "%.4f"|format(r1 / 100) }} m</p>
+            <p>I1 = 1 A</p>
+            <p>r1 = {{ "%.4f"|format(r1 / 100) }} m</p>
             
             <div class="alert alert-success mt-3">
                 <h5 class="mb-1">Resultado</h5>
@@ -179,6 +175,145 @@ B = μ₀ · I
     </div>
 
 </div>
+
+    <h3 class="mt-5">Paso 3 - Análisis del conductor I₂</h3>
+
+    {{ grafico_i2 | safe }}
+
+    <hr class="my-4">
+
+    <!-- ============================== -->
+    <!-- Paso 1                         -->
+    <!-- ============================== -->
+
+    <div class="card mb-4">
+
+        <div class="card-header">
+            <strong>Paso 1 - Calcular el vector radio r2</strong>
+        </div>
+
+        <div class="card-body">
+
+            <p>El vector radio une el conductor I2 con el
+                punto de observación P₁.
+            </p>
+
+            <ul>
+                <li>Δx = {{ dx2 }} cm</li>
+                <li>Δy = {{ dy2 }} cm</li>
+            </ul>
+
+            <p>r2 = √(Δx² + Δy²)</p>
+            <p>r2 = √({{ dx2 }}² + {{ dy2 }}²)</p>
+
+            <div class="alert alert-success mt-3">
+                <h5 class="mb-1">Resultado</h5>
+                <h4 class="mb-0">
+                    r<sub>1</sub> = {{ "%.2f"|format(r2) }} cm
+                </h4>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- ============================== -->
+    <!-- Paso 2                         -->
+    <!-- ============================== -->
+
+    <div class="card mb-4">
+
+        <div class="card-header">
+            <strong>Paso 2 - Calcular el módulo de B2</strong>
+        </div>
+        <div class="card-body">
+            <p>
+                Aplicamos la expresión del campo magnético
+                producido por un conductor rectilíneo infinito.
+            </p>
+
+            <pre>
+
+B2 = μ₀ · I2
+    ───────
+     2π · r2
+
+            </pre>
+
+            <p>I2 = 1 A</p>
+            <p>r2 = {{ "%.4f"|format(r2 / 100) }} m</p>
+            
+            <div class="alert alert-success mt-3">
+                <h5 class="mb-1">Resultado</h5>
+
+                <h4 class="mb-0">
+                    |B<sub>2</sub>| = {{ "%.2e"|format(b2) }} T
+                </h4>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================== -->
+    <!-- Paso 3                         -->
+    <!-- ============================== -->
+
+    <div class="card">
+
+        <div class="card-header">
+            <strong>Paso 3 - Determinar la dirección</strong>
+        </div>
+
+        <div class="card-body">
+            <p>
+                Aplicando la regla de la mano derecha,
+                el vector B2 es perpendicular al vector
+                radio r2 y apunta en el sentido mostrado
+                en el gráfico.
+            </p>
+        </div>
+
+    </div>
+
+    <!-- ============================== -->
+    <!-- Paso 4                         -->
+    <!-- ============================== -->
+    <div class="card mt-4">
+    <div class="card-header">
+        <strong>Paso 4 - Componentes del vector B2</strong>
+    </div>
+
+    <div class="card-body">       
+        <h5 class="mt-4">Componentes obtenidas</h5>
+
+        <table class="table table-bordered table-striped mt-3">
+
+            <thead class="table-light">
+                <tr>
+                    <th>Componente</th>
+                    <th>Valor</th>
+                    <th>Unidad</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                <tr>
+                    <td><strong>Bx<sub>2</sub></strong></td>
+                    <td>{{ "%.2e"|format(bx2) }}</td>
+                    <td>T</td>
+                </tr>
+
+                <tr>
+                    <td><strong>By<sub>2</sub></strong></td>
+                    <td>{{ "%.2e"|format(by2) }}</td>
+                    <td>T</td>
+                </tr>
+            </tbody>
+
+        </table>
+    </div>
+</div>
+
 
 </div>
 

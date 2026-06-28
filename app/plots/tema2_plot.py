@@ -701,7 +701,7 @@ def visualizacion_resolucion_i2():
 
     fig = visualizacion_ejercicio_2()
 
-    # B1 NO es el protagonista en este grafico
+    # B1 NO es el protagonista en este grafico, se le baja el color
     dibujar_vector(
         fig=fig,
         origen_x=p1[0],
@@ -712,7 +712,7 @@ def visualizacion_resolucion_i2():
         color="rgba(220,0,0,0.35)"
     )
 
-    # r1 NO es el protagonista en este grafico
+    # r1 NO es el protagonista en este grafico, se le baja el color
     dibujar_radio(
         fig=fig,
         origen_x=i1[0],
