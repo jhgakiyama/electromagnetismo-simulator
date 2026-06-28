@@ -667,3 +667,104 @@ def visualizacion_resolucion_p1():
     )
 
     return fig
+
+def visualizacion_resolucion_i2():
+    """
+    Esta funcion deberia ser un espejo a la anterior
+    Solo que para calcular los valores asociados a B2
+    """
+    
+    i1 = (0, 0)
+    i2 = (2, 0)
+
+    p1 = (1, 1)
+
+    corriente1 = 1
+    corriente2 = 1
+
+    # Conductor I1 -> P1
+    dx1, dy1, r1 = calcular_radio(i1,p1)
+    bx1, by1 = componentes_campo(corriente1,r1,dx1,dy1,"entrante")
+    
+    # Conductor I2 -> P1
+
+    dx2, dy2, r2 = calcular_radio(i2,p1)
+    bx2, by2 = componentes_campo(corriente2,r2,dx2,dy2,"entrante")
+
+    # Solo para representación gráfica
+    bx1, by1 = normalizar_vector(bx1, by1)
+    bx2, by2 = normalizar_vector(bx2, by2)
+    
+    # Escalo el vector en 0.5, sino sale del layout
+    bx1, by1 = escalar_vector(bx1, by1, 0.5)
+    bx2, by2 = escalar_vector(bx2, by2, 0.5)
+
+    fig = visualizacion_ejercicio_2()
+
+    # B1 NO es el protagonista en este grafico
+    dibujar_vector(
+        fig=fig,
+        origen_x=p1[0],
+        origen_y=p1[1],
+        vx=bx1,
+        vy=by1,
+        etiqueta="B1",
+        color="rgba(220,0,0,0.35)"
+    )
+
+    # r1 NO es el protagonista en este grafico
+    dibujar_radio(
+        fig=fig,
+        origen_x=i1[0],
+        origen_y=i1[1],
+        destino_x=p1[0],
+        destino_y=p1[1],
+        etiqueta="r1",
+        color="rgba(220,0,0,0.35)"
+    )
+
+    # ==========================================================
+    # Vector B2
+    # ==========================================================
+
+    dibujar_vector(
+        fig=fig,
+        origen_x=p1[0],
+        origen_y=p1[1],
+        vx=bx2,
+        vy=by2,
+        etiqueta="B2",
+        color=COLOR_I2
+    )
+
+    # Dibujo la distancia entre I2 y P2 >> r2
+    dibujar_radio(
+        fig=fig,
+        origen_x=i2[0],
+        origen_y=i2[1],
+        destino_x=p1[0],
+        destino_y=p1[1],
+        etiqueta="r2",
+        color=COLOR_I2
+    )
+
+    dibujar_componentes_vector(
+        fig=fig,
+        origen_x=p1[0],
+        origen_y=p1[1],
+        comp_x=bx2,
+        comp_y=by2,
+        etiqueta_x="Bx2",
+        etiqueta_y="By2",
+        color=COLOR_I2
+    )
+
+    # ==========================================================
+    # Layout
+    # ==========================================================
+
+    fig.update_layout(
+        title="Paso 1 - Campos Magnéticos en P1"
+    )
+
+    return fig
