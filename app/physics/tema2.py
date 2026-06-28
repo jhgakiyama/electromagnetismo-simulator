@@ -166,3 +166,41 @@ def campo_total(conductores, punto):
         "by": by_total,
         "b": b_total
     }
+
+
+def calcular_radio(conductor, punto):
+    """
+    Objetivo:
+        Calcular el vector radio entre un conductor y
+        un punto de observación.
+
+    Parámetros:
+        conductor:
+            Tupla (x, y) con la posición del conductor.
+
+        punto:
+            Tupla (x, y) con la posición del punto de
+            observación.
+
+    Retorna:
+        dx:
+            Componente horizontal del vector radio.
+
+        dy:
+            Componente vertical del vector radio.
+
+        r:
+            Distancia entre el conductor y el punto de
+            observación.
+
+    Notas:
+        El vector radio siempre se obtiene desde el
+        conductor hacia el punto de observación.
+    """
+
+    dx = punto[0] - conductor[0]
+    dy = punto[1] - conductor[1]
+
+    r = sqrt(dx**2 + dy**2)
+
+    return dx, dy, r
