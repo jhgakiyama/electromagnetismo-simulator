@@ -2,6 +2,7 @@ from flask import render_template
 from flask import Blueprint
 from app.plots.tema2_plot_vista_concep1 import visualizacion_conceptual_2a
 from app.plots.tema2_plot_vista_concep2 import visualizacion_conceptual_2b
+from app.plots.tema2_plot import visualizacion_ejercicio_2
 
 
 bp = Blueprint(
@@ -19,5 +20,17 @@ def tema2_demo():
         "tema2_demo.html",
         grafico=fig.to_html(
             full_html=False
+        )
+    )
+
+@bp.route("/tema2/ejercicio")
+def ejercicio():
+    fig = visualizacion_ejercicio_2()
+
+    return render_template(
+        "tema2_ejercicio.html",
+        grafico=fig.to_html(
+            full_html=False,
+            include_plotlyjs="cdn"
         )
     )

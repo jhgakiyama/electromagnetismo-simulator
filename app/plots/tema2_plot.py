@@ -207,3 +207,191 @@ def dibujar_componentes_vector(
             hoverinfo="skip"
         )
     )
+
+def visualizacion_ejercicio_2():
+    """
+    Objetivo:
+        Representar la geometría del ejercicio resuelto.
+
+    Retorna:
+        Figura Plotly.
+
+    Notas:
+        Representa únicamente:
+
+        - Conductores.
+        - Puntos de observación.
+        - Separación entre conductores.
+
+        No realiza cálculos físicos.
+    """
+
+    # ==========================================================
+    # Geometría del ejercicio
+    # ==========================================================
+
+    # Conductores
+    i1_x = 0
+    i1_y = 0
+
+    i2_x = 2
+    i2_y = 0
+
+    # Puntos de observación
+    p1_x = 1
+    p1_y = 1
+
+    p2_x = 1.5
+    p2_y = 0
+
+    fig = go.Figure()
+
+    # ==========================================================
+    # Conductor I1
+    # ==========================================================
+
+    fig.add_trace(
+        go.Scatter(
+            x=[i1_x],
+            y=[i1_y],
+            mode="markers+text",
+            marker=dict(
+                symbol=SIMBOLO_CORRIENTE_ENTRANTE,
+                size=14,
+                color=COLOR_I1
+            ),
+            text=["I1"],
+            textposition="top center",
+            showlegend=False,
+            hoverinfo="skip"
+        )
+    )
+
+    # ==========================================================
+    # Conductor I2
+    # ==========================================================
+
+    fig.add_trace(
+        go.Scatter(
+            x=[i2_x],
+            y=[i2_y],
+            mode="markers+text",
+            marker=dict(
+                symbol=SIMBOLO_CORRIENTE_ENTRANTE,
+                size=14,
+                color=COLOR_I2
+            ),
+            text=["I2"],
+            textposition="top center",
+            showlegend=False,
+            hoverinfo="skip"
+        )
+    )
+
+    # ==========================================================
+    # Punto P1
+    # ==========================================================
+
+    fig.add_trace(
+        go.Scatter(
+            x=[p1_x],
+            y=[p1_y],
+            mode="markers+text",
+            marker=dict(
+                symbol="circle",
+                size=8,
+                color="green"
+            ),
+            text=["P1"],
+            textposition="top center",
+            showlegend=False,
+            hoverinfo="skip"
+        )
+    )
+
+    # ==========================================================
+    # Punto P2
+    # ==========================================================
+
+    fig.add_trace(
+        go.Scatter(
+            x=[p2_x],
+            y=[p2_y],
+            mode="markers+text",
+            marker=dict(
+                symbol="circle",
+                size=8,
+                color="green"
+            ),
+            text=["P2"],
+            textposition="middle right",
+            showlegend=False,
+            hoverinfo="skip"
+        )
+    )
+
+    # ==========================================================
+    # Separación entre conductores
+    # ==========================================================
+
+    fig.add_shape(
+        type="line",
+        x0=i1_x,
+        y0=-0.25,
+        x1=i2_x,
+        y1=-0.25,
+        line=dict(color="gray",dash="dot")
+    )
+
+    fig.add_annotation(
+        x=1,
+        y=-0.12,
+        text="d = 2 cm",
+        showarrow=False,
+        font=dict(size=12)
+    )
+
+    # ==========================================================
+    # Layout
+    # ==========================================================
+
+    fig.update_layout(
+        title="Geometría del Problema",
+        template="plotly",
+        height=550,
+        margin=dict(l=40, r=40, t=60, b=40)
+    )
+
+    fig.update_xaxes(
+        range=[0, 2.5],
+        showgrid=False,
+        zeroline=False,
+        scaleanchor="y"
+    )
+
+    fig.update_yaxes(
+        range=[-0.5, 1.5],
+        showgrid=False,
+        zeroline=False
+    )
+
+    # Eje X
+    fig.add_shape(
+        type="line",
+        x0=-1.5,
+        y0=0,
+        x1=5,
+        y1=0,
+        line=dict(color="black", width=1)
+    )
+
+    # Eje Y
+    fig.add_shape(
+        type="line",
+        x0=0,
+        y0=-0.5,
+        x1=0,
+        y1=1.5,
+        line=dict(color="black", width=1)
+    )
+    return fig
