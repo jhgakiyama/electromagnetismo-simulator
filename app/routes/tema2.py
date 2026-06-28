@@ -1,6 +1,8 @@
 from flask import render_template
 from flask import Blueprint
-from app.plots.tema2_plot import visualizacion_conceptual_2a, visualizacion_conceptual_2b
+from app.plots.tema2_plot_vista_concep1 import visualizacion_conceptual_2a
+from app.plots.tema2_plot_vista_concep2 import visualizacion_conceptual_2b
+
 
 bp = Blueprint(
     "tema2",
