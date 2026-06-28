@@ -408,14 +408,42 @@ B2 = μ₀ · I2
         </div>
     
         <div class="alert alert-success mt-3">
-            <p>
             Las componentes X se suman.
+            <br>
             Las componentes en Y se anulan
-            </p>
+        </div>
+    </div>  
+</div>
+
+<div class="card mt-4">
+
+    <div class="card-header">
+        <strong>Paso 6 - Módulo del campo magnético total</strong>
+    </div>
+
+    <div class="card-body">
+        <p>
+            Una vez obtenidas las componentes horizontal y
+            vertical del campo magnético total, calculamos
+            su módulo utilizando el teorema de Pitágoras.
+        </p>
+
+        <p>
+            Bx = {{ "%.2e"|format(bx_total) }} T
+            <br>
+            By = 0
+        </p>
+
+        <div class="alert alert-success mt-3">
+            <h5 class="mb-1">Resultado</h5>
+
+            <h4 class="mb-0">
+                |B| = {{ "%.2e"|format(b_total) }} T
+            </h4>
         </div>
     </div>
-    
 </div>
+
 </div>
 
 {% endblock %}

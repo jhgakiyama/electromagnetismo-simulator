@@ -7,7 +7,7 @@ from app.plots.tema2_plot import (
     visualizacion_resolucion_p1,
     visualizacion_resolucion_i2
     )
-from app.physics.tema2 import calcular_radio, magnitud_campo, componentes_campo
+from app.physics.tema2 import calcular_radio, magnitud_campo, componentes_campo, magnitud_vector
 
 
 bp = Blueprint(
@@ -64,10 +64,11 @@ def resolucion_p1():
     # Calculo para Btotal
     bx_total = bx1 + bx2
     by_total = by1 + by2
-
+    b_total = magnitud_vector(bx_total,by_total)
 
     fig = visualizacion_resolucion_p1()
     fig2 = visualizacion_resolucion_i2() 
+    
     return render_template(
         "tema2_resolucion_p1.html",
         grafico=fig.to_html(
@@ -80,5 +81,5 @@ def resolucion_p1():
         ),
         dx1=dx1,dy1=dy1,r1=r1,b1=b1,bx1=bx1,by1=by1,
         dx2=dx2,dy2=dy2,r2=r2,b2=b2,bx2=bx2,by2=by2,
-        bx_total=bx_total,by_total=by_total
+        bx_total=bx_total,by_total=by_total,b_total=b_total
     )

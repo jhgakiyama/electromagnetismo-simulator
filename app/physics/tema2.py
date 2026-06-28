@@ -204,3 +204,19 @@ def calcular_radio(conductor, punto):
     r = sqrt(dx**2 + dy**2)
 
     return dx, dy, r
+
+
+def magnitud_vector(x, y):
+    """
+    Objetivo:
+        Calcular el módulo de un vector a partir de sus
+        componentes cartesianas.
+
+    Parámetros:
+        x: Componente horizontal.
+        y: Componente vertical.
+
+    Retorna: Magnitud del vector.
+    """
+
+    return sqrt(x**2 + y**2)
