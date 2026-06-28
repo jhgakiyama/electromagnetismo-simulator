@@ -1,6 +1,6 @@
 from math import sqrt
 import plotly.graph_objects as go
-from app.physics.tema2 import componentes_campo
+from app.physics.tema2 import componentes_campo, calcular_radio
 
 
 """
@@ -564,10 +564,10 @@ def visualizacion_resolucion_p1():
     # Geometría del ejercicio
     # ==========================================================
 
-    conductor1 = (0, 0)
-    conductor2 = (2, 0)
+    i1 = (0, 0)
+    i2 = (2, 0)
 
-    punto_p1 = (1, 1)
+    p1 = (1, 1)
 
     corriente1 = 1
     corriente2 = 1
@@ -577,16 +577,12 @@ def visualizacion_resolucion_p1():
     # ==========================================================
 
     # Conductor I1 -> P1
-    dx1 = punto_p1[0] - conductor1[0]
-    dy1 = punto_p1[1] - conductor1[1]
-    r1 = sqrt(dx1**2 + dy1**2)
+    dx1, dy1, r1 = calcular_radio(i1,p1)
     bx1, by1 = componentes_campo(corriente1,r1,dx1,dy1,"entrante")
     
     # Conductor I2 -> P1
 
-    dx2 = punto_p1[0] - conductor2[0]
-    dy2 = punto_p1[1] - conductor2[1]
-    r2 = sqrt(dx2**2 + dy2**2)
+    dx2, dy2, r2 = calcular_radio(i2,p1)
     bx2, by2 = componentes_campo(corriente2,r2,dx2,dy2,"entrante")
 
     # Solo para representación gráfica
@@ -609,8 +605,8 @@ def visualizacion_resolucion_p1():
 
     dibujar_vector(
         fig=fig,
-        origen_x=punto_p1[0],
-        origen_y=punto_p1[1],
+        origen_x=p1[0],
+        origen_y=p1[1],
         vx=bx1,
         vy=by1,
         etiqueta="B1",
@@ -618,7 +614,15 @@ def visualizacion_resolucion_p1():
     )
 
     # Dibujo la distancia entre I1 y P1 >> r1
-    dibujar_radio(fig=fig,origen_x=conductor1[0],origen_y=conductor1[1],destino_x=punto_p1[0],destino_y=punto_p1[1],etiqueta="r1",color=COLOR_I1)
+    dibujar_radio(
+        fig=fig,
+        origen_x=i1[0],
+        origen_y=i1[1],
+        destino_x=p1[0],
+        destino_y=p1[1],
+        etiqueta="r1",
+        color=COLOR_I1
+    )
 
     # ==========================================================
     # Vector B2
@@ -626,8 +630,8 @@ def visualizacion_resolucion_p1():
 
     dibujar_vector(
         fig=fig,
-        origen_x=punto_p1[0],
-        origen_y=punto_p1[1],
+        origen_x=p1[0],
+        origen_y=p1[1],
         vx=bx2,
         vy=by2,
         etiqueta="B2",
@@ -635,7 +639,24 @@ def visualizacion_resolucion_p1():
     )
 
     # Dibujo la distancia entre I2 y P2 >> r2
-    dibujar_radio(fig=fig,origen_x=conductor2[0],origen_y=conductor2[1],destino_x=punto_p1[0],destino_y=punto_p1[1],etiqueta="r2",color=COLOR_I2)
+    dibujar_radio(
+        fig=fig,
+        origen_x=i2[0],
+        origen_y=i2[1],
+        destino_x=p1[0],
+        destino_y=p1[1],
+        etiqueta="r2",
+        color=COLOR_I2
+    )
+
+    dibujar_componentes_vector(
+        fig=fig,
+        origen_x=p1[0],origen_y=p1[1],
+        comp_x=bx1,comp_y=by1,
+        etiqueta_x="Bx1",
+        etiqueta_y="By1",
+        color=COLOR_I1
+)
 
     # ==========================================================
     # Layout

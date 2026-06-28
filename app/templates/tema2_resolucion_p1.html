@@ -2,8 +2,184 @@
 
 {% block content %}
 
-<h2>Paso 1 - Campos Magnéticos en P1</h2>
+<div class="container mt-4">
 
-{{ grafico|safe }}
+    <h2>Paso 2 - Calcular el campo magnético B₁</h2>
+
+    <p class="text-muted">
+        En este paso analizaremos únicamente el campo
+        magnético generado por el conductor I₁ sobre el
+        punto P₁.
+    </p>
+
+    <hr>
+
+    <!-- ============================== -->
+    <!-- Gráfico                        -->
+    <!-- ============================== -->
+
+    {{ grafico | safe }}
+
+    <hr class="my-4">
+
+    <!-- ============================== -->
+    <!-- Paso 1                         -->
+    <!-- ============================== -->
+
+    <div class="card mb-4">
+
+        <div class="card-header">
+            <strong>Paso 1 - Calcular el vector radio r₁</strong>
+        </div>
+
+        <div class="card-body">
+
+            <p>
+                El vector radio une el conductor I₁ con el
+                punto de observación P₁.
+            </p>
+
+            <ul>
+                <li>Δx = {{ dx1 }} cm</li>
+                <li>Δy = {{ dy1 }} cm</li>
+            </ul>
+
+            <p>
+                r₁ = √(Δx² + Δy²)
+            </p>
+
+            <p>
+                r₁ = √({{ dx1 }}² + {{ dy1 }}²)
+            </p>
+
+            <div class="alert alert-success mt-3">
+                <h5 class="mb-1">Resultado</h5>
+                <h4 class="mb-0">
+                    r<sub>1</sub> = {{ "%.2f"|format(r1) }} cm
+                </h4>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- ============================== -->
+    <!-- Paso 2                         -->
+    <!-- ============================== -->
+
+    <div class="card mb-4">
+
+        <div class="card-header">
+            <strong>Paso 2 - Calcular el módulo de B₁</strong>
+        </div>
+        <div class="card-body">
+            <p>
+                Aplicamos la expresión del campo magnético
+                producido por un conductor rectilíneo infinito.
+            </p>
+
+            <pre>
+
+B = μ₀ · I
+    ───────
+     2π · r
+
+            </pre>
+
+            <p>I = 1 A</p>
+            <p>r = {{ "%.4f"|format(r1 / 100) }} m</p>
+            
+            <div class="alert alert-success mt-3">
+                <h5 class="mb-1">Resultado</h5>
+
+                <h4 class="mb-0">
+                    |B<sub>1</sub>| = {{ "%.2e"|format(b1) }} T
+                </h4>
+
+            </div>
+        </div>
+
+    </div>
+
+    <!-- ============================== -->
+    <!-- Paso 3                         -->
+    <!-- ============================== -->
+
+    <div class="card">
+
+        <div class="card-header">
+            <strong>Paso 3 - Determinar la dirección</strong>
+        </div>
+
+        <div class="card-body">
+            <p>
+                Aplicando la regla de la mano derecha,
+                el vector B₁ es perpendicular al vector
+                radio r₁ y apunta en el sentido mostrado
+                en el gráfico.
+            </p>
+        </div>
+
+    </div>
+
+    <!-- ============================== -->
+    <!-- Paso 4                         -->
+    <!-- ============================== -->
+    <div class="card mt-4">
+    <div class="card-header">
+        <strong>Paso 4 - Componentes del vector B₁</strong>
+    </div>
+
+    <div class="card-body">
+        <p>
+            El campo magnético es un vector. Para poder
+            sumarlo con el campo producido por el segundo
+            conductor es necesario descomponerlo en sus
+            componentes cartesianas.
+        </p>
+        
+        
+        <h5 class="mt-4">Componentes obtenidas</h5>
+
+        <table class="table table-bordered table-striped mt-3">
+
+            <thead class="table-light">
+                <tr>
+                    <th>Componente</th>
+                    <th>Valor</th>
+                    <th>Unidad</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                <tr>
+                    <td><strong>Bx<sub>1</sub></strong></td>
+                    <td>{{ "%.2e"|format(bx1) }}</td>
+                    <td>T</td>
+                </tr>
+
+                <tr>
+                    <td><strong>By<sub>1</sub></strong></td>
+                    <td>{{ "%.2e"|format(by1) }}</td>
+                    <td>T</td>
+                </tr>
+
+            </tbody>
+
+        </table>
+
+        <div class="alert alert-info mt-3">
+
+            En el siguiente paso realizaremos exactamente
+            el mismo procedimiento para el conductor I₂.
+
+        </div>
+
+    </div>
+
+</div>
+
+</div>
 
 {% endblock %}
