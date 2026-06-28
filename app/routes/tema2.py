@@ -61,6 +61,11 @@ def resolucion_p1():
     b2 = magnitud_campo(corriente2, r2)
     bx2, by2 = componentes_campo(corriente2,r2,dx2,dy2,"entrante")
     
+    # Calculo para Btotal
+    bx_total = bx1 + bx2
+    by_total = by1 + by2
+
+
     fig = visualizacion_resolucion_p1()
     fig2 = visualizacion_resolucion_i2() 
     return render_template(
@@ -74,5 +79,6 @@ def resolucion_p1():
             include_plotlyjs="cdn"
         ),
         dx1=dx1,dy1=dy1,r1=r1,b1=b1,bx1=bx1,by1=by1,
-        dx2=dx2,dy2=dy2,r2=r2,b2=b2,bx2=bx2,by2=by2
+        dx2=dx2,dy2=dy2,r2=r2,b2=b2,bx2=bx2,by2=by2,
+        bx_total=bx_total,by_total=by_total
     )

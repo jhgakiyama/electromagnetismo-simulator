@@ -209,7 +209,7 @@ B1 = μ₀ · I1
             <div class="alert alert-success mt-3">
                 <h5 class="mb-1">Resultado</h5>
                 <h4 class="mb-0">
-                    r<sub>1</sub> = {{ "%.2f"|format(r2) }} cm
+                    r<sub>2</sub> = {{ "%.2f"|format(r2) }} cm
                 </h4>
             </div>
 
@@ -278,43 +278,144 @@ B2 = μ₀ · I2
     <!-- Paso 4                         -->
     <!-- ============================== -->
     <div class="card mt-4">
+        <div class="card-header">
+            <strong>Paso 4 - Componentes del vector B2</strong>
+        </div>
+
+        <div class="card-body">       
+            <h5 class="mt-4">Componentes obtenidas</h5>
+
+            <table class="table table-bordered table-striped mt-3">
+
+                <thead class="table-light">
+                    <tr>
+                        <th>Componente</th>
+                        <th>Valor</th>
+                        <th>Unidad</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    <tr>
+                        <td><strong>Bx<sub>2</sub></strong></td>
+                        <td>{{ "%.2e"|format(bx2) }}</td>
+                        <td>T</td>
+                    </tr>
+
+                    <tr>
+                        <td><strong>By<sub>2</sub></strong></td>
+                        <td>{{ "%.2e"|format(by2) }}</td>
+                        <td>T</td>
+                    </tr>
+                </tbody>
+
+            </table>
+    </div>
+</div>
+
+<div class="card mt-4">
+
     <div class="card-header">
-        <strong>Paso 4 - Componentes del vector B2</strong>
+        <strong>Paso 4 - Construcción del campo magnético total</strong>
     </div>
 
-    <div class="card-body">       
-        <h5 class="mt-4">Componentes obtenidas</h5>
+    <div class="card-body">
 
-        <table class="table table-bordered table-striped mt-3">
+        <p>
+            Hasta este momento analizamos por separado el
+            campo magnético generado por cada conductor.
 
+            Como ambos campos actúan simultáneamente sobre
+            el punto P₁, el siguiente paso consiste en
+            sumar sus componentes cartesianas.
+        </p>
+
+    </div>
+
+</div>
+
+<div class="card mt-4">
+
+    <div class="card-header">
+        <strong>Tabla de componentes</strong>
+    </div>
+
+    <div class="card-body">
+        <table class="table table-bordered table-hover">
             <thead class="table-light">
                 <tr>
                     <th>Componente</th>
-                    <th>Valor</th>
-                    <th>Unidad</th>
+                    <th>I₁</th>
+                    <th>I₂</th>
+                    <th>Total</th>
                 </tr>
             </thead>
 
             <tbody>
-
                 <tr>
-                    <td><strong>Bx<sub>2</sub></strong></td>
+                    <td><strong>Bx</strong></td>
+                    <td>{{ "%.2e"|format(bx1) }}</td>
                     <td>{{ "%.2e"|format(bx2) }}</td>
-                    <td>T</td>
-                </tr>
+                    <td>?</td>
 
+                </tr>
                 <tr>
-                    <td><strong>By<sub>2</sub></strong></td>
+                    <td><strong>By</strong></td>
+                    <td>{{ "%.2e"|format(by1) }}</td>
                     <td>{{ "%.2e"|format(by2) }}</td>
-                    <td>T</td>
+                    <td>?</td>
                 </tr>
             </tbody>
-
         </table>
+    
+    <div class="alert alert-warning mt-3">
+        Antes de realizar la suma, observá el signo de cada componente. 
+        Que deducción gráfica se puede hacer ?
     </div>
+
+</div>  
 </div>
 
+<div class="card mt-4">
+    <div class="card-header">
+        <strong>Paso 5 - Suma de componentes</strong>
+    </div>
 
+    <div class="card-body">
+        <p>Componente horizontal</p>
+
+        <div class="alert alert-light">
+            Bx = Bx₁ + Bx₂
+            <br><br>
+            {{ "%.2e"|format(bx1) }}
+            +
+            {{ "%.2e"|format(bx2) }}
+            <br><br>
+            <strong>= {{ "%.2e"|format(bx_total) }}</strong>
+        </div>
+
+        <p class="mt-4">Componente vertical</p>
+
+        <div class="alert alert-light">
+            By = By₁ + By₂
+            <br><br>
+            {{ "%.2e"|format(by1) }}
+            +
+            {{ "%.2e"|format(by2) }}
+            <br><br>
+            <strong>= 0</strong>
+        </div>
+    
+        <div class="alert alert-success mt-3">
+            <p>
+            Las componentes X se suman.
+            Las componentes en Y se anulan
+            </p>
+        </div>
+    </div>
+    
+</div>
 </div>
 
 {% endblock %}
