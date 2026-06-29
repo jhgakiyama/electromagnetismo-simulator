@@ -1,6 +1,10 @@
+# PRIMER GRAFICO CONCEPTUAL DEL TEMA
+
 from math import sqrt
 import plotly.graph_objects as go
 from app.physics.tema2 import vector_perpendicular
+from app.plots.tema2_plot import normalizar_vector, SIMBOLO_CORRIENTE_ENTRANTE
+
 
 
 def visualizacion_conceptual_2a():
@@ -44,7 +48,13 @@ def visualizacion_conceptual_2a():
             mode="markers+text",
             text=["I1"],
             textposition="top center",
-            name="I1 = (-1,0)"
+            name="I1 = (-1,0)",
+            marker=dict(
+                symbol=SIMBOLO_CORRIENTE_ENTRANTE,
+                size=14,
+                color="red",
+                line=dict(width=2)
+            )
         )
     )
 
@@ -56,7 +66,13 @@ def visualizacion_conceptual_2a():
             mode="markers+text",
             text=["I2"],
             textposition="top center",
-            name="I2 = (1,0)"
+            name="I2 = (1,0)",
+            marker=dict(
+                symbol=SIMBOLO_CORRIENTE_ENTRANTE,
+                size=14,
+                color="blue",
+                line=dict(width=2)
+            )
         )
     )
 
@@ -130,7 +146,9 @@ def visualizacion_conceptual_2a():
         showarrow=True,
         arrowhead=3,
         arrowwidth=3,
-        text=""
+        text="",
+        arrowcolor="red"
+
     )
 
     fig.add_trace(
@@ -173,6 +191,7 @@ def visualizacion_conceptual_2a():
         showarrow=True,
         arrowhead=3,
         arrowwidth=3,
+        arrowcolor="blue"
     )
 
     fig.add_trace(
@@ -182,7 +201,7 @@ def visualizacion_conceptual_2a():
             mode="text",
             text=["B2"],
             showlegend=False,
-            textposition="middle left"
+            textposition="top left"
         )
     )
     # Calculo para Btotal
@@ -220,7 +239,7 @@ def visualizacion_conceptual_2a():
     # Se ve mejor los ejes
     fig.update_xaxes(zeroline=True,showgrid=False)
     fig.update_yaxes(zeroline=True,showgrid=False,scaleanchor="x",scaleratio=1)
-    fig.update_layout(title="Visualización Conceptual 2A - Superposición de Campos",showlegend=True)
+    fig.update_layout(title="Visualización Conceptual 2A - Superposición de Campos",showlegend=False) # Oculta todas las leyendas de la derecha 
 
     return fig
 
