@@ -34,8 +34,6 @@
         </p>
 
         <div class="alert alert-info mt-3 mb-0">
-            <strong>Objetivo del tema</strong>
-            <br><br>
             Determinar el campo magnético total generado por dos
             conductores rectilíneos paralelos sumando vectorialmente los
             campos producidos por cada uno de ellos.
@@ -67,16 +65,12 @@
             por cada conductor.
         </p>
         <div class="alert alert-warning mt-4">
-            <strong>Importante</strong>
-            <br><br>
             Los módulos de los campos magnéticos
             <strong>no se suman directamente</strong>.
             Primero deben descomponerse en sus componentes cartesianas y,
             posteriormente, realizar la suma vectorial.
         </div>
         <div class="alert alert-success mt-3 mb-0">
-            <strong>Idea clave</strong>
-            <br><br>
             Campo magnético total = Suma vectorial de los campos
             producidos por cada conductor.
         </div>
@@ -90,58 +84,103 @@
     </div>
 
     <div class="card-body">
-
         <p>
-            Antes de comenzar los cálculos, identifiquemos los elementos
-            geométricos que intervienen en el problema.
+            Identifiquemos los elementos geométricos que intervienen en el problema.
         </p>
 
         <ul>
-
-            <li>
-                <strong>I₁</strong> e <strong>I₂</strong> representan los
-                dos conductores rectilíneos paralelos.
-            </li>
-
-            <li>
-                Ambos conductores transportan una corriente de
-                <strong>1 A</strong> con sentido entrante.
-            </li>
-
-            <li>
-                La distancia entre los conductores es
-                <strong>d = 2 cm</strong>.
-            </li>
-
-            <li>
-                En este ejercicio desarrollaremos únicamente la resolución
-                correspondiente al punto <strong>P₁</strong>.
-            </li>
-
-            <li>
-                El punto <strong>P₂</strong> forma parte del enunciado y
-                podrá resolverse posteriormente como ejercicio propuesto.
-            </li>
-
+            <li><strong>I₁</strong> e <strong>I₂</strong> representan los dos conductores rectilíneos paralelos.</li>
+            <li>Ambos conductores transportan una corriente de <strong>1 A</strong> con sentido entrante.</li>
+            <li>La distancia entre los conductores es <strong>d = 2 cm</strong>.</li>
+            <li>En este ejercicio desarrollaremos únicamente la resolución correspondiente al punto <strong>P₁</strong>.</li>
+            <li>El punto <strong>P₂</strong> forma parte del enunciado y podrá resolverse posteriormente como ejercicio propuesto.</li>
         </ul>
 
         <div class="alert alert-info mt-3 mb-0">
-            <strong>Observación</strong>
-            <br><br>
             Antes de realizar cualquier cálculo conviene identificar la
             posición de los conductores y del punto de observación. Esto
             permitirá construir correctamente los vectores radio y los
             campos magnéticos producidos por cada conductor.
         </div>
+    </div>
+</div>
 
+<hr class="my-5">
+<h2 class="mb-3">Visualización Conceptual</h2>
+<div class="card mb-4">
+
+    <div class="card-header">
+        <strong>Concepto 1 - Cada conductor genera su propio campo magnético</strong>
     </div>
 
+    <div class="card-body">
+        <p>
+            Cada conductor produce un campo magnético independiente en el
+            punto de observación <strong>P</strong>. En el gráfico se muestran
+            ambos campos (<strong>B₁</strong> y <strong>B₂</strong>) y el
+            vector resultante obtenido mediante su superposición.
+        </p>
+
+        {{ grafico_conceptual_2a|safe }}
+
+        <div class="small text-muted mt-3">
+            <strong>Elementos del gráfico</strong>
+            <ul class="mb-0">
+                <li><strong>I₁</strong> e <strong>I₂</strong>: conductores rectilíneos paralelos, con corriente entrante</li>
+                <li><strong>P</strong>: punto donde se analiza el campo magnético.</li>
+                <li><strong>B₁</strong>: campo producido por el conductor I₁.</li>
+                <li><strong>B₂</strong>: campo producido por el conductor I₂.</li>
+                <li><strong>Btotal</strong>: suma vectorial de B₁ y B₂.</li>
+            </ul>
+        </div>
+
+        <div class="alert alert-success mt-4 mb-0">
+            Cada conductor contribuye de forma independiente al campo magnético existente en el punto de observación.
+        </div>
+    </div>
+</div>
+
+<div class="card mb-5">
+    <div class="card-header">
+        <strong>Concepto 2 - La suma se realiza mediante componentes cartesianas</strong>
+    </div>
+
+    <div class="card-body">
+        <p>
+            Para obtener el campo magnético resultante no basta con sumar
+            los módulos de los vectores. Es necesario descomponer cada
+            campo en sus componentes cartesianas y realizar la suma sobre
+            cada eje.
+        </p>
+
+        {{ grafico_conceptual_2b|safe }}
+
+        <div class="small text-muted mt-3">
+            <strong><strong>Elementos del gráfico</strong></strong>
+
+            <ul class="mb-0">
+                <li><strong>Bx₁</strong> y <strong>By₁</strong>: componentes del campo generado por I₁.</li>
+                <li><strong>Bx₂</strong> y <strong>By₂</strong>: componentes del campo generado por I₂.</li>
+                <li>Las componentes horizontales se suman entre sí.</li>
+                <li>Las componentes verticales se suman entre sí.</li>
+                <li>El vector obtenido corresponde al campo magnético total.</li>
+            </ul>
+        </div>
+
+        <div class="alert alert-success mt-4 mb-0">
+            <p>El campo magnético total se obtiene realizando una
+            <strong>suma vectorial</strong>, es decir, sumando las
+            componentes de cada vector:
+            </p>
+            <p><strong>Btx</strong> = Bx₁ + Bx₂</p>
+            <p><strong>Bty</strong> = By₁ + By₂</p>
+            
+        </div>
+    </div>
 </div>
 
 <div class="card mb-4">
-    <div class="card-header">
-        <strong>Ejercicio Propuesto</strong>
-    </div>
+    <div class="card-header"><strong>Ejercicio Propuesto</strong></div>
     <div class="card-body">
         <p>
             Considerando dos conductores rectilíneos infinitos separados
