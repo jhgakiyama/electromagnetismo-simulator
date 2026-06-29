@@ -5,9 +5,10 @@ from app.plots.tema2_plot_vista_concep2 import visualizacion_conceptual_2b
 from app.plots.tema2_plot import (
     visualizacion_ejercicio_2,
     visualizacion_resolucion_p1,
-    visualizacion_resolucion_i2
+    visualizacion_resolucion_i2,
+    visualizacion_resultado_final
     )
-from app.physics.tema2 import calcular_radio, magnitud_campo, componentes_campo, magnitud_vector
+from app.physics.tema2 import calcular_radio,magnitud_campo,componentes_campo,magnitud_vector
 
 
 bp = Blueprint(
@@ -30,7 +31,7 @@ def tema2_demo():
 
 @bp.route("/tema2/ejercicio")
 def ejercicio():
-    fig = visualizacion_ejercicio_2()
+    fig_ejer = visualizacion_ejercicio_2()
 
     return render_template(
         "tema2_ejercicio.html",
@@ -66,18 +67,28 @@ def resolucion_p1():
     by_total = by1 + by2
     b_total = magnitud_vector(bx_total,by_total)
 
+    fig_ejer = visualizacion_ejercicio_2()
     fig = visualizacion_resolucion_p1()
     fig2 = visualizacion_resolucion_i2() 
-    
+    fig_resultado = visualizacion_resultado_final()
+
     return render_template(
         "tema2_resolucion_p1.html",
-        grafico=fig.to_html(
+        grafico_ejer=fig_ejer.to_html(
             full_html=False,
             include_plotlyjs="cdn"
         ),
+        grafico=fig.to_html(
+            full_html=False,
+            include_plotlyjs=False
+        ),
         grafico_i2=fig2.to_html(
             full_html=False,
-            include_plotlyjs="cdn"
+            include_plotlyjs=False
+        ),
+        grafico_resultado=fig_resultado.to_html(
+            full_html=False,
+            include_plotlyjs=False
         ),
         dx1=dx1,dy1=dy1,r1=r1,b1=b1,bx1=bx1,by1=by1,
         dx2=dx2,dy2=dy2,r2=r2,b2=b2,bx2=bx2,by2=by2,

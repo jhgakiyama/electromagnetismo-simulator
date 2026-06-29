@@ -4,6 +4,13 @@
 
 <div class="container mt-4">
 
+    <h2>Ejercicio Resuelto - Tema 2</h2>
+
+    <h5>Enunciado</h5>
+    <p>Dos conductores filiformes paralelos separados una distancia d = 2 cm conducen corrientes  iguales entrantes i =1 A. Determine el campo B para los puntos P1(1, 1) y P2(1.5, 0), medidos en cm .</p>
+
+    {{ grafico_ejer | safe }}
+
     <h2>Paso 2 - Calcular el campo magnético B₁</h2>
     
     <p class="text-muted">
@@ -444,6 +451,44 @@ B2 = μ₀ · I2
     </div>
 </div>
 
+<hr class="my-5">
+
+<h2>Resultado Final</h2>
+
+<p class="text-muted">
+    Finalmente representamos el campo magnético resultante obtenido a partir de la suma vectorial de los campos producidos por ambos conductores.
+</p>
+
+{{ grafico_resultado | safe }}
+
+<div class="card mt-4">
+
+    <div class="card-header">
+        <strong>Conclusión</strong>
+    </div>
+
+    <div class="card-body">
+        <p>
+            El campo magnético total en P₁ se obtiene
+            sumando vectorialmente los campos producidos
+            por los conductores I₁ e I₂.
+        </p>
+
+        <p>
+            Para realizar esta suma fue necesario
+            descomponer previamente cada campo en sus
+            componentes cartesianas.
+        </p>
+
+    <div class="alert alert-success mt-3">
+
+    <h5 class="mb-1">Campo Magnético Total</h5>
+
+    <h4 class="mb-0">|B| = {{ "%.2e"|format(b_total) }} T</h4>
+
+</div>
+</div>
+</div>
 </div>
 
 {% endblock %}
