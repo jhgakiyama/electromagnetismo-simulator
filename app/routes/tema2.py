@@ -78,6 +78,9 @@ def resolucion_p1():
     by_total = by1 + by2
     b_total = magnitud_vector(bx_total,by_total)
 
+    fig_concep_1 = visualizacion_conceptual_2a()
+    fig_concep_2 = visualizacion_conceptual_2b()
+    
     fig_ejer = visualizacion_ejercicio_2()
     fig = visualizacion_resolucion_p1()
     fig2 = visualizacion_resolucion_i2() 
@@ -85,9 +88,17 @@ def resolucion_p1():
 
     return render_template(
         "tema2_resolucion_p1.html",
-        grafico_ejer=fig_ejer.to_html(
+        grafico_conceptual_2a=fig_concep_1.to_html(
             full_html=False,
             include_plotlyjs="cdn"
+        ),
+        grafico_conceptual_2b=fig_concep_2.to_html(
+            full_html=False,
+            include_plotlyjs="cdn"
+        ),
+        grafico_ejer=fig_ejer.to_html(
+            full_html=False,
+            include_plotlyjs=False
         ),
         grafico=fig.to_html(
             full_html=False,
