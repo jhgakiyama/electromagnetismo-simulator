@@ -20,38 +20,6 @@ Líneas punteadas
 
 Sin números - Sin coordenadas - Sin fórmulas
 
-==========================================================
-REGLAS DE DISEÑO - COLORES
-==========================================================
-
-Conductor I1
-    Azul
-
-Campo B1
-    Azul
-
-Componentes Bx1 - By1
-    Azul punteado
-
-----------------------------------------------------------
-
-Conductor I2
-    Rojo
-
-Campo B2
-    Rojo
-
-Componentes Bx2 - By2
-    Rojo punteado
-
-----------------------------------------------------------
-
-Campo Total
-
-    Negro
-    (Representa el resultado de todos los campos)
-
-==========================================================
 """
 
 COLOR_I1 = "firebrick"
@@ -99,7 +67,7 @@ def escalar_vector(x, y, longitud=1):
     return x * longitud, y * longitud
 
 
-def dibujar_vector(fig,origen_x,origen_y,vx,vy,etiqueta,color,textposition="top center"):
+def dibujar_vector(fig,origen_x,origen_y,vx,vy,etiqueta,color,arrowwidth=2,textposition="top center"):
     """
     Objetivo:
         Dibujar un vector sobre una figura Plotly.
@@ -138,10 +106,7 @@ def dibujar_vector(fig,origen_x,origen_y,vx,vy,etiqueta,color,textposition="top 
     texto_x = origen_x + vx * 0.60
     texto_y = origen_y + vy * 0.60
 
-    # ------------------------------------------------------
     # Flecha
-    # ------------------------------------------------------
-
     fig.add_annotation(
         x=destino_x,
         y=destino_y,
@@ -154,14 +119,11 @@ def dibujar_vector(fig,origen_x,origen_y,vx,vy,etiqueta,color,textposition="top 
         showarrow=True,
         arrowhead=3,
         arrowsize=1,
-        arrowwidth=2,
+        arrowwidth=arrowwidth,
         arrowcolor=color
     )
 
-    # ------------------------------------------------------
     # Etiqueta
-    # ------------------------------------------------------
-
     fig.add_trace(
         go.Scatter(
             x=[texto_x],
@@ -238,10 +200,7 @@ def dibujar_componentes_vector(
             Horizontal
     """
 
-    # ==========================================================
     # Componente vertical
-    # ==========================================================
-
     fig.add_trace(
         go.Scatter(
             x=[origen_x, origen_x],
@@ -257,10 +216,7 @@ def dibujar_componentes_vector(
         )
     )
 
-    # ==========================================================
     # Componente horizontal
-    # ==========================================================
-
     fig.add_trace(
         go.Scatter(
             x=[origen_x, origen_x + comp_x],
@@ -276,10 +232,7 @@ def dibujar_componentes_vector(
         )
     )
 
-    # ==========================================================
     # Etiqueta componente vertical
-    # ==========================================================
-
     fig.add_trace(
         go.Scatter(
             x=[origen_x - 0.05],
@@ -291,10 +244,7 @@ def dibujar_componentes_vector(
         )
     )
 
-    # ==========================================================
     # Etiqueta componente horizontal
-    # ==========================================================
-
     fig.add_trace(
         go.Scatter(
             x=[origen_x + comp_x / 2],
@@ -341,10 +291,7 @@ def dibujar_radio(fig,origen_x,origen_y,destino_x,destino_y,etiqueta,color,textp
         punteada. No realiza ningún cálculo físico.
     """
 
-    # ------------------------------------------------------
     # Línea del radio
-    # ------------------------------------------------------
-
     fig.add_trace(
         go.Scatter(
             x=[origen_x, destino_x],
@@ -360,18 +307,13 @@ def dibujar_radio(fig,origen_x,origen_y,destino_x,destino_y,etiqueta,color,textp
         )
     )
 
-    # ------------------------------------------------------
     # Punto medio para la etiqueta
-    # ------------------------------------------------------
-
     medio_x = (origen_x + destino_x) / 2
     medio_y = (origen_y + destino_y) / 2
 
     medio_y *= 1.1
-    # ------------------------------------------------------
-    # Etiqueta
-    # ------------------------------------------------------
 
+    # Etiqueta
     fig.add_trace(
         go.Scatter(
             x=[medio_x],
@@ -388,6 +330,88 @@ def dibujar_radio(fig,origen_x,origen_y,destino_x,destino_y,etiqueta,color,textp
         )
     )
 
+def visualizacion_base_ejercicio_2():
+    # Conductores
+    i1_x = 0
+    i1_y = 0
+
+    i2_x = 2
+    i2_y = 0
+
+    # Puntos de observación
+    p1_x = 1
+    p1_y = 1
+
+    fig = go.Figure()
+
+    # Conductor I1
+    fig.add_trace(
+        go.Scatter(
+            x=[i1_x],
+            y=[i1_y],
+            mode="markers+text",
+            marker=dict(
+                symbol=SIMBOLO_CORRIENTE_ENTRANTE,
+                size=14,
+                color=COLOR_I1
+            ),
+            text=["I1"],
+            textposition="top center",
+            showlegend=False,
+            hoverinfo="skip"
+        )
+    )
+
+    # Conductor I2
+    fig.add_trace(
+        go.Scatter(
+            x=[i2_x],
+            y=[i2_y],
+            mode="markers+text",
+            marker=dict(
+                symbol=SIMBOLO_CORRIENTE_ENTRANTE,
+                size=14,
+                color=COLOR_I2
+            ),
+            text=["I2"],
+            textposition="top center",
+            showlegend=False,
+            hoverinfo="skip"
+        )
+    )
+
+    # Punto P1
+    fig.add_trace(
+        go.Scatter(
+            x=[p1_x],
+            y=[p1_y],
+            mode="markers+text",
+            marker=dict(
+                symbol="circle",
+                size=8,
+                color="green"
+            ),
+            text=["P1"],
+            textposition="top center",
+            showlegend=False,
+            hoverinfo="skip"
+        )
+    )
+
+    # Layout
+    fig.update_layout(title="Geometría del Problema",template="plotly",height=550,margin=dict(l=40, r=40, t=60, b=40))
+
+    # Actualizo parametros para los ejer X e Y
+    fig.update_xaxes(range=[0, 2.5],showgrid=False,zeroline=False,scaleanchor="y")
+    fig.update_yaxes(range=[-0.5, 1.5],showgrid=False,zeroline=False)
+
+    # Eje X
+    fig.add_shape(type="line",x0=-1.5,y0=0,x1=5,y1=0,line=dict(color="black",width=1))
+
+    # Eje Y
+    fig.add_shape(type="line",x0=0,y0=-0.5,x1=0,y1=1.5,line=dict(color="black",width=1))
+
+    return fig
 
 
 def visualizacion_ejercicio_2():
@@ -408,10 +432,6 @@ def visualizacion_ejercicio_2():
         No realiza cálculos físicos.
     """
 
-    # ==========================================================
-    # Geometría del ejercicio
-    # ==========================================================
-
     # Conductores
     i1_x = 0
     i1_y = 0
@@ -428,10 +448,7 @@ def visualizacion_ejercicio_2():
 
     fig = go.Figure()
 
-    # ==========================================================
     # Conductor I1
-    # ==========================================================
-
     fig.add_trace(
         go.Scatter(
             x=[i1_x],
@@ -449,10 +466,7 @@ def visualizacion_ejercicio_2():
         )
     )
 
-    # ==========================================================
     # Conductor I2
-    # ==========================================================
-
     fig.add_trace(
         go.Scatter(
             x=[i2_x],
@@ -470,10 +484,7 @@ def visualizacion_ejercicio_2():
         )
     )
 
-    # ==========================================================
     # Punto P1
-    # ==========================================================
-
     fig.add_trace(
         go.Scatter(
             x=[p1_x],
@@ -491,10 +502,7 @@ def visualizacion_ejercicio_2():
         )
     )
 
-    # ==========================================================
     # Punto P2
-    # ==========================================================
-
     fig.add_trace(
         go.Scatter(
             x=[p2_x],
@@ -512,17 +520,11 @@ def visualizacion_ejercicio_2():
         )
     )
 
-    # ==========================================================
     # Separación entre conductores
-    # ==========================================================
-
     fig.add_shape(type="line",x0=i1_x,y0=-0.125,x1=i2_x,y1=-0.125,line=dict(color="gray",dash="dot"))
     fig.add_annotation(x=1,y=-0.2,text="d = 2 cm",showarrow=False,font=dict(size=12))
 
-    # ==========================================================
     # Layout
-    # ==========================================================
-
     fig.update_layout(title="Geometría del Problema",template="plotly",height=550,margin=dict(l=40, r=40, t=60, b=40))
 
     # Actualizo parametros para los ejer X e Y
@@ -559,23 +561,13 @@ def visualizacion_resolucion_p1():
             - Campo total.
             - Resultados numéricos.
     """
-
-    # ==========================================================
-    # Geometría del ejercicio
-    # ==========================================================
-
     i1 = (0, 0)
     i2 = (2, 0)
-
     p1 = (1, 1)
-
     corriente1 = 1
     corriente2 = 1
 
-    # ==========================================================
     # Cálculo de los campos
-    # ==========================================================
-
     # Conductor I1 -> P1
     dx1, dy1, r1 = calcular_radio(i1,p1)
     bx1, by1 = componentes_campo(corriente1,r1,dx1,dy1,"entrante")
@@ -593,16 +585,9 @@ def visualizacion_resolucion_p1():
     bx1, by1 = escalar_vector(bx1, by1, 0.5)
     bx2, by2 = escalar_vector(bx2, by2, 0.5)
 
-    # ==========================================================
-    # Figura base (A6.1)
-    # ==========================================================
-
     fig = visualizacion_ejercicio_2()
 
-    # ==========================================================
     # Vector B1
-    # ==========================================================
-
     dibujar_vector(
         fig=fig,
         origen_x=p1[0],
@@ -624,10 +609,7 @@ def visualizacion_resolucion_p1():
         color=COLOR_I1
     )
 
-    # ==========================================================
     # Vector B2
-    # ==========================================================
-
     dibujar_vector(
         fig=fig,
         origen_x=p1[0],
@@ -657,11 +639,7 @@ def visualizacion_resolucion_p1():
         etiqueta_y="By1",
         color=COLOR_I1
 )
-
-    # ==========================================================
     # Layout
-    # ==========================================================
-
     fig.update_layout(
         title="Paso 1 - Campos Magnéticos en P1"
     )
@@ -723,10 +701,7 @@ def visualizacion_resolucion_i2():
         color="rgba(220,0,0,0.35)"
     )
 
-    # ==========================================================
     # Vector B2
-    # ==========================================================
-
     dibujar_vector(
         fig=fig,
         origen_x=p1[0],
@@ -759,12 +734,102 @@ def visualizacion_resolucion_i2():
         color=COLOR_I2
     )
 
-    # ==========================================================
     # Layout
-    # ==========================================================
-
     fig.update_layout(
         title="Paso 1 - Campos Magnéticos en P1"
+    )
+
+    return fig
+
+
+def visualizacion_resultado_final():
+    """
+    Objetivo:
+        Mostrar el campo magnético total generado por los
+        dos conductores sobre el punto P1.
+
+    Retorna:
+        go.Figure
+
+    Notas:
+        Se muestran únicamente los tres vectores:
+            - B1
+            - B2
+            - BTotal
+
+        No se muestran radios ni componentes para
+        obtener una visualización limpia del resultado.
+    """
+
+
+    i1 = (0, 0)
+    i2 = (2, 0)
+    p1 = (1, 1)
+    corriente1 = 1
+    corriente2 = 1
+
+    # Cálculo de los campos
+    dx1, dy1, r1 = calcular_radio(i1, p1)
+    bx1, by1 = componentes_campo(corriente1,r1,dx1,dy1,"entrante")
+
+    dx2, dy2, r2 = calcular_radio(i2, p1)
+    bx2, by2 = componentes_campo(corriente2,r2,dx2,dy2,"entrante")
+
+    # Campo total
+    bx_total = bx1 + bx2
+    by_total = by1 + by2
+
+    # Normalización (solo para dibujar)
+    bx1, by1 = normalizar_vector(bx1, by1)
+    bx2, by2 = normalizar_vector(bx2, by2)
+    bx_total, by_total = normalizar_vector(bx_total,by_total)
+
+    # Escala gráfica
+    bx1, by1 = escalar_vector(bx1,by1,0.45)
+    bx2, by2 = escalar_vector(bx2,by2,0.45)
+
+    bx_total, by_total = escalar_vector(bx_total,by_total,0.65)
+
+    # Figura base
+    fig = visualizacion_base_ejercicio_2()
+
+    # Campo B1
+    dibujar_vector(
+        fig=fig,
+        origen_x=p1[0],
+        origen_y=p1[1],
+        vx=bx1,
+        vy=by1,
+        etiqueta="B1",
+        color="rgba(220,0,0,0.18)"
+    )
+
+    # Campo B2
+    dibujar_vector(
+        fig=fig,
+        origen_x=p1[0],
+        origen_y=p1[1],
+        vx=bx2,
+        vy=by2,
+        etiqueta="B2",
+        color="rgba(0,0,220,0.20)"
+    )
+
+    # Campo total
+    dibujar_vector(
+        fig=fig,
+        origen_x=p1[0],
+        origen_y=p1[1],
+        vx=bx_total,
+        vy=by_total,
+        etiqueta="Btotal = B₁ + B₂",
+        color="green",
+        arrowwidth=4
+    )
+
+    # Layout
+    fig.update_layout(
+        title="Campo Magnético Resultante en P₁"
     )
 
     return fig
