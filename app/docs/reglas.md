@@ -74,3 +74,30 @@ cada punto mostrará naturalmente su propio vector **Btotal**, permitiendo compa
 Todos los vectores tienen origen en el mismo punto de observación.
 
 ---
+
+# RD-05 - Mensajes Didácticos
+
+## Objetivo
+
+Establecer una identidad visual uniforme para todos los contenidos teóricos y prácticos del simulador, facilitando que el alumno identifique rápidamente el propósito de cada mensaje.
+
+## Reglas de uso
+
+* Utilizar **una única idea principal por mensaje**.
+* Evitar textos extensos dentro de las alertas.
+* No utilizar colores únicamente por motivos estéticos; cada color debe conservar su significado pedagógico.
+* Mantener el mismo criterio en todos los temas del simulador para generar una experiencia consistente de aprendizaje.
+
+---
+
+## Identidad visual
+
+| Color       | Componente Bootstrap | Propósito                                                |
+| ----------- | -------------------- | -------------------------------------------------------- |
+| 🔵 Azul     | `alert-info`         | Información, contexto e introducción                     |
+| 🟡 Amarillo | `alert-warning`      | Advertencias, errores frecuentes y conceptos importantes |
+| 🟢 Verde    | `alert-success`      | Ideas clave, conclusiones y resultados principales       |
+
+---
+
+
