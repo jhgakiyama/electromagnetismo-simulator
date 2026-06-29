@@ -2,13 +2,160 @@
 
 {% block content %}
 
+<!-- Seccion 1 -->
+<div class="card mb-4">
+
+    <div class="card-header">
+        <strong>Introducción</strong>
+    </div>
+
+    <div class="card-body">
+
+        <p>
+            En el tema anterior aprendimos a calcular el campo magnético
+            generado por un conductor rectilíneo infinitamente largo.
+            Analizamos cómo su magnitud depende de la corriente eléctrica,
+            de la distancia al conductor y cómo determinar su dirección
+            mediante la regla de la mano derecha.
+        </p>
+
+        <p>
+            Sin embargo, en la práctica es habitual encontrar varios
+            conductores transportando corriente al mismo tiempo. Cada uno
+            genera su propio campo magnético y todos ellos actúan
+            simultáneamente sobre el mismo punto del espacio.
+        </p>
+
+        <p>
+            En este tema estudiaremos cómo obtener el
+            <strong>campo magnético resultante</strong> producido por dos
+            conductores paralelos aplicando el
+            <strong>principio de superposición</strong>.
+        </p>
+
+        <div class="alert alert-info mt-3 mb-0">
+            <strong>Objetivo del tema</strong>
+            <br><br>
+            Determinar el campo magnético total generado por dos
+            conductores rectilíneos paralelos sumando vectorialmente los
+            campos producidos por cada uno de ellos.
+        </div>
+    </div>
+</div>
+
+
+<!-- Seccion 2 -->
+<div class="card mb-4">
+    <div class="card-header">
+        <strong>Principio de Superposición</strong>
+    </div>
+
+    <div class="card-body">
+        <p>
+            Cuando en una región del espacio existen varios conductores
+            recorridos por corriente eléctrica, cada uno genera su propio
+            campo magnético de manera independiente.
+        </p>
+        <p>
+            El campo magnético observado en un punto no pertenece a un
+            único conductor, sino que es el resultado de la acción
+            simultánea de todos ellos.
+        </p>
+        <p>
+            Para obtener el campo magnético resultante es necesario
+            <strong>sumar vectorialmente</strong> los campos producidos
+            por cada conductor.
+        </p>
+        <div class="alert alert-warning mt-4">
+            <strong>Importante</strong>
+            <br><br>
+            Los módulos de los campos magnéticos
+            <strong>no se suman directamente</strong>.
+            Primero deben descomponerse en sus componentes cartesianas y,
+            posteriormente, realizar la suma vectorial.
+        </div>
+        <div class="alert alert-success mt-3 mb-0">
+            <strong>Idea clave</strong>
+            <br><br>
+            Campo magnético total = Suma vectorial de los campos
+            producidos por cada conductor.
+        </div>
+    </div>
+</div>
+
+<div class="card mb-4">
+
+    <div class="card-header">
+        <strong>Geometría del Problema</strong>
+    </div>
+
+    <div class="card-body">
+
+        <p>
+            Antes de comenzar los cálculos, identifiquemos los elementos
+            geométricos que intervienen en el problema.
+        </p>
+
+        <ul>
+
+            <li>
+                <strong>I₁</strong> e <strong>I₂</strong> representan los
+                dos conductores rectilíneos paralelos.
+            </li>
+
+            <li>
+                Ambos conductores transportan una corriente de
+                <strong>1 A</strong> con sentido entrante.
+            </li>
+
+            <li>
+                La distancia entre los conductores es
+                <strong>d = 2 cm</strong>.
+            </li>
+
+            <li>
+                En este ejercicio desarrollaremos únicamente la resolución
+                correspondiente al punto <strong>P₁</strong>.
+            </li>
+
+            <li>
+                El punto <strong>P₂</strong> forma parte del enunciado y
+                podrá resolverse posteriormente como ejercicio propuesto.
+            </li>
+
+        </ul>
+
+        <div class="alert alert-info mt-3 mb-0">
+            <strong>Observación</strong>
+            <br><br>
+            Antes de realizar cualquier cálculo conviene identificar la
+            posición de los conductores y del punto de observación. Esto
+            permitirá construir correctamente los vectores radio y los
+            campos magnéticos producidos por cada conductor.
+        </div>
+
+    </div>
+
+</div>
+
+<div class="card mb-4">
+    <div class="card-header">
+        <strong>Ejercicio Propuesto</strong>
+    </div>
+    <div class="card-body">
+        <p>
+            Considerando dos conductores rectilíneos infinitos separados
+            una distancia de 2 cm y recorridos por corrientes de 1 A con
+            sentido entrante, determinar el campo magnético en los puntos
+            P₁ y P₂.
+        </p>
+    </div>
+</div>
+
 <div class="container mt-4">
-
     <h2>Ejercicio Resuelto - Tema 2</h2>
-
     <h5>Enunciado</h5>
     <p>Dos conductores filiformes paralelos separados una distancia d = 2 cm conducen corrientes  iguales entrantes i =1 A. Determine el campo B para los puntos P1(1, 1) y P2(1.5, 0), medidos en cm .</p>
-
     {{ grafico_ejer | safe }}
 
     <h2>Paso 2 - Calcular el campo magnético B₁</h2>
@@ -80,25 +227,17 @@
                 Aplicamos la expresión del campo magnético
                 producido por un conductor rectilíneo infinito.
             </p>
-
             <pre>
-
-B1 = μ₀ · I1
-    ───────
-     2π · r1
-
+            B1 = μ₀ · I1
+                ───────
+                2π · r1
             </pre>
-
             <p>I1 = 1 A</p>
             <p>r1 = {{ "%.4f"|format(r1 / 100) }} m</p>
             
             <div class="alert alert-success mt-3">
                 <h5 class="mb-1">Resultado</h5>
-
-                <h4 class="mb-0">
-                    |B<sub>1</sub>| = {{ "%.2e"|format(b1) }} T
-                </h4>
-
+                <h4 class="mb-0">|B<sub>1</sub>| = {{ "%.2e"|format(b1) }} T</h4>
             </div>
         </div>
 
