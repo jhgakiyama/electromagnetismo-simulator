@@ -247,6 +247,6 @@ def visualizacion_conceptual_2b():
     # Se ve mejor los ejes
     fig.update_xaxes(zeroline=True,showgrid=False)
     fig.update_yaxes(zeroline=True,showgrid=False,scaleanchor="x",scaleratio=1)
-    fig.update_layout(title="Visualización Conceptual 2B - Caso Simétrico",showlegend=True)
+    fig.update_layout(title="Visualización Conceptual 2B - Caso Simétrico",showlegend=False)
 
     return fig
