@@ -729,18 +729,152 @@ B2 = μ₀ · I2
             aplicando exactamente la misma metodología desarrollada para
             <strong>P₁</strong>.
         </p>
-
         <p class="mb-0">
-
             Intenta resolverlo por tu cuenta antes de consultar la solución.
             Ese ejercicio será una excelente oportunidad para comprobar que
             has comprendido tanto los conceptos físicos como el procedimiento
             matemático presentado en este tema.
-
         </p>
-
     </div>
 
+    
+</div>
+
+
+<hr class="my-5">
+<h2>Ejercicio para resolver</h2>
+<div class="card mb-4">
+
+    <div class="card-header">
+        <strong>Pon a prueba lo aprendido</strong>
+    </div>
+
+    <div class="card-body">
+
+        <p>
+            Durante este tema resolvimos paso a paso el cálculo del campo
+            magnético en el punto <strong>P₁</strong>. Ahora es el momento
+            de aplicar el mismo procedimiento al segundo punto del enunciado.
+        </p>
+
+        <p>
+            Considerando los mismos conductores y las mismas corrientes,
+            determina el campo magnético total en el punto:
+        </p>
+
+        <div class="text-center my-4">
+            <h4>P₂ = (1.5 ; 0)</h4>
+        </div>
+
+        <div class="alert alert-warning mb-0">
+            Intenta resolver el ejercicio completamente por tu cuenta antes
+            de consultar la solución.
+            Utiliza exactamente la misma metodología desarrollada para el
+            punto <strong>P₁</strong>.
+        </div>
+    </div>
+</div>
+
+<div class="card mb-4">
+    <div class="card-header">
+        <strong>Guía de resolución</strong>
+    </div>
+
+    <div class="card-body">
+        <p>
+            Si en algún momento tienes dudas, verifica que hayas seguido
+            estos pasos:
+        </p>
+
+        <ol class="mb-0">
+            <li>Calcular r₁.</li>
+            <li>Calcular r₂.</li>
+            <li>Obtener B₁.</li>
+            <li>Obtener B₂.</li>
+            <li>Descomponer ambos campos en componentes.</li>
+            <li>Sumar las componentes.</li>
+            <li>Calcular el módulo del campo resultante.</li>
+            <li>Interpretar el resultado obtenido.</li>
+        </ol>
+    </div>
+</div>
+
+<div class="text-center my-4">
+    <button
+        class="btn btn-outline-primary"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#solucionP2">
+        Mostrar solución
+    </button>
+</div>
+
+
+<div class="collapse mt-4" id="solucionP2">
+    <div class="card border-success">
+        <div class="card-header bg-success text-white">Solución resumida</div>
+
+        <div class="card-body">
+            <p>
+                Si resolviste el ejercicio, puedes comparar tus resultados
+                con los valores obtenidos.
+            </p>
+
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Magnitud</th>
+                        <th>Valor</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td>r₁</td>
+                        <td>{{ "%.4f"|format(r1_p2) }} cm</td>
+                    </tr>
+
+                    <tr>
+                        <td>r₂</td>
+                        <td>{{ "%.4f"|format(r2_p2) }} cm</td>
+                    </tr>
+
+                    <tr>
+                        <td>B₁</td>
+                        <td>{{ "%.2e"|format(b1_p2) }} T</td>
+                    </tr>
+
+                    <tr>
+                        <td>B₂</td>
+                        <td>{{ "%.2e"|format(b2_p2) }} T</td>
+                    </tr>
+
+                    <tr>
+                        <td>Bx</td>
+                        <td>{{ "%.2e"|format(bx_total_p2) }} T</td>
+                    </tr>
+
+                    <tr>
+                        <td>By</td>
+                        <td>{{ "%.2e"|format(by_total_p2) }} T</td>
+                    </tr>
+
+                    <tr class="table-success">
+                        <td><strong>|B|</strong></td>
+                        <td><strong>{{ "%.2e"|format(b_total_p2) }} T</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            {{ grafico_p2|safe }}
+
+            <div class="alert alert-success mt-4 mb-0">
+                Si tus resultados coinciden con los valores mostrados,
+                significa que aplicaste correctamente el procedimiento de
+                superposición desarrollado durante este tema.
+            </div>
+        </div>
+    </div>
 </div>
 
 {% endblock %}

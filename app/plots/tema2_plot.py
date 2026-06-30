@@ -757,7 +757,6 @@ def visualizacion_resultado_final():
         obtener una visualización limpia del resultado.
     """
 
-
     i1 = (0, 0)
     i2 = (2, 0)
     p1 = (1, 1)
@@ -826,6 +825,100 @@ def visualizacion_resultado_final():
     # Layout
     fig.update_layout(
         title="Campo Magnético Resultante en P₁"
+    )
+
+    return fig
+
+
+def visualizacion_autoevaluacion_p2():
+    
+    i1 = (0, 0)
+    i2 = (2, 0)
+    p2 = (1.5, 0)
+    corriente1 = 1
+    corriente2 = 1
+
+    # Cálculo de los campos
+    dx1, dy1, r1 = calcular_radio(i1, p2)
+    bx1, by1 = componentes_campo(corriente1,r1,dx1,dy1,"entrante")
+
+    dx2, dy2, r2 = calcular_radio(i2, p2)
+    bx2, by2 = componentes_campo(corriente2,r2,dx2,dy2,"entrante")
+
+    # Campo total
+    bx_total = bx1 + bx2
+    by_total = by1 + by2
+
+    # Normalización (solo para dibujar)
+    bx1, by1 = normalizar_vector(bx1, by1)
+    bx2, by2 = normalizar_vector(bx2, by2)
+    bx_total, by_total = normalizar_vector(bx_total,by_total)
+
+    # Escala gráfica
+    bx1, by1 = escalar_vector(bx1,by1,0.25)
+    bx2, by2 = escalar_vector(bx2,by2,0.45)
+
+    bx_total, by_total = escalar_vector(bx_total,by_total,0.65)
+
+    # Figura base
+    fig = visualizacion_base_ejercicio_2()
+
+    # Punto P2    
+    fig.add_trace(
+        go.Scatter(
+            x=[p2[0]],
+            y=[p2[1]],
+            mode="markers+text",
+            marker=dict(
+                symbol="circle",
+                size=8,
+                color="green"
+            ),
+            text=["P2"],
+            textposition="top center",
+            showlegend=False,
+            hoverinfo="skip"
+        )
+    )
+
+    # Campo B1
+    dibujar_vector(
+        fig=fig,
+        origen_x=p2[0],
+        origen_y=p2[1],
+        vx=bx1,
+        vy=by1,
+        etiqueta="B1",
+        color="rgba(220,0,0,0.18)"
+    )
+
+    # Campo total
+    dibujar_vector(
+        fig=fig,
+        origen_x=p2[0],
+        origen_y=p2[1],
+        vx=bx_total,
+        vy=by_total,
+        etiqueta="Btotal = B₁ + B₂",
+        color="green",
+        arrowwidth=4
+    )
+
+     # Campo B2
+    dibujar_vector(
+        fig=fig,
+        origen_x=p2[0],
+        origen_y=p2[1],
+        vx=bx2,
+        vy=by2,
+        etiqueta="B2",
+        color="yellow"
+    )
+
+
+    # Layout
+    fig.update_layout(
+        title="Campo Magnético Resultante en P2"
     )
 
     return fig
