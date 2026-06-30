@@ -640,9 +640,7 @@ def visualizacion_resolucion_p1():
         color=COLOR_I1
 )
     # Layout
-    fig.update_layout(
-        title="Paso 1 - Campos Magnéticos en P1"
-    )
+    fig.update_layout(title="Descomposicion vectorial de B1")
 
     return fig
 
@@ -735,9 +733,7 @@ def visualizacion_resolucion_i2():
     )
 
     # Layout
-    fig.update_layout(
-        title="Paso 1 - Campos Magnéticos en P1"
-    )
+    fig.update_layout(title="Descomposicion vectorial de B2")
 
     return fig
 
