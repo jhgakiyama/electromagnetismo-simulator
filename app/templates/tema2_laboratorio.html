@@ -1,3 +1,7 @@
+{% extends "base.html" %}
+
+{% block content %}
+
 <h1>Laboratorio Virtual</h1>
 
 <div class="card shadow-sm mb-4">
@@ -36,3 +40,46 @@
     </div>
 
 </div>
+
+<h2>Parámetros del experimento</h2>
+
+<div class="card shadow-sm mb-4">
+
+    <div class="card-body">
+
+        <!-- acá irán los controles -->
+
+    </div>
+
+</div>
+
+<h2>Representación gráfica</h2>
+
+<div class="card shadow-sm mb-4">
+
+    <div class="card-body text-center">
+
+        {{ grafico|safe }}
+
+    </div>
+
+</div>
+
+<h2>Resultados</h2>
+
+<div class="card shadow-sm">
+
+    <div class="card-body">
+
+        <p class="text-muted">
+
+            Los resultados aparecerán aquí luego de ejecutar la simulación.
+
+        </p>
+
+    </div>
+
+</div>
+
+
+{% endblock %}
