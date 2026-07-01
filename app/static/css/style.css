@@ -409,6 +409,29 @@ h5 {
     border-radius: 12px 12px 0 0;
 }
 
+/* ==========================================================
+   Laboratorio Virtual
+   ========================================================== */
+.conductor-i1{
+    color:#c62828;
+    font-weight:600;
+}
+
+.conductor-i2{
+    color:#1565c0;
+    font-weight:600;
+}
+
+.parametro-laboratorio{
+    font-weight: 600;
+    margin-bottom: .35rem;
+}
+
+.titulo-bloque{
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
 /* Estilos para el celular */
 @media (max-width: 768px) {
 
