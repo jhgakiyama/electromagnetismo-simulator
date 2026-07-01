@@ -1,6 +1,8 @@
-from flask import render_template
 from flask import Blueprint
-# from app.plots.tema2_plot import visualizacion_resultado_final
+from flask import render_template
+from flask import request
+
+
 from app.physics.laboratorio import calcular_simulacion
 
 
@@ -9,10 +11,25 @@ bp = Blueprint(
     __name__
 )
 
-@bp.route("/tema2/laboratorio")
+@bp.route("/tema2/laboratorio", methods=["GET", "POST"])
 def tema2_laboratorio():
-
-    # grafico = visualizacion_resultado_final()
+    template = "tema2_laboratorio.html"
+    
+    if request.method == "POST":
+        corriente1 = float(request.form["corriente1"])
+        corriente2 = float(request.form["corriente2"])
+        sentido1 = request.form["sentido1"]
+        sentido2 = request.form["sentido2"]
+        px = float(request.form["px"])
+        py = float(request.form["py"])
+    else:
+        corriente1=1.0,
+        sentido1="entrante",
+        corriente2=1.0,
+        sentido2="entrante",
+        px=1.0,
+        py=1.0
+    
     resultado = calcular_simulacion(
         corriente1=1,
         sentido1="entrante",
@@ -21,7 +38,7 @@ def tema2_laboratorio():
         px=1,
         py=1
     )
-    template = "tema2_laboratorio.html"
+    
     
     return render_template(
         template,
