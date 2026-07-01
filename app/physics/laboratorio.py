@@ -127,6 +127,7 @@ def calcular_simulacion(corriente1,sentido1,corriente2,sentido2,px,py):
     
     resultado["parametros"] = { 
         "corriente1": corriente1,"corriente2": corriente2,
+        "corriente1_efectiva": i1,"corriente2_efectiva": i2,
         "sentido1": sentido1,"sentido2": sentido2,
         "px": px,"py": py
     }
