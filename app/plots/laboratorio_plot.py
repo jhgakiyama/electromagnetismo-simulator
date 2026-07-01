@@ -10,7 +10,10 @@ COLOR_RESULTANTE = "#2ca02c"
 
 
 def visualizacion_resultado_laboratorio(resultado):
-
+    """
+    Recibe el objeto resultado ya calculado y genera la representación visual del experimento.
+    
+    """
     # ==========================================================
     # ETAPA 1 - Desempaquetar resultado
     # ==========================================================

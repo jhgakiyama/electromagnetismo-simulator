@@ -5,6 +5,8 @@ from app.physics.tema2 import (
 )
 
 from app.plots.tema2_plot import visualizacion_resultado_final
+from app.plots.laboratorio_plot import visualizacion_resultado_laboratorio
+
 
 
 POSICION_I1 = (0.0, 0.0)
@@ -78,12 +80,10 @@ def componentes_campo_vectorial(corriente,radio,dx,dy):
 def calcular_simulacion(corriente1,sentido1,corriente2,sentido2,px,py):
     """
     Ejecuta una simulación completa del laboratorio del Tema 2.
+    
+    Recibe los parámetros del experimento, realiza todos los cálculos necesarios y construye el objeto `resultado`.
     """
-    # configuracion = { 
-    #     "i1": (x1, y1),
-    #     "i2": (x2, y2),
-    #     "p": (px, py)
-    # }
+    
     
     x1, y1 = POSICION_I1
     x2, y2 = POSICION_I2
@@ -144,5 +144,6 @@ def calcular_simulacion(corriente1,sentido1,corriente2,sentido2,px,py):
     resultado["b1"] = {"magnitud": b1,"bx": bx1,"by": by1}
     resultado["b2"] = {"magnitud": b2,"bx": bx2,"by": by2}
     resultado["campo_total"] = {"magnitud": btotal,"bx": bx,"by": by}
-    resultado["grafico"] = fig
+    
+    resultado["grafico"] = visualizacion_resultado_laboratorio(resultado)
     return resultado
