@@ -1,7 +1,6 @@
 from math import sqrt
 import plotly.graph_objects as go
-from app.physics.tema2 import normalizar_vector, escalar_vector
-from app.plots.tema2_plot import dibujar_vector, dibujar_radio,visualizacion_ejercicio_2
+from app.plots.tema2_plot import normalizar_vector,dibujar_vector, dibujar_radio,visualizacion_ejercicio_2, escalar_vector
 
 
 COLOR_I1 = "#d62728"
