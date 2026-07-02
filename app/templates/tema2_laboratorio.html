@@ -11,63 +11,39 @@
     </div>
 
     <div class="card-body">
+        <p>Bienvenido al Laboratorio Virtual del Tema 2.</p>
 
         <p>
-
-            Bienvenido al Laboratorio Virtual del Tema 2.
-
-        </p>
-
-        <p>
-
             Aquí podrás modificar libremente los parámetros del problema y
             observar cómo cambia el campo magnético resultante.
-
         </p>
 
         <div class="alert alert-primary mb-0">
-
-            <strong>Objetivo</strong>
-
-            <br><br>
-
             Experimenta, compara resultados y descubre cómo influyen la
             corriente eléctrica, el sentido de circulación y la posición del
             punto de observación sobre el campo magnético.
-
         </div>
-
     </div>
-
 </div>
 
 <form method="POST">
-
 <div class="card shadow-sm mb-4">
-
     <div class="card-header fw-bold">
         Parámetros del experimento
     </div>
 
     <div class="card-body">
-
         <div class="row">
-
-            <!-- ====================================== -->
             <!-- Conductor I1 -->
-            <!-- ====================================== -->
-
             <div class="col-md-6 mb-4">
-                <h5 class="titulo-bloque conductor-i1">
-                    Conductor I₁
-                </h5>
+                <h5 class="titulo-bloque conductor-i1">Conductor I₁</h5>
                 <label class="form-label">Corriente (A)</label>
 
                 <input
                     class="form-control"
                     type="number"
                     name="corriente1"
-                    value="1"
+                    value="{{ resultado.parametros.corriente1 }}"
                     step="0.1"
                     min="0.1"
                     max="20"
@@ -82,7 +58,10 @@
                             type="radio"
                             name="sentido1"
                             value="entrante"
-                            checked>
+                            {% if resultado.parametros.sentido1 == "entrante" %}
+                            checked
+                            {% endif %}
+                        >
                         <label class="form-check-label corriente-entrante">
                             ⊗ Entrante
                         </label>                      
@@ -93,7 +72,11 @@
                             class="form-check-input"
                             type="radio"
                             name="sentido1"
-                            value="saliente">
+                            value="saliente"
+                            {% if resultado.parametros.sentido1 == "saliente" %}
+                                checked
+                            {% endif %}    
+                        >
                         <label class="form-check-label corriente-saliente">
                             ⊙ Saliente
                         </label>
@@ -101,14 +84,10 @@
                 </div>
             </div>
 
-            <!-- ====================================== -->
-            <!-- Conductor I2 -->
-            <!-- ====================================== -->
 
+            <!-- Conductor I2 -->
             <div class="col-md-6 mb-4">
-                <h5 class="titulo-bloque conductor-i2">
-                    Conductor I₂
-                </h5>
+                <h5 class="titulo-bloque conductor-i2">Conductor I₂</h5>
                 <label class="form-label">
                     Corriente (A)
                 </label>
@@ -117,7 +96,7 @@
                     class="form-control"
                     type="number"
                     name="corriente2"
-                    value="1"
+                    value="{{ resultado.parametros.corriente2 }}"
                     step="0.1"
                     min="0.1"
                     max="20"
@@ -134,7 +113,10 @@
                             type="radio"
                             name="sentido2"
                             value="entrante"
-                            checked>
+                            {% if resultado.parametros.sentido2 == "entrante" %}
+                                checked
+                            {% endif %}   
+                        >
 
                         <label class="form-check-label corriente-entrante">
                             ⊗ Entrante
@@ -145,7 +127,11 @@
                             class="form-check-input"
                             type="radio"
                             name="sentido2"
-                            value="saliente">
+                            value="saliente"
+                            {% if resultado.parametros.sentido2 == "saliente" %}
+                                checked
+                            {% endif %}    
+                        >
                         <label class="form-check-label corriente-saliente">
                             ⊙ Saliente
                         </label>
@@ -164,7 +150,7 @@
                     class="form-control"
                     type="number"
                     name="px"
-                    value="1"
+                    value="{{ resultado.parametros.px }}"
                     step="0.1"
                     min="-5"
                     max="5"
@@ -180,7 +166,7 @@
                     class="form-control"
                     type="number"
                     name="py"
-                    value="1"
+                    value="{{ resultado.parametros.py }}"
                     step="0.1"
                     min="-5"
                     max="5"
@@ -209,15 +195,149 @@
 
 </div>
 
-<h2>Resultados</h2>
+<section class="mt-5">
+    <h2 class="mb-4">Resultados de la Simulación</h2>
+    <div class="card shadow-sm">
+        <div class="card-header fw-bold">Magnitudes calculadas</div>
+        <div class="card-body">
 
-<div class="card shadow-sm">
-    <div class="card-body">
-        <p class="text-muted">
-            Los resultados aparecerán aquí luego de ejecutar la simulación.
-        </p>
+            <!-- GEOMETRIA -->
+            <div class="metric-group">
+                <h4>Geometría</h4>
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <div class="card metric-card metric-geo">
+                            <div class="card-body">
+                                <div class="metric-title">r<sub>1</sub></div>
+
+                                <div class="metric-subtitle">Distancia entre I<sub>1</sub> y P</div>
+                                <div class="metric-value">{{ "%.3f"|format(resultado.geometria.r1) }} cm</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="card metric-card metric-geo">
+                            <div class="card-body">
+                                <div class="metric-title">r<sub>2</sub></div>
+                                <div class="metric-subtitle">Distancia entre I<sub>2</sub> y P</div>
+                                <div class="metric-value">{{ "%.3f"|format(resultado.geometria.r2) }} cm</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- B1 -->
+            <div class="metric-group">
+                <h4>Campo generado por I<sub>1</sub></h4>
+                <div class="row g-3">
+                    <div class="col-md-4">
+                        <div class="card metric-card metric-i1">
+                            <div class="card-body">
+                                <div class="metric-title">|B<sub>1</sub>|</div>
+                                <div class="metric-subtitle">Magnitud del campo</div>
+                                <div class="metric-value">{{ "%.3e"|format(resultado.b1.magnitud) }} T</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="card metric-card metric-i1">
+                            <div class="card-body">
+                                <div class="metric-title">Bx<sub>1</sub></div>
+                                <div class="metric-subtitle">Componente horizontal</div>
+                                <div class="metric-value">{{ "%.3e"|format(resultado.b1.bx) }} T</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-4">
+                        <div class="card metric-card metric-i1">
+                            <div class="card-body">
+                                <div class="metric-title">By<sub>1</sub></div>
+                                <div class="metric-subtitle">
+                                    Componente vertical </div>
+                                <div class="metric-value">
+                                    {{ "%.3e"|format(resultado.b1.by) }} T
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- B2 -->
+            <div class="metric-group">
+                <h4>Campo generado por I<sub>2</sub></h4>
+                <div class="row g-3">
+                    <div class="col-md-4">
+                        <div class="card metric-card metric-i2">
+                            <div class="card-body">
+                                <div class="metric-title">|B<sub>2</sub>|</div>
+                                <div class="metric-subtitle">Magnitud del campo</div>
+                                <div class="metric-value">{{ "%.3e"|format(resultado.b2.magnitud) }}</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="card metric-card metric-i2">
+                            <div class="card-body">
+                                <div class="metric-title">Bx<sub>2</sub></div>
+                                <div class="metric-subtitle">Componente horizontal</div>
+                                <div class="metric-value">
+                                    {{ "%.3e"|format(resultado.b2.bx) }} T
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="card metric-card metric-i2">
+                            <div class="card-body">
+                                <div class="metric-title">By<sub>2</sub></div>
+                                <div class="metric-subtitle">Componente vertical</div>
+                                <div class="metric-value">{{ "%.3e"|format(resultado.b2.by) }}  T</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CAMPO TOTAL -->
+            <div class="metric-group">
+                <h4>Campo Magnético Resultante</h4>
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <div class="card metric-card metric-total">
+                            <div class="card-body">
+                                <div class="metric-title">Bx</div>
+                                <div class="metric-subtitle">Componente horizontal</div>
+                                <div class="metric-value">{{ "%.3e"|format(resultado.campo_total.bx) }} T</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="card metric-card metric-total">
+                            <div class="card-body">
+                                <div class="metric-title">By</div>
+                                <div class="metric-subtitle">Componente vertical</div>
+                                <div class="metric-value">{{ "%.3e"|format(resultado.campo_total.by) }} T</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            
+            <!-- RESULTADO FINAL -->
+            <div class="metric-final">
+                <div class="metric-final-title">Campo Magnético Resultante</div>
+                <div class="metric-final-value">|B| = {{ "%.3e"|format(resultado.campo_total.magnitud) }} T</div>
+            </div>
+        </div>
     </div>
-</div>
-
-
+</section>
 {% endblock %}

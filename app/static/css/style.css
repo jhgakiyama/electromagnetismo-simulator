@@ -12,6 +12,16 @@
     --utn-gray-light: #FAFAFA;
     --utn-gray-text: #555555;
 
+    /* ==========================================================
+    Colores físicos del simulador
+    ========================================================== */
+
+    --color-i1:#d62728;
+
+    --color-i2:#1f77b4;
+
+    --color-resultante:#2ca02c;
+
     --border-radius: 12px;
 }
 
@@ -466,3 +476,125 @@ h5 {
 
 }
 
+/* ==========================================================
+   RD-06 - Metric Cards (Resultados del Laboratorio)
+   ========================================================== */
+
+.metric-card{
+    height:100%;
+    border:none;
+    border-top:4x solid;
+    border-radius:10px;
+    box-shadow:0 .125rem .25rem rgba(0,0,0,.075);
+    transition:all .20s ease;
+}
+
+.metric-card:hover{
+    transform:translateY(-2px);
+    box-shadow:0 .35rem .75rem rgba(0,0,0,.10);
+}
+
+.metric-card .card-body{
+    text-align:center;
+    padding:1.1rem;
+}
+
+.metric-title{
+    font-size:1rem;
+    font-weight:600;
+    color:#0b3d91;
+    margin-bottom:.20rem;
+}
+
+.metric-subtitle{
+    font-size:.72rem;
+    color:#6c757d;
+    min-height:18px;
+    margin-bottom:.65rem;
+    letter-spacing:.2px;
+}
+
+.metric-value{
+    font-size:1.75rem;
+    font-weight:700;
+    color:#0b3d91;
+    line-height:1.15;
+}
+
+.metric-unit{
+    margin-top:.35rem;
+    color:#6c757d;
+    font-size:.90rem;
+}
+
+.metric-group{
+    margin-bottom:2.5rem;
+}
+
+.metric-group h4{
+    margin-bottom:1rem;
+    font-weight:600;
+}
+
+.metric-formula{
+    font-size:.80rem;
+    color:#6c757d;
+    font-family:"Cambria Math", serif;
+    margin-bottom:.80rem;
+    min-height:22px;
+}
+/* Colores */
+
+.metric-geo{
+    border-top:5px solid #6c757d;
+}
+
+.metric-i1{
+    border-top:5px solid var(--color-i1);
+}
+
+.metric-i2{
+    border-top:5px solid var(--color-i2);
+}
+
+.metric-total{
+    border-top:5px solid var(--color-resultante);
+}
+
+/* Resultado Final */
+
+.metric-final{
+
+    background:#dff3e7;
+
+    border:1px solid #b7dec4;
+
+    border-radius:10px;
+
+    padding:30px;
+
+    text-align:center;
+
+}
+
+.metric-final-title{
+
+    font-size:1.15rem;
+
+    font-weight:600;
+
+    color:#1b5e20;
+
+    margin-bottom:15px;
+
+}
+
+.metric-final-value{
+
+    font-size:2.5rem;
+
+    font-weight:700;
+
+    color:#0b3d91;
+
+}
