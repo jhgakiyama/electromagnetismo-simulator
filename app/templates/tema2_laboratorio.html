@@ -200,38 +200,20 @@
     <div class="card shadow-sm">
         <div class="card-header fw-bold">Magnitudes calculadas</div>
         <div class="card-body">
-
-            <!-- GEOMETRIA -->
+            <!-- B1 -->
             <div class="metric-group">
-                <h4>Geometría</h4>
-                <div class="row g-3">
-                    <div class="col-md-6">
-                        <div class="card metric-card metric-geo">
+                <h4>Analisis del conductor I<sub>1</sub></h4>
+                <div class="row row-cols-1 row-cols-md-2 row-cols-xl-4 g-3">
+                    <div class="col">
+                        <div class="card metric-card metric-i1">
                             <div class="card-body">
                                 <div class="metric-title">r<sub>1</sub></div>
-
-                                <div class="metric-subtitle">Distancia entre I<sub>1</sub> y P</div>
+                                <div class="metric-subtitle">Distancia I<sub>1</sub> → P</div>
                                 <div class="metric-value">{{ "%.3f"|format(resultado.geometria.r1) }} cm</div>
                             </div>
                         </div>
                     </div>
-
-                    <div class="col-md-6">
-                        <div class="card metric-card metric-geo">
-                            <div class="card-body">
-                                <div class="metric-title">r<sub>2</sub></div>
-                                <div class="metric-subtitle">Distancia entre I<sub>2</sub> y P</div>
-                                <div class="metric-value">{{ "%.3f"|format(resultado.geometria.r2) }} cm</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- B1 -->
-            <div class="metric-group">
-                <h4>Campo generado por I<sub>1</sub></h4>
-                <div class="row g-3">
+                    
                     <div class="col-md-4">
                         <div class="card metric-card metric-i1">
                             <div class="card-body">
@@ -269,8 +251,18 @@
 
             <!-- B2 -->
             <div class="metric-group">
-                <h4>Campo generado por I<sub>2</sub></h4>
-                <div class="row g-3">
+                <h4>Analisis del conductor I<sub>2</sub></h4>
+                <div class="row row-cols-1 row-cols-md-2 row-cols-xl-4 g-3">
+                    <div class="col">
+                        <div class="card metric-card metric-i2">
+                            <div class="card-body">
+                                <div class="metric-title">r<sub>2</sub></div>
+                                <div class="metric-subtitle">Distancia I<sub>2</sub> → P</div>
+                                <div class="metric-value">{{ "%.3f"|format(resultado.geometria.r2) }} cm</div>
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="col-md-4">
                         <div class="card metric-card metric-i2">
                             <div class="card-body">
@@ -286,9 +278,7 @@
                             <div class="card-body">
                                 <div class="metric-title">Bx<sub>2</sub></div>
                                 <div class="metric-subtitle">Componente horizontal</div>
-                                <div class="metric-value">
-                                    {{ "%.3e"|format(resultado.b2.bx) }} T
-                                </div>
+                                <div class="metric-value">{{ "%.3e"|format(resultado.b2.bx) }} T</div>
                             </div>
                         </div>
                     </div>
