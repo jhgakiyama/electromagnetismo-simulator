@@ -28,14 +28,12 @@
 
 <form method="POST">
 <div class="card shadow-sm mb-4">
-    <div class="card-header fw-bold">
-        Parámetros del experimento
-    </div>
+    <div class="card-header fw-bold">Configuración del experimento</div>
 
     <div class="card-body">
         <div class="row">
             <!-- Conductor I1 -->
-            <div class="col-lg-4 mb-4">
+<div class="col-lg-4 mb-4">
 
         <div class="experiment-card experiment-i1">
         <div class="card-body">
@@ -80,100 +78,94 @@
     </div>
 
             <!-- Conductor I2 -->
-            <div class="col-md-6 mb-4">
-                <h5 class="titulo-bloque conductor-i2">Conductor I₂</h5>
-                <label class="form-label">
-                    Corriente (A)
-                </label>
+    <div class="col-lg-4 mb-4">
+        <div class="experiment-card experiment-i2">
+            <div class="card-body">
+                <div class="experiment-title">Conductor I<sub>2</sub></div>
 
-                <input
-                    class="form-control"
-                    type="number"
-                    name="corriente2"
-                    value="{{ resultado.parametros.corriente2 }}"
-                    step="0.1"
-                    min="0.1"
-                    max="20"
-                >
+                <div class="mb-4">
+                    <label class="experiment-label">Corriente (A)</label>
 
-                <div class="mt-3">
-                    <label class="form-label parametro-laboratorio">
-                        Sentido de circulación
-                    </label>
+                    <input
+                        class="form-control"
+                        type="number"
+                        step="0.1"
+                        name="corriente2"
+                        value="{{ resultado.parametros.corriente2 }}"
+                        required>
+                </div>
 
+                <div>
+                    <label class="experiment-label">Sentido de la corriente</label>
                     <div class="form-check">
                         <input
                             class="form-check-input"
                             type="radio"
                             name="sentido2"
                             value="entrante"
-                            {% if resultado.parametros.sentido2 == "entrante" %}
-                                checked
-                            {% endif %}   
-                        >
+                            {% if resultado.parametros.sentido2=="entrante" %}checked{% endif %}>
 
-                        <label class="form-check-label corriente-entrante">
-                            ⊗ Entrante
-                        </label>
+                        <label class="form-check-label">⊗ Entrante</label>
                     </div>
+
                     <div class="form-check">
                         <input
                             class="form-check-input"
                             type="radio"
                             name="sentido2"
                             value="saliente"
-                            {% if resultado.parametros.sentido2 == "saliente" %}
-                                checked
-                            {% endif %}    
-                        >
-                        <label class="form-check-label corriente-saliente">
-                            ⊙ Saliente
-                        </label>
+                            {% if resultado.parametros.sentido2=="saliente" %}checked{% endif %}>
+                        <label class="form-check-label">⊙ Saliente</label>
                     </div>
                 </div>
             </div>
         </div>
-        <hr>
-        <h5 class="titulo-bloque">Punto de observación</h5>
-        <div class="row">
-            <div class="col-md-6">
-                <label class="form-label">
-                    Px (cm)
-                </label>
-                <input
-                    class="form-control"
-                    type="number"
-                    name="px"
-                    value="{{ resultado.parametros.px }}"
-                    step="0.1"
-                    min="-5"
-                    max="5"
-                >
-
-            </div>
-            <div class="col-md-6">
-                <label class="form-label">
-                    Py (cm)
-                </label>
-
-                <input
-                    class="form-control"
-                    type="number"
-                    name="py"
-                    value="{{ resultado.parametros.py }}"
-                    step="0.1"
-                    min="-5"
-                    max="5"
-                >
-            </div>
-        </div>
-
-        <div class="text-center mt-4">
-            <button class="btn btn-primary btn-lg w-100">
-                🧲 Simular
-            </button>
-        </div>
     </div>
+
+
+    <div class="col-lg-4 mb-4">
+        <div class="experiment-card experiment-p">
+            <div class="card-body">
+                <div class="experiment-title">Punto P</div>
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label class="experiment-label">Coordenada X (cm)</label>
+                        <input
+                            class="form-control"
+                            type="number"
+                            step="0.1"
+                            name="px"
+                            value="{{ resultado.parametros.px }}"
+                            required
+                        >
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label class="experiment-label">Coordenada Y (cm)</label>
+
+                        <input
+                            class="form-control"
+                            type="number"
+                            step="0.1"
+                            name="py"
+                            value="{{ resultado.parametros.py }}"
+                            required
+                        >
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>        
+
+    <div class="d-grid mt-4">
+        <button type="submit" class="btn btn-primary btn-lg btn-simular">
+            🧲 Simular experimento
+        </button>
+    </div>     
+
+</div>
+       
+</div>
 </div>
 </form>
 
