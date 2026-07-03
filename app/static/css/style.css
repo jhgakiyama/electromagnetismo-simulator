@@ -598,3 +598,145 @@ h5 {
     color:#0b3d91;
 
 }
+
+/* ==========================================================
+   LABORATORIO VIRTUAL
+   CONFIGURACIÓN DEL EXPERIMENTO
+   ========================================================== */
+
+.experiment-card{
+
+    border:none;
+
+    border-radius:12px;
+
+    background:#ffffff;
+
+    box-shadow:0 .125rem .25rem rgba(0,0,0,.075);
+
+    transition:.20s;
+
+    overflow:hidden;
+
+    height:100%;
+}
+
+.experiment-card:hover{
+
+    transform:translateY(-2px);
+
+    box-shadow:0 .45rem .9rem rgba(0,0,0,.12);
+
+}
+
+/*----------------------------------------------------------
+ Colores
+----------------------------------------------------------*/
+
+.experiment-i1{
+
+    border-top:4px solid var(--color-i1);
+
+}
+
+.experiment-i2{
+
+    border-top:4px solid var(--color-i2);
+
+}
+
+.experiment-p{
+
+    border-top:4px solid var(--color-resultante);
+
+}
+
+/*----------------------------------------------------------
+ Títulos
+----------------------------------------------------------*/
+
+.experiment-title{
+
+    font-size:1.15rem;
+
+    font-weight:600;
+
+    margin-bottom:1.25rem;
+
+}
+
+.experiment-i1 .experiment-title{
+
+    color:var(--color-i1);
+
+}
+
+.experiment-i2 .experiment-title{
+
+    color:var(--color-i2);
+
+}
+
+.experiment-p .experiment-title{
+
+    color:var(--color-resultante);
+
+}
+
+/*----------------------------------------------------------
+ Etiquetas
+----------------------------------------------------------*/
+
+.experiment-label{
+
+    font-weight:600;
+
+    margin-bottom:.35rem;
+
+}
+
+/*----------------------------------------------------------
+ Inputs
+----------------------------------------------------------*/
+
+.experiment-card input[type="number"]{
+
+    text-align:center;
+
+    font-size:1.1rem;
+
+    font-weight:600;
+
+}
+
+.experiment-card .form-control{
+
+    border-radius:10px;
+
+}
+
+/*----------------------------------------------------------
+ Radios
+----------------------------------------------------------*/
+
+.experiment-card .form-check{
+
+    margin-bottom:.35rem;
+
+}
+
+/*----------------------------------------------------------
+ Botón
+----------------------------------------------------------*/
+
+.btn-simular{
+
+    margin-top:1.75rem;
+
+    font-size:1.15rem;
+
+    font-weight:600;
+
+    padding:.85rem;
+
+}
