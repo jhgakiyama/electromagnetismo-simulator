@@ -4,11 +4,6 @@ from app.physics.tema2 import (
     magnitud_campo
 )
 
-from app.plots.tema2_plot import visualizacion_resultado_final
-from app.plots.laboratorio_plot import visualizacion_resultado_laboratorio
-
-
-
 POSICION_I1 = (0.0, 0.0)
 POSICION_I2 = (2.0, 0.0)
 
@@ -120,8 +115,6 @@ def calcular_simulacion(corriente1,sentido1,corriente2,sentido2,px,py):
 
     btotal = magnitud_vector(bx,by)
     
-    fig = visualizacion_resultado_final()
-
     resultado = {}
     resultado["metadata"] = {"tema": 2,"laboratorio": 1,"version": "1.0"}
     
@@ -145,5 +138,4 @@ def calcular_simulacion(corriente1,sentido1,corriente2,sentido2,px,py):
     resultado["b2"] = {"magnitud": b2,"bx": bx2,"by": by2}
     resultado["campo_total"] = {"magnitud": btotal,"bx": bx,"by": by}
     
-    resultado["grafico"] = visualizacion_resultado_laboratorio(resultado)
     return resultado
