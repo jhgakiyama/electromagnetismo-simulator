@@ -2,14 +2,7 @@ SENTIDO_ENTRANTE = "entrante"
 SENTIDO_SALIENTE = "saliente"
 
 
-def dibujar_conductor(
-    fig,
-    x,
-    y,
-    sentido,
-    etiqueta,
-    color
-):
+def dibujar_conductor(fig,x,y,sentido,etiqueta,color):
     """
     Dibuja un conductor rectilíneo perpendicular al plano.
 
@@ -46,7 +39,7 @@ def dibujar_conductor(
         mode="text",
         text=[simbolo],
         textfont=dict(
-            size=26,
+            size=30,
             color=color
         ),
         showlegend=False,
@@ -56,6 +49,47 @@ def dibujar_conductor(
     # ------------------------------------------------------
     # Dibujar etiqueta
     # ------------------------------------------------------
+    fig.add_scatter(
+        x=[x],
+        y=[y + 0.18],
+        mode="text",
+        text=[etiqueta],
+        textfont=dict(
+            size=12,
+            color=color
+        ),
+        showlegend=False,
+        hoverinfo="skip"
+    )
+
+    def dibujar_punto(fig,x,y,etiqueta,color):
+        """ Dibuja un punto del experimento. 
+        """
+
+    # ------------------------------------------------------
+    # Dibujar marcador
+    # ------------------------------------------------------
+    fig.add_scatter(
+        x=[x],
+        y=[y],
+        mode="markers",
+        marker=dict(
+            size=9,
+            color=color,
+            line=dict(
+                color="black",
+                width=1
+            )
+        ),
+
+        showlegend=False,
+        hoverinfo="skip"
+    )
+
+    # ------------------------------------------------------
+    # Dibujar etiqueta
+    # ------------------------------------------------------
+
     fig.add_scatter(
         x=[x],
         y=[y + 0.18],
