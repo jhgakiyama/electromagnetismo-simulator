@@ -37,7 +37,7 @@ def tema2_laboratorio():
         px=px,
         py=py
     )
-    print(resultado["parametros"])
+    # print(resultado["parametros"])
     
     grafico = visualizacion_resultado_laboratorio(resultado)
 

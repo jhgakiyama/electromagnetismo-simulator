@@ -1,7 +1,7 @@
 from math import sqrt
 import plotly.graph_objects as go
 from app.plots.tema2_plot import normalizar_vector,dibujar_vector, dibujar_radio,visualizacion_ejercicio_2, escalar_vector
-from elementos import dibujar_conductor
+from app.plots.elementos import dibujar_conductor
 
 
 COLOR_I1 = "#d62728"
@@ -10,19 +10,29 @@ COLOR_RESULTANTE = "#2ca02c"
 
 
 def visualizacion_laboratorio_base():
+    """ Genera un grafico base. """
+
     fig = go.Figure()
     
     # Dibujo los ejes
     fig.update_xaxes(
-        range=[-1,3],
-        zeroline=False
+        title="X (cm)",
+        zeroline=True,
+        showgrid=True
     )
 
     fig.update_yaxes(
-        range=[-1,2],
+        title="Y (cm)",
         scaleanchor="x",
-        scaleratio=1
+        scaleratio=1,
+        zeroline=True,
+        showgrid=True
     )
+
+    # Marco el eje X & Y
+    fig.add_hline(y=0,line_color="black",line_width=2)
+    fig.add_vline(x=0,line_color="black",line_width=2)
+
     return fig
 
 def visualizacion_resultado_laboratorio(resultado):
@@ -124,7 +134,6 @@ def visualizacion_resultado_laboratorio(resultado):
     # ==========================================================
 
     dibujar_conductor(fig=fig,x=x1,y=y1,sentido=sentido1,etiqueta="I₁",color=COLOR_I1)
-
     dibujar_conductor(fig=fig,x=x2,y=y2,sentido=sentido2,etiqueta="I₂",color=COLOR_I2)
 
     # ==========================================================
@@ -132,7 +141,6 @@ def visualizacion_resultado_laboratorio(resultado):
     # ==========================================================
 
     dibujar_vector(fig=fig,origen_x=px,origen_y=py,vx=bx1_g,vy=by1_g,etiqueta="B1",color=COLOR_I1)
-
     dibujar_vector(fig=fig,origen_x=px,origen_y=py,vx=bx2_g,vy=by2_g,etiqueta="B2",color=COLOR_I2)
 
     dibujar_vector(fig=fig,origen_x=px,origen_y=py,vx=bx_g,vy=by_g,etiqueta="B",color=COLOR_RESULTANTE)
@@ -141,8 +149,22 @@ def visualizacion_resultado_laboratorio(resultado):
     # ETAPA 6 - Layout
     # ==========================================================
 
-    fig.update_layout(title="Laboratorio Virtual - Campo Magnético Resultante",showlegend=False)
+    fig.update_layout(
+        title="Laboratorio Virtual - Campo Magnético Resultante",
+        template="plotly",
+        showlegend=False)
+    
 
+    # Calculos valores minimos y maximos para los ejes
+
+    x_min = min(x1, x2, px) - 1
+    x_max = max(x1, x2, px) + 1
+
+    y_min = min(y1, y2, py) - 1
+    y_max = max(y1, y2, py) + 1
+
+    fig.update_xaxes(range=[x_min, x_max])
+    fig.update_yaxes(range=[y_min, y_max])
     # ==========================================================
     # ETAPA 7 - Resultado
     # ==========================================================
