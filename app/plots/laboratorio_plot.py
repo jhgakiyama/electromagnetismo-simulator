@@ -1,12 +1,29 @@
 from math import sqrt
 import plotly.graph_objects as go
 from app.plots.tema2_plot import normalizar_vector,dibujar_vector, dibujar_radio,visualizacion_ejercicio_2, escalar_vector
+from elementos import dibujar_conductor
 
 
 COLOR_I1 = "#d62728"
 COLOR_I2 = "#1f77b4"
 COLOR_RESULTANTE = "#2ca02c"
 
+
+def visualizacion_laboratorio_base():
+    fig = go.Figure()
+    
+    # Dibujo los ejes
+    fig.update_xaxes(
+        range=[-1,3],
+        zeroline=False
+    )
+
+    fig.update_yaxes(
+        range=[-1,2],
+        scaleanchor="x",
+        scaleratio=1
+    )
+    return fig
 
 def visualizacion_resultado_laboratorio(resultado):
     """
@@ -76,7 +93,6 @@ def visualizacion_resultado_laboratorio(resultado):
     by = campo["by"]
     btotal = campo["magnitud"]
 
-
     # ==========================================================
     # ETAPA 2 - Preparar vectores para dibujar
     # ==========================================================
@@ -94,8 +110,7 @@ def visualizacion_resultado_laboratorio(resultado):
     # ETAPA 3 - Crear figura base
     # ==========================================================
 
-    fig = visualizacion_ejercicio_2()
-
+    fig = visualizacion_laboratorio_base()
 
     # ==========================================================
     # ETAPA 4 - Dibujar geometría
@@ -103,6 +118,14 @@ def visualizacion_resultado_laboratorio(resultado):
 
     dibujar_radio(fig=fig,origen_x=x1,origen_y=y1,destino_x=px,destino_y=py,etiqueta="r1",color=COLOR_I1)
     dibujar_radio(fig=fig,origen_x=x2,origen_y=y2,destino_x=px,destino_y=py,etiqueta="r2",color=COLOR_I2)
+
+    # ==========================================================
+    # ETAPA 4.1 - Dibujar conductores
+    # ==========================================================
+
+    dibujar_conductor(fig=fig,x=x1,y=y1,sentido=sentido1,etiqueta="I₁",color=COLOR_I1)
+
+    dibujar_conductor(fig=fig,x=x2,y=y2,sentido=sentido2,etiqueta="I₂",color=COLOR_I2)
 
     # ==========================================================
     # ETAPA 5 - Dibujar campos magnéticos
