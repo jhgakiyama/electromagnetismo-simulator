@@ -62,13 +62,10 @@ def dibujar_conductor(fig,x,y,sentido,etiqueta,color):
         hoverinfo="skip"
     )
 
-    def dibujar_punto(fig,x,y,etiqueta,color):
-        """ Dibuja un punto del experimento. 
-        """
+def dibujar_punto(fig,x,y,etiqueta,color):
+    """ Dibuja un punto del experimento."""
 
-    # ------------------------------------------------------
     # Dibujar marcador
-    # ------------------------------------------------------
     fig.add_scatter(
         x=[x],
         y=[y],
@@ -81,15 +78,11 @@ def dibujar_conductor(fig,x,y,sentido,etiqueta,color):
                 width=1
             )
         ),
-
         showlegend=False,
         hoverinfo="skip"
     )
 
-    # ------------------------------------------------------
     # Dibujar etiqueta
-    # ------------------------------------------------------
-
     fig.add_scatter(
         x=[x],
         y=[y + 0.18],

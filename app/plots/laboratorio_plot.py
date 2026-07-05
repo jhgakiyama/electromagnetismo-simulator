@@ -1,11 +1,12 @@
 from math import sqrt
 import plotly.graph_objects as go
 from app.plots.tema2_plot import normalizar_vector,dibujar_vector, dibujar_radio,visualizacion_ejercicio_2, escalar_vector
-from app.plots.elementos import dibujar_conductor
+from app.plots.elementos import dibujar_conductor, dibujar_punto
 
 
 COLOR_I1 = "#d62728"
 COLOR_I2 = "#1f77b4"
+COLOR_P = "#444444"
 COLOR_RESULTANTE = "#2ca02c"
 
 
@@ -17,7 +18,6 @@ def visualizacion_laboratorio_base():
     # Dibujo los ejes
     fig.update_xaxes(
         title="X (cm)",
-        zeroline=True,
         showgrid=True
     )
 
@@ -25,7 +25,6 @@ def visualizacion_laboratorio_base():
         title="Y (cm)",
         scaleanchor="x",
         scaleratio=1,
-        zeroline=True,
         showgrid=True
     )
 
@@ -144,6 +143,12 @@ def visualizacion_resultado_laboratorio(resultado):
     dibujar_vector(fig=fig,origen_x=px,origen_y=py,vx=bx2_g,vy=by2_g,etiqueta="B2",color=COLOR_I2)
 
     dibujar_vector(fig=fig,origen_x=px,origen_y=py,vx=bx_g,vy=by_g,etiqueta="B",color=COLOR_RESULTANTE)
+
+    # ==========================================================
+    # ETAPA 5.1 - Dibujar punto de observacion
+    # ==========================================================
+
+    dibujar_punto(fig,px,py,"P",COLOR_P)
 
     # ==========================================================
     # ETAPA 6 - Layout
