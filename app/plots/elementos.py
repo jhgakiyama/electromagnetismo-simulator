@@ -1,3 +1,5 @@
+SENTIDO_ENTRANTE = "entrante"
+SENTIDO_SALIENTE = "saliente"
 
 
 def dibujar_conductor(
@@ -29,7 +31,7 @@ def dibujar_conductor(
         Color del conductor.
     """
 
-    if sentido == "entrante":
+    if sentido == SENTIDO_ENTRANTE:
         simbolo = "⊗"
     else:
         simbolo = "⊙"
