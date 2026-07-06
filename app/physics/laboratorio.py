@@ -3,7 +3,7 @@ from app.physics.tema2 import (
     magnitud_vector,
     magnitud_campo
 )
-from app.physics.validaciones import validar_geometria_experimento, validar_corrientes
+from app.physics.validaciones import validar_geometria_experimento, validar_corrientes, validar_limites_laboratorio
 
 
 POSICION_I1 = (0.0, 0.0)
@@ -86,6 +86,11 @@ def calcular_simulacion(corriente1,sentido1,corriente2,sentido2,px,py):
     # ==========================================================
 
     validar_corrientes(corriente1,corriente2)
+    validar_limites_laboratorio(px,py)
+    
+    # ==========================================================
+    # Geometría
+    # ==========================================================
     
     x1, y1 = POSICION_I1
     x2, y2 = POSICION_I2
