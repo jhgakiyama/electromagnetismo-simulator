@@ -25,3 +25,24 @@ def validar_geometria_experimento(r1, r2):
             "El punto de observación coincide con el conductor I2."
             "En esa posición el modelo del conductor rectilíneo infinito presenta una singularidad (r = 0), por lo que no es posible calcular el campo magnético."
         )
+    
+
+def validar_corrientes(corriente1,corriente2):
+    """
+    Valida que las corrientes del experimento sean físicamente válidas.
+
+    Lanza
+    ------
+    ValueError
+        Si alguna corriente es menor o igual a cero.
+    """
+
+    if corriente1 <= 0:
+        raise ValueError(
+            "La corriente del conductor I₁ debe ser mayor que cero."
+        )
+
+    if corriente2 <= 0:
+        raise ValueError(
+            "La corriente del conductor I₂ debe ser mayor que cero."
+        )
