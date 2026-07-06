@@ -54,7 +54,7 @@ def ejercicio():
         )
     )
 
-@bp.route("/tema2/resolucion/p1")
+@bp.route("/tema2")
 def resolucion_p1():
     # Todos los calculos son para P1
     

@@ -12,7 +12,7 @@ conductor_bp = Blueprint(
     __name__
 )
 
-@conductor_bp.route("/conductor",methods=["GET", "POST"])
+@conductor_bp.route("/tema1",methods=["GET", "POST"])
 def conductor():
     corriente = None 
     distancia = None
