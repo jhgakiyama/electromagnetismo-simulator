@@ -49,8 +49,8 @@ Simulador de Electromagnetismo
 
             <li class="nav-item">
                 <a
-                    class="nav-link {% if request.path == '/' %}active{% endif %}"
-                    href="/"
+                    class="nav-link {% if request.endpoint == '/' %}active{% endif %}"
+                    href="{{ url_for('home.home') }}"
                 >
                     Inicio
                 </a>
@@ -58,8 +58,8 @@ Simulador de Electromagnetismo
 
             <li class="nav-item">
                 <a
-                    class="nav-link {% if request.path == '/tema1' %}active{% endif %}"
-                    href="/tema1"
+                    class="nav-link {% if request.endpoint == '/tema1' %}active{% endif %}"
+                    href="{{ url_for('conductor.conductor') }}"
                 >
                     Conductor
                 </a>
@@ -67,8 +67,8 @@ Simulador de Electromagnetismo
 
            <li class="nav-item">
                 <a
-                    class="nav-link {% if request.path == '/tema2' %}active{% endif %}"
-                    href="/tema2"
+                    class="nav-link {% if request.endpoint == '/tema2' %}active{% endif %}"
+                    href="{{ url_for('tema2.tema2') }}"
                 >
                     Paralelos
                 </a>
@@ -76,7 +76,7 @@ Simulador de Electromagnetismo
 
             <li class="nav-item">
                 <a
-                    class="nav-link {% if request.path == '/tema3' %}active{% endif %}"
+                    class="nav-link {% if request.endpoint == '/tema3' %}active{% endif %}"
                     href="/tema3"
                 >
                     Bobina

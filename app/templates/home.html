@@ -68,7 +68,7 @@ Inicio - Simulador de Electromagnetismo
         </div>
 
         <div class="card-footer bg-white border-0">
-            <a href="/tema1" class="btn btn-primary w-100" >
+            <a href="{{ url_for('conductor.conductor') }}" class="btn btn-primary w-100" >
                 Ingresar al Tema
             </a>
         </div>
@@ -103,11 +103,12 @@ Inicio - Simulador de Electromagnetismo
             </ul>
         </div>
 
-        <div class="card-footer bg-white border-0">
-            <a href="/tema2" class="btn btn-primary w-100" >
-                Ingresar al Tema
+         <div class="card-footer bg-white border-0">
+            <a href="{{ url_for('tema2.tema2') }}" class="btn btn-primary w-100">
+                Ingresar al Tema 2
             </a>
         </div>
+
     </div>
 </div>
 

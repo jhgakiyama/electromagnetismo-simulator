@@ -55,7 +55,7 @@ def ejercicio():
     )
 
 @bp.route("/tema2")
-def resolucion_p1():
+def tema2():
     # Todos los calculos son para P1
     
     # Valores del ejericio
