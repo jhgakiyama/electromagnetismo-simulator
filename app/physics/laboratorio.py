@@ -3,6 +3,8 @@ from app.physics.tema2 import (
     magnitud_vector,
     magnitud_campo
 )
+from app.physics.validaciones import validar_geometria_experimento
+
 
 POSICION_I1 = (0.0, 0.0)
 POSICION_I2 = (2.0, 0.0)
@@ -94,14 +96,18 @@ def calcular_simulacion(corriente1,sentido1,corriente2,sentido2,px,py):
     # ==========================================================
 
     dx1, dy1, r1 = calcular_radio(POSICION_I1,p)
+    dx2, dy2, r2 = calcular_radio(POSICION_I2,p)
+
+    # Ahora valido los radios
+    validar_geometria_experimento(r1=r1,r2=r2)
+
     b1 = magnitud_campo(abs(i1),r1)
     bx1, by1 = componentes_campo_vectorial(i1,r1,dx1,dy1)
 
     # ==========================================================
     # Campo generado por I2
     # ==========================================================
-
-    dx2, dy2, r2 = calcular_radio(POSICION_I2,p)
+    
     b2 = magnitud_campo(abs(i2),r2)
     bx2, by2 = componentes_campo_vectorial(i2,r2,dx2,dy2)
 
