@@ -49,7 +49,7 @@
                         type="number"
                         step="0.1"
                         name="corriente1"
-                        value="{{ resultado.parametros.corriente1 }}"
+                        value="{{ corriente1 }}"
                         required>
                 </div>
 
@@ -61,7 +61,7 @@
                             type="radio"
                             name="sentido1"
                             value="entrante"
-                            {% if resultado.parametros.sentido1=="entrante" %}checked{% endif %}>
+                            {% if sentido1=="entrante" %}checked{% endif %}>
                         <label class="form-check-label">⊗ Entrante</label>
                     </div>
 
@@ -71,7 +71,7 @@
                             type="radio"
                             name="sentido1"
                             value="saliente"
-                            {% if resultado.parametros.sentido1=="saliente" %}checked{% endif %}>
+                            {% if sentido1=="saliente" %}checked{% endif %}>
 
                         <label class="form-check-label">⊙ Saliente</label>
                     </div>
@@ -94,7 +94,7 @@
                         type="number"
                         step="0.1"
                         name="corriente2"
-                        value="{{ resultado.parametros.corriente2 }}"
+                        value="{{ corriente2 }}"
                         required>
                 </div>
 
@@ -106,7 +106,7 @@
                             type="radio"
                             name="sentido2"
                             value="entrante"
-                            {% if resultado.parametros.sentido2=="entrante" %}checked{% endif %}>
+                            {% if sentido2=="entrante" %}checked{% endif %}>
 
                         <label class="form-check-label">⊗ Entrante</label>
                     </div>
@@ -117,7 +117,7 @@
                             type="radio"
                             name="sentido2"
                             value="saliente"
-                            {% if resultado.parametros.sentido2=="saliente" %}checked{% endif %}>
+                            {% if sentido2=="saliente" %}checked{% endif %}>
                         <label class="form-check-label">⊙ Saliente</label>
                     </div>
                 </div>
@@ -138,7 +138,7 @@
                             type="number"
                             step="0.1"
                             name="px"
-                            value="{{ resultado.parametros.px }}"
+                            value="{{ px }}"
                             required
                         >
                     </div>
@@ -151,7 +151,7 @@
                             type="number"
                             step="0.1"
                             name="py"
-                            value="{{ resultado.parametros.py }}"
+                            value="{{ py }}"
                             required
                         >
                     </div>
@@ -166,20 +166,29 @@
         </button>
     </div>     
 
+    {% if mensaje_error %}
+        <div class="alert alert-danger mt-3">
+            <strong>Error físico:</strong>{{ mensaje_error }}
+        </div>
+    {% endif %}
+
 </div>
        
 </div>
 </div>
 </form>
 
+{% if grafico %}
 <h2>Representación gráfica</h2>
 
 <div class="card shadow-sm mb-4">
-    <div class="card-body text-center"  id="grafico-experimento">
-        {{ grafico|safe }}
+    <div class="card-body text-center" id="grafico-experimento">
+            {{ grafico|safe }}        
     </div>
 </div>
+{% endif %}
 
+{% if resultado %}
 <section class="mt-5">
     <h2 class="mb-4">Resultados de la Simulación</h2>
     <div class="card shadow-sm">
@@ -315,4 +324,5 @@
         </div>
     </div>
 </section>
+{% endif %}
 {% endblock %}
