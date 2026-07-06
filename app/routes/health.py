@@ -5,10 +5,8 @@ health_bp = Blueprint(
     __name__
 )
 
-
 @health_bp.route("/healthz")
-def health():
-
+def health_check():
     return jsonify(
         {
             "status": "ok",
