@@ -26,14 +26,17 @@
     </div>
 </div>
 
-<form method="POST">
-<div class="card shadow-sm mb-4">
+<form
+    method="POST"
+    action="{{ url_for('tema2_laboratorio.tema2_laboratorio') }}#grafico-experimento">
+    <!-- Blueprint.Funcion -->
+    <div class="card shadow-sm mb-4">
     <div class="card-header fw-bold">Configuración del experimento</div>
 
     <div class="card-body">
         <div class="row">
             <!-- Conductor I1 -->
-<div class="col-lg-4 mb-4">
+        <div class="col-lg-4 mb-4">
 
         <div class="experiment-card experiment-i1">
         <div class="card-body">
@@ -172,13 +175,9 @@
 <h2>Representación gráfica</h2>
 
 <div class="card shadow-sm mb-4">
-
-    <div class="card-body text-center">
-
+    <div class="card-body text-center"  id="grafico-experimento">
         {{ grafico|safe }}
-
     </div>
-
 </div>
 
 <section class="mt-5">
