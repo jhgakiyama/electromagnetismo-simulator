@@ -13,7 +13,9 @@ bp = Blueprint(
 @bp.route("/tema2/laboratorio", methods=["GET", "POST"])
 def tema2_laboratorio():
     template = "tema2_laboratorio.html"
-    
+    mensaje_error = None
+    grafico = None
+
     if request.method == "POST":
         corriente1 = float(request.form["corriente1"])
         corriente2 = float(request.form["corriente2"])
@@ -28,18 +30,22 @@ def tema2_laboratorio():
         sentido2="entrante"
         px=1.0
         py=1.0
-    
-    resultado = calcular_simulacion(
-        corriente1=corriente1,
-        sentido1=sentido1,
-        corriente2=corriente2,
-        sentido2=sentido2,
-        px=px,
-        py=py
-    )
+    try:
+        resultado = calcular_simulacion(
+            corriente1=corriente1,
+            sentido1=sentido1,
+            corriente2=corriente2,
+            sentido2=sentido2,
+            px=px,
+            py=py
+        )
+    except ValueError as e:
+        resultado = None
+        mensaje_error = str(e) 
     # print(resultado["parametros"])
     
-    grafico = visualizacion_resultado_laboratorio(resultado)
+    if resultado is not None:
+        grafico = visualizacion_resultado_laboratorio(resultado)
 
     return render_template(
         template,
@@ -47,5 +53,6 @@ def tema2_laboratorio():
         grafico=grafico.to_html(
             full_html=False,
             include_plotlyjs="cdn"
-        )
+        ),
+        mensaje_error=mensaje_error
     )
