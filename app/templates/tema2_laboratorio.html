@@ -28,7 +28,7 @@
 
 <form
     method="POST"
-    action="{{ url_for('tema2_laboratorio.tema2_laboratorio') }}#grafico-experimento">
+    action="{{ url_for('tema2_laboratorio.tema2_laboratorio') }}#panel-simulacion">
     <!-- Blueprint.Funcion -->
     <div class="card shadow-sm mb-4">
     <div class="card-header fw-bold">Configuración del experimento</div>
@@ -169,7 +169,13 @@
             🧲 Simular experimento
         </button>
     </div>     
+    
+</div>   
+</div>
+</div>
+</form>
 
+<div id="panel-simulacion">
     {% if mensaje_error %}
     <div class="d-grid mt-4">
         <div class="alert alert-danger mt-4">
@@ -178,21 +184,15 @@
     </div>    
     {% endif %}
 
-</div>
-       
-</div>
-</div>
-</form>
+    {% if grafico %}
+    <h2>Representación gráfica</h2>
 
-{% if grafico %}
-<h2>Representación gráfica</h2>
-
-<div class="card shadow-sm mb-4">
-    <div class="card-body text-center" id="grafico-experimento">
-            {{ grafico|safe }}        
+    <div class="card shadow-sm mb-4">
+        <div class="card-body text-center" id="grafico-experimento">
+                {{ grafico|safe }}        
+        </div>
     </div>
-</div>
-{% endif %}
+    {% endif %}
 
 {% if resultado %}
 <section class="mt-5">
@@ -330,5 +330,6 @@
         </div>
     </div>
 </section>
-{% endif %}
+{% endif %} 
+</div>
 {% endblock %}
