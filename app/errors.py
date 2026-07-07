@@ -1,7 +1,7 @@
 from flask import render_template
 
 
-def register_error_handlers(app):
+def register_errors(app):
 
     @app.errorhandler(404)
     def pagina_no_encontrada(error):

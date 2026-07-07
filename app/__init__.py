@@ -5,7 +5,7 @@ from app.routes.home import home_bp
 from app.routes.tema2 import bp as tema2_bp
 from app.routes.laboratorio_tema2 import bp as labo_tema2
 from app.routes.health import health_bp
-from app.errors import register_error_handlers
+from app.errors import register_errors
 
 
 def create_app():
@@ -18,6 +18,6 @@ def create_app():
     app.register_blueprint(labo_tema2)
     app.register_blueprint(health_bp)
 
-    register_error_handlers(app)
+    register_errors(app)
     
     return app
