@@ -143,13 +143,14 @@ Visualizando simultáneamente:
 
 ### Tema 2 - Campo Magnético Total de Dos Conductores Paralelos
 
-* [ ] Pendiente
+* [✔️] Implementado
 
 Incluye:
 
 * Superposición de campos magnéticos
 * Regla de la mano derecha
 * Suma vectorial
+* Laboratorio
 
 ### Tema 3 - Campo Magnético de una Bobina Circular
 
