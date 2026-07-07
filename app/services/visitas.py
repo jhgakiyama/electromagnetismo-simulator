@@ -36,6 +36,6 @@ def contar_visitas() -> int:
 
             cur.execute(SQL_CONTAR_VISITAS)
 
-            cantidad = cur.fetchone()[0]
+            fila = cur.fetchone()
 
-            return cantidad
+            return fila[0]
