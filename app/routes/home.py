@@ -1,6 +1,6 @@
 from flask import Blueprint
 from flask import render_template
-from app.services.visitas import registrar_visita,contar_visitas
+from app.services.visitas import registrar_visita
 
 
 home_bp = Blueprint(
@@ -11,11 +11,6 @@ home_bp = Blueprint(
 @home_bp.route("/")
 def home():
     registrar_visita()
-
-    cantidad = contar_visitas()
     
-    return render_template(
-        "home.html",
-        visitas=cantidad
-    )
+    return render_template("home.html")
 
