@@ -137,15 +137,14 @@ function generarGraficoGeometrico() {
    const layout = {
         scene: {
             aspectmode: "cube",
-            xaxis: { title: "X",range: [-3,3]},
-            yaxis: { title: "Y", range: [-3,3]},
-            zaxis: { title: "Z", range: [-3,3] },
+            xaxis: { title: "X",range: [-3,3], nticks:7},
+            yaxis: { title: "Y", range: [-3,3], nticks:7},
+            zaxis: { title: "Z", range: [-3,3], nticks:7},
+            
             camera: {
-                eye: {
-                    x: 2,
-                    y: 2,
-                    z: 2
-                }
+                eye: { x: 1.35, y: 1.35, z: 1.10 },
+                center: { x: 0, y: 0, z: 0},
+                up: { x: 0, y: 0, z: 1}
             }
         }
     };
@@ -270,7 +269,7 @@ function generarGraficoGeometrico() {
     B.y /= modulo;
     B.z /= modulo;
 
-    const longitud = 1.2;
+    const longitud = 1.6;
 
     const lineaB = {
         type: "scatter3d",
