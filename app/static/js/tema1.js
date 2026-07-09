@@ -57,7 +57,10 @@ function actualizarExploracion() {
     generarGraficoExploracion(I,r);
 }
 
-// Funcion para graficar
+// ==========================================
+// Gráfico 1
+// Campo Magnético vs Distancia
+// ==========================================
 function generarGraficoExploracion(corriente,distanciaActual) {
 
     const distancias = [];
@@ -124,4 +127,67 @@ sliderDistancia.addEventListener(
 );
 
 
+// ==========================================
+// Gráfico 2
+// Geometría del Campo Magnético
+// ==========================================
+
+function generarGraficoGeometrico() {
+
+   const layout = {
+        title: "Representación tridimensional",
+        scene: {
+            aspectmode: "cube",
+            xaxis: { title: "X",range: [-3,3]},
+            yaxis: { title: "Y", range: [-3,3]},
+            zaxis: { title: "Z", range: [-3,3] },
+            camera: {
+                eye: { x: 1.7,y: 1.5,z: 1.3}
+            }
+        }
+    };
+
+    const conductor = {
+        type: "scatter3d",
+        mode: "lines",
+        name: "Conductor",
+
+        x: [0, 0],
+        y: [0, 0],
+        z: [-3, 3],
+
+        line: { color: "red", width: 8 }
+    };
+
+    const punto = {
+        type: "scatter3d",
+        mode: "markers+text",
+        name: "P",
+
+        x: [2],
+        y: [0],
+        z: [2],
+
+        marker: { color: "blue", size: 6 },
+        text: ["P"],
+        textposition: "top center"
+    };
+
+    const data = [ conductor, punto];
+
+    Plotly.newPlot(
+        "grafico-geometria",
+        data,
+        layout,
+        {
+            displaylogo: false,
+            responsive: true
+        }
+    );
+
+}
+
+
 actualizarExploracion();
+
+generarGraficoGeometrico();
