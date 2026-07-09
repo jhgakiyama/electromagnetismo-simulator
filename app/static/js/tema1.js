@@ -135,14 +135,17 @@ sliderDistancia.addEventListener(
 function generarGraficoGeometrico() {
 
    const layout = {
-        title: "Representación tridimensional",
         scene: {
             aspectmode: "cube",
             xaxis: { title: "X",range: [-3,3]},
             yaxis: { title: "Y", range: [-3,3]},
             zaxis: { title: "Z", range: [-3,3] },
             camera: {
-                eye: { x: 1.7,y: 1.5,z: 1.3}
+                eye: {
+                    x: 2,
+                    y: 2,
+                    z: 2
+                }
             }
         }
     };
@@ -165,15 +168,160 @@ function generarGraficoGeometrico() {
         name: "P",
 
         x: [2],
-        y: [0],
-        z: [2],
+        y: [1],
+        z: [1],
 
         marker: { color: "blue", size: 6 },
         text: ["P"],
         textposition: "top center"
     };
 
-    const data = [ conductor, punto];
+    const distancia = {
+        type: "scatter3d",
+        mode: "lines+text",
+        name: "r",
+
+        x: [0, 2],
+        y: [0, 1],
+        z: [1, 1],
+
+        line: {
+            color: "#6c757d",
+            width: 4,
+            dash: "dash"
+        },
+
+        text: ["", "r"],
+        textposition: "middle center"
+    };
+
+    const corriente = {
+        type: "scatter3d",
+        mode: "lines+text",
+        name: "Corriente",
+
+        x: [0, 0],
+        y: [0, 0],
+        z: [2.0, 2.8],
+
+        line: {
+            color: "orange",
+            width: 6
+        },
+
+        text: ["", "I"],
+        textposition: "top center"
+    };
+
+    const flechaCorriente = {
+        type: "cone",
+
+        x: [0],
+        y: [0],
+        z: [2.8],
+
+        u: [0],
+        v: [0],
+        w: [1],
+
+        sizemode: "absolute",
+        sizeref: 0.35,
+
+        colorscale: [
+            [0, "orange"],
+            [1, "orange"]
+        ],
+
+        showscale: false,
+        name: "I"
+    };
+
+    const plano = {
+        type: "mesh3d",
+
+        x: [-3, -3, 3, 3],
+        y: [-1.5, -1.5, 1.5, 1.5],
+        z: [-3, 3, 3, -3],
+
+        i: [0, 0],
+        j: [1, 2],
+        k: [2, 3],
+
+        opacity: 0.08,
+        color: "#4A90E2",
+
+        hoverinfo: "skip",
+        showscale: false,
+        name: 'Plano',
+        showlegend: true
+    };
+
+    const r = {x: 2,y: 1,z: 0};
+    const I = {x: 0,y: 0,z: 1};
+    const B = {
+        x: I.y * r.z - I.z * r.y,
+        y: I.z * r.x - I.x * r.z,
+        z: I.x * r.y - I.y * r.x
+    };
+
+    const modulo = Math.sqrt(B.x**2 + B.y**2 + B.z**2);
+
+    B.x /= modulo;
+    B.y /= modulo;
+    B.z /= modulo;
+
+    const longitud = 1.2;
+
+    const lineaB = {
+        type: "scatter3d",
+        mode: "lines",
+        name: "Campo B",
+
+        x: [2, 2 + B.x * longitud],
+        y: [1, 1 + B.y * longitud],
+        z: [1, 1 + B.z * longitud],
+
+        line: {
+            color: "green",
+            width: 8
+        }
+    };
+
+    const vectorB = {
+        type: "cone",
+
+        x: [2 + B.x * longitud],
+        y: [1 + B.y * longitud],
+        z: [1 + B.z * longitud],
+
+        u: [B.x],
+        v: [B.y],
+        w: [B.z],
+
+        sizemode: "absolute",
+        sizeref: 0.28,
+
+        anchor: "tip",
+
+        colorscale: [
+            [0, "green"],
+            [1, "green"]
+        ],
+
+        showscale: false,
+        name: "Campo B"
+    };
+
+    const data = [
+        plano,
+        conductor,
+        corriente,
+        flechaCorriente,
+        distancia,
+        punto,
+        lineaB,
+        vectorB
+    ];
 
     Plotly.newPlot(
         "grafico-geometria",
