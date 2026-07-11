@@ -7,6 +7,7 @@ from app.routes.laboratorio_tema2 import bp as labo_tema2
 from app.routes.health import health_bp
 from app.errors import register_errors
 from app.context_processors import registrar_context_processors
+from app.routes.tema3 import bp as tema3_bp
 
 
 def create_app():
@@ -21,4 +22,6 @@ def create_app():
 
     register_errors(app)
     registrar_context_processors(app)
+
+    app.register_blueprint(tema3_bp)
     return app
