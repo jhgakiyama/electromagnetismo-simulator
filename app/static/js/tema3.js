@@ -54,7 +54,7 @@ function generarEspira() {
 /**
  * Crea una flecha formada por un segmento y un cone.
  */
-function crearTraceFlecha(x0, y0, z0, dx, dy, dz, color) {
+function crearTraceFlecha(x0, y0, z0, dx, dy, dz, color, nombre = null,mostrarLeyenda = false) {
 
     const linea = {
         type: "scatter3d",
@@ -64,7 +64,8 @@ function crearTraceFlecha(x0, y0, z0, dx, dy, dz, color) {
         z: [z0, z0 + dz],
 
         line: { width: 5,color: color},
-        showlegend: false
+        name: nombre,
+        showlegend: mostrarLeyenda
     };
 
     const punta = {
@@ -178,7 +179,8 @@ function crearTracesCorriente() {
         (3 * Math.PI) / 2
     ];
 
-    for (const angulo of angulos) {
+    for (let i = 0; i < angulos.length; i++) {
+        const angulo = angulos[i];
         const x = RADIO_ESPIRA * Math.cos(angulo);
         const y = RADIO_ESPIRA * Math.sin(angulo);
         const tx = -Math.sin(angulo);
@@ -192,7 +194,9 @@ function crearTracesCorriente() {
                 longitud * tx,
                 longitud * ty,
                 0,
-                COLORES.corriente
+                COLORES.corriente,
+                "Corriente",
+                i === 0
             )
         );
     }
@@ -204,7 +208,7 @@ function crearTracesCorriente() {
  * Trace del campo B
  */
 function crearTraceCampo() {
-    return crearTraceFlecha(0,0,0,0,0,ALTURA_CAMPO,COLORES.campo);
+    return crearTraceFlecha(0,0,0,0,0,ALTURA_CAMPO,COLORES.campo,"Campo B",true);
 }
 
 /**
