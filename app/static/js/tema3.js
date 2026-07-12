@@ -67,6 +67,7 @@ function crearGraficoBobina() {
         y: puntosEspira.y,
         z: puntosEspira.z,
 
+        name: "Espira",
         line: { width: 6 }
     };
 
@@ -80,8 +81,39 @@ function crearGraficoBobina() {
         x: [0],
         y: [0],
         z: [0],
+        name: "Centro",
         marker: { size: 5 }
+    };
 
+    // ============================================
+    // Radio de la espira
+    // ============================================
+
+    const traceRadio = {
+        type: "scatter3d",
+        mode: "lines",
+        x: [0, RADIO_ESPIRA],
+        y: [0, 0],
+        z: [0, 0],
+
+        line: {
+            width: 5,
+            color: "red",
+            dash: "dash"
+        },
+
+        name: "Radio R",
+        showlegend: true
+    };
+
+    const traceEtiquetaRadio = {
+        type: "scatter3d",
+        mode: "text",
+        x: [RADIO_ESPIRA / 2],
+        y: [0],
+        z: [0],
+        text: ["R"],
+        showlegend: false
     };
 
     const layout = {
@@ -93,7 +125,9 @@ function crearGraficoBobina() {
         "grafico-bobina",
         [
             traceEspira,
-            traceCentro
+            traceCentro,
+            traceRadio,
+            traceEtiquetaRadio 
         ],
         layout,
         { responsive: true}
