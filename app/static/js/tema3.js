@@ -19,6 +19,11 @@ const COLORES = {
     campo: "#198754",
     negro: "#000000"
 };
+const CAMARA_INICIAL = {
+    eye: {x: 1.6,y: 1.6,z: 1.8},
+    center: {x: 0,y: 0,z: 0},
+    up: {x: 0,y: 0,z: 1  }
+};
 /* ============================================================================
  * Variaes Globales
  * ========================================================================== */
@@ -233,7 +238,10 @@ function crearTraceEtiquetaCampo() {
 function crearLayout() {
     return {
         margin: {l: 0,r: 0,b: 0,t: 0},
-        scene: {aspectmode: "cube"}
+        scene: {
+            aspectmode: "cube",
+            camera: CAMARA_INICIAL
+        }
     };
 }
 
