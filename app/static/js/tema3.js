@@ -40,14 +40,45 @@ function generarEspira() {
         x.push(RADIO_ESPIRA * Math.cos(angulo));
         y.push(RADIO_ESPIRA * Math.sin(angulo));
         z.push(0);
-
     }
 
     return { x, y, z };
-
 }
 
+/**
+ * Crea una flecha formada por un segmento y un cone.
+ */
+function crearTraceFlecha(x0, y0, z0, dx, dy, dz, color) {
 
+    const linea = {
+        type: "scatter3d",
+        mode: "lines",
+        x: [x0, x0 + dx],
+        y: [y0, y0 + dy],
+        z: [z0, z0 + dz],
+
+        line: { width: 5,color: color},
+        showlegend: false
+    };
+
+    const punta = {
+        type: "cone",
+        x: [x0 + dx],
+        y: [y0 + dy],
+        z: [z0 + dz],
+        u: [dx],
+        v: [dy],
+        w: [dz],
+        sizemode: "absolute",
+        sizeref: 0.18,
+        colorscale: [ [0, color],[1, color]],
+        showscale: false,
+        hoverinfo: "skip"
+    };
+
+    return [linea, punta];
+
+}
 /* ============================================================================
  * Traces Plotly
  * ========================================================================== */
@@ -56,31 +87,18 @@ function generarEspira() {
  * Espira circular.
  */
 function crearTraceEspira() {
-
     const puntos = generarEspira();
 
     return {
-
         type: "scatter3d",
-
         mode: "lines",
-
         x: puntos.x,
-
         y: puntos.y,
-
         z: puntos.z,
-
         name: "Espira",
 
-        line: {
-
-            width: 6
-
-        }
-
+        line: { width: 6}
     };
-
 }
 
 
@@ -92,25 +110,13 @@ function crearTraceCentro() {
     return {
 
         type: "scatter3d",
-
         mode: "markers",
-
         x: [0],
-
         y: [0],
-
         z: [0],
-
         name: "Centro",
-
-        marker: {
-
-            size: 5
-
-        }
-
+        marker: { size: 5}
     };
-
 }
 
 
@@ -118,35 +124,21 @@ function crearTraceCentro() {
  * Radio R.
  */
 function crearTraceRadio() {
-
     return {
-
         type: "scatter3d",
-
         mode: "lines",
-
         x: [0, RADIO_ESPIRA],
-
         y: [0, 0],
-
         z: [0, 0],
 
         line: {
-
             width: 5,
-
             color: "red",
-
             dash: "dash"
-
         },
-
         name: "Radio R",
-
         showlegend: true
-
     };
-
 }
 
 
@@ -154,25 +146,15 @@ function crearTraceRadio() {
  * Etiqueta del radio.
  */
 function crearTraceEtiquetaRadio() {
-
     return {
-
         type: "scatter3d",
-
         mode: "text",
-
         x: [RADIO_ESPIRA / 2],
-
         y: [0],
-
         z: [0],
-
         text: ["R"],
-
         showlegend: false
-
     };
-
 }
 
 
@@ -181,90 +163,45 @@ function crearTraceEtiquetaRadio() {
  * de la corriente eléctrica.
  */
 function crearTracesCorriente() {
-
-    const flechas = [];
-
+    const longitud = 0.45;
+    const traces = [];
     const angulos = [
-
         0,
-
         Math.PI / 2,
-
         Math.PI,
-
         (3 * Math.PI) / 2
-
     ];
 
-    const longitud = 0.45;
-
     for (const angulo of angulos) {
-
         const x = RADIO_ESPIRA * Math.cos(angulo);
         const y = RADIO_ESPIRA * Math.sin(angulo);
-
         const tx = -Math.sin(angulo);
         const ty = Math.cos(angulo);
 
-        flechas.push({
-
-            type: "scatter3d",
-
-            mode: "lines",
-
-            x: [x, x + longitud * tx],
-
-            y: [y, y + longitud * ty],
-
-            z: [0, 0],
-
-            line: {
-
-                width: 5,
-
-                color: "orange"
-
-            },
-
-            showlegend: false
-
-        });
-
+        traces.push(
+            ...crearTraceFlecha(
+                x,
+                y,
+                0,
+                longitud * tx,
+                longitud * ty,
+                0,
+                "orange"
+            )
+        );
     }
-
-    return flechas;
-
+    return traces;
 }
-
 
 /* ============================================================================
  * Layout
  * ========================================================================== */
 
 function crearLayout() {
-
     return {
-
-        margin: {
-
-            l: 0,
-
-            r: 0,
-
-            b: 0,
-
-            t: 0
-
-        },
-
-        scene: {
-
-            aspectmode: "cube"
-
-        }
-
+        margin: {l: 0,r: 0,b: 0,t: 0},
+        scene: {aspectmode: "cube"}
     };
-
 }
 
 
@@ -273,35 +210,19 @@ function crearLayout() {
  * ========================================================================== */
 
 function crearGraficoBobina() {
-
     graficoBobina = Plotly.newPlot(
-
         "grafico-bobina",
-
         [
-
             crearTraceEspira(),
-
             crearTraceCentro(),
-
             crearTraceRadio(),
-
             crearTraceEtiquetaRadio(),
-
             ...crearTracesCorriente()
-
         ],
 
         crearLayout(),
-
-        {
-
-            responsive: true
-
-        }
-
+        { responsive: true}
     );
-
 }
 
 
