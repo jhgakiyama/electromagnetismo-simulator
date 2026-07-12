@@ -48,7 +48,46 @@ function generarEspira() {
     
 }
 
+/**
+ * Genera los segmentos que representan el sentido
+ * de circulación de la corriente sobre la espira.
+ */
+function generarFlechasCorriente() {
 
+   const flechas = [];
+
+    // Cuatro posiciones sobre la espira
+    const angulos = [
+        0,
+        Math.PI / 2,
+        Math.PI,
+        3 * Math.PI / 2
+    ];
+
+    const longitud = 0.45;
+
+    for (const angulo of angulos) {
+
+        // Punto sobre la espira
+        const x = RADIO_ESPIRA * Math.cos(angulo);
+        const y = RADIO_ESPIRA * Math.sin(angulo);
+
+        // Vector tangente (sentido antihorario)
+        const tx = -Math.sin(angulo);
+        const ty =  Math.cos(angulo);
+
+        flechas.push({
+            type: "scatter3d",
+            mode: "lines",
+            x: [x, x + longitud * tx],
+            y: [y, y + longitud * ty],
+            z: [0, 0],
+            line: { width: 5, color: "orange"},
+            showlegend: false
+        });
+    }
+    return flechas;
+}
 /* ============================================================================
  * Construcción del Gráfico
  * ========================================================================== */
@@ -116,6 +155,8 @@ function crearGraficoBobina() {
         showlegend: false
     };
 
+    const flechasCorriente = generarFlechasCorriente();
+
     const layout = {
         margin: { l: 0,r: 0,b: 0,t: 0},
         scene: { aspectmode: "cube"}
@@ -127,7 +168,8 @@ function crearGraficoBobina() {
             traceEspira,
             traceCentro,
             traceRadio,
-            traceEtiquetaRadio 
+            traceEtiquetaRadio ,
+            ...flechasCorriente
         ],
         layout,
         { responsive: true}
