@@ -30,9 +30,22 @@ let graficoBobina = null;
  * Genera los puntos de una espira circular en el plano XY.
  */
 function generarEspira() {
+    const x = [];
+    const y = [];
+    const z = [];
 
-    // Implementar en T3-03.1
+    for (let i = 0; i <= PUNTOS_ESPIRA; i++) {
 
+        const angulo = (2 * Math.PI * i) / PUNTOS_ESPIRA;
+
+        x.push(RADIO_ESPIRA * Math.cos(angulo));
+        y.push(RADIO_ESPIRA * Math.sin(angulo));
+        z.push(0);
+
+    }
+
+    return { x, y, z };
+    
 }
 
 
@@ -44,9 +57,47 @@ function generarEspira() {
  * Crea el gráfico 3D inicial.
  */
 function crearGraficoBobina() {
+    
+    const puntosEspira = generarEspira();
 
-    // Implementar en T3-03.1
+    const traceEspira = {
+        type: "scatter3d",
+        mode: "lines",
+        x: puntosEspira.x,
+        y: puntosEspira.y,
+        z: puntosEspira.z,
 
+        line: { width: 6 }
+    };
+
+     // ============================================
+    // Centro de la espira
+    // ============================================
+
+    const traceCentro = {
+        type: "scatter3d",
+        mode: "markers",
+        x: [0],
+        y: [0],
+        z: [0],
+        marker: { size: 5 }
+
+    };
+
+    const layout = {
+        margin: { l: 0,r: 0,b: 0,t: 0},
+        scene: { aspectmode: "cube"}
+    };
+
+    Plotly.newPlot(
+        "grafico-bobina",
+        [
+            traceEspira,
+            traceCentro
+        ],
+        layout,
+        { responsive: true}
+    );
 }
 
 
