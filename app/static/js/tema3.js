@@ -11,10 +11,16 @@
 
 const RADIO_ESPIRA = 2;
 const PUNTOS_ESPIRA = 100;
-
-
+const ALTURA_CAMPO = 1.25;
+const COLORES = {
+    espira: "#0d6efd",
+    radio: "#dc3545",
+    corriente: "#fd7e14",
+    campo: "#198754",
+    negro: "#000000"
+};
 /* ============================================================================
- * Variables Globales
+ * Variaes Globales
  * ========================================================================== */
 
 let graficoBobina = null;
@@ -115,7 +121,7 @@ function crearTraceCentro() {
         y: [0],
         z: [0],
         name: "Centro",
-        marker: { size: 5}
+        marker: { size: 5, color: COLORES.negro,}
     };
 }
 
@@ -133,7 +139,7 @@ function crearTraceRadio() {
 
         line: {
             width: 5,
-            color: "red",
+            color: COLORES.radio,
             dash: "dash"
         },
         name: "Radio R",
@@ -186,11 +192,34 @@ function crearTracesCorriente() {
                 longitud * tx,
                 longitud * ty,
                 0,
-                "orange"
+                COLORES.corriente
             )
         );
     }
     return traces;
+}
+
+
+/**
+ * Trace del campo B
+ */
+function crearTraceCampo() {
+    return crearTraceFlecha(0,0,0,0,0,ALTURA_CAMPO,COLORES.campo);
+}
+
+/**
+ * Etiqueta del Campo B.
+ */
+function crearTraceEtiquetaCampo() {
+    return {
+        type: "scatter3d",
+        mode: "text",
+        x: [0],
+        y: [0],
+        z: [ALTURA_CAMPO + 0.15],
+        text: ["B"],
+        showlegend: false
+    };
 }
 
 /* ============================================================================
@@ -217,7 +246,9 @@ function crearGraficoBobina() {
             crearTraceCentro(),
             crearTraceRadio(),
             crearTraceEtiquetaRadio(),
-            ...crearTracesCorriente()
+            ...crearTracesCorriente(),
+            ...crearTraceCampo(),
+            crearTraceEtiquetaCampo()
         ],
 
         crearLayout(),
