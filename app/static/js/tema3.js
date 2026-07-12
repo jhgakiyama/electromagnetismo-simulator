@@ -268,6 +268,104 @@ function crearGraficoBobina() {
     );
 }
 
+/******************************************************************************
+ * Gráfico 2D - Ejercicio Resuelto
+ ******************************************************************************/
+
+// Geometría
+function generarEspira2D() {
+    const x = [];
+    const y = [];
+
+    for (let i = 0; i <= PUNTOS_ESPIRA; i++) {
+        const angulo = (2 * Math.PI * i) / PUNTOS_ESPIRA;
+        x.push(RADIO_ESPIRA * Math.cos(angulo));
+        y.push(RADIO_ESPIRA * Math.sin(angulo));
+    }
+    return { x, y };
+}
+
+// Trace
+function crearTraceEspira2D() {
+    const puntos = generarEspira2D();
+    return {
+        type: "scatter",
+        mode: "lines",
+        x: puntos.x,
+        y: puntos.y,
+        line: { color: COLORES.espira, width: 5},
+        hoverinfo: "skip",
+        showlegend: false
+    };
+}
+
+
+// Centro
+function crearTraceCentro2D() {
+    return {
+        type: "scatter",
+        mode: "markers",
+        x: [0],
+        y: [0],
+        marker: {size: 8,color: "black"},
+        hoverinfo: "skip",
+        showlegend: false
+    };
+}
+
+// Radio
+function crearTraceRadio2D() {
+    return {
+        type: "scatter",
+        mode: "lines",
+        x: [0, RADIO_ESPIRA],
+        y: [0, 0],
+        line: {color: COLORES.radio,width: 3,dash: "dash"},
+        hoverinfo: "skip",
+        showlegend: false
+    };
+}
+
+// Etiqueta R
+function crearTraceEtiquetaRadio2D() {
+    return {
+        type: "scatter",
+        mode: "text",
+        x: [RADIO_ESPIRA / 2],
+        y: [-0.18],
+        text: ["R"],
+        textfont: {size: 16},
+        hoverinfo: "skip",
+        showlegend: false
+    };
+}
+
+// Layout
+function crearLayout2D() {
+    return {
+        margin: {l: 10,r: 10,t: 10,b: 10},
+        xaxis: {visible: false,scaleanchor: "y",range: [-2.6, 2.6]},
+        yaxis: {visible: false,range: [-2.6, 2.6]},
+        plot_bgcolor: "white",
+        paper_bgcolor: "white"
+    };
+
+}
+
+// Crear Grafico
+function crearGraficoEjercicio2D() {
+    Plotly.newPlot(
+        "grafico-ejercicio-bobina",
+        [
+            crearTraceEspira2D(),
+            crearTraceCentro2D(),
+            crearTraceRadio2D(),
+            crearTraceEtiquetaRadio2D()
+        ],
+        crearLayout2D(),
+        { responsive: true,displayModeBar: false,staticPlot: true}
+    );
+}
 
 /* ============================================================================
  * Actualización del gráfico
@@ -305,5 +403,7 @@ function actualizarResultados() {
 document.addEventListener("DOMContentLoaded", () => {
 
     crearGraficoBobina();
+
+    crearGraficoEjercicio2D();
 
 });
