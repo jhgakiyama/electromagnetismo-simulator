@@ -24,6 +24,9 @@ const CAMARA_INICIAL = {
     center: {x: 0,y: 0,z: 0},
     up: {x: 0,y: 0,z: 1  }
 };
+
+// Compensa el punto de anclaje del marker "arrow" de Plotly.
+const AJUSTE_PUNTA_FLECHA_2D = -0.20;
 /* ============================================================================
  * Variaes Globales
  * ========================================================================== */
@@ -340,6 +343,62 @@ function crearTraceEtiquetaRadio2D() {
     };
 }
 
+function crearTracesCorriente2D() {
+    const traces = [];
+    const angulos = [ Math.PI / 4,(5 * Math.PI) / 4];
+
+    const longitud = 0.35;
+
+    for (const angulo of angulos) {
+
+        const x = RADIO_ESPIRA * Math.cos(angulo);
+        const y = RADIO_ESPIRA * Math.sin(angulo);
+
+        const tx = -Math.sin(angulo);
+        const ty =  Math.cos(angulo);
+
+        const x1 = x - (longitud / 2) * tx;
+        const y1 = y - (longitud / 2) * ty;
+
+        const x2 = x + (longitud / 2) * tx;
+        const y2 = y + (longitud / 2) * ty;
+
+        traces.push({
+            type: "scatter",
+            mode: "lines",
+            x: [x1, x2],
+            y: [y1, y2],
+            line: {
+                color: COLORES.corriente,
+                width: 4
+            },
+            hoverinfo: "skip",
+            showlegend: false
+        });
+
+        const xm = x2 - AJUSTE_PUNTA_FLECHA_2D * tx;
+        const ym = y2 - AJUSTE_PUNTA_FLECHA_2D * ty;
+
+        traces.push({
+            type: "scatter",
+            mode: "markers",
+            x: [xm],
+            y: [ym],
+
+            marker: {
+                symbol: "arrow",
+                size: 14,
+                color: COLORES.corriente,
+                angle: (Math.atan2(ty, tx) * 180 / Math.PI + 180)
+
+            },
+            hoverinfo: "skip",
+            showlegend: false
+        });
+    }
+    return traces;
+}
+
 // Layout
 function crearLayout2D() {
     return {
@@ -360,12 +419,14 @@ function crearGraficoEjercicio2D() {
             crearTraceEspira2D(),
             crearTraceCentro2D(),
             crearTraceRadio2D(),
-            crearTraceEtiquetaRadio2D()
+            crearTraceEtiquetaRadio2D(),
+            ...crearTracesCorriente2D()
         ],
         crearLayout2D(),
         { responsive: true,displayModeBar: false,staticPlot: true}
     );
 }
+
 
 /* ============================================================================
  * Actualización del gráfico
