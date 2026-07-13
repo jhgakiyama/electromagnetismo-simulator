@@ -337,8 +337,8 @@ function crearTraceEtiquetaRadio2D() {
         type: "scatter",
         mode: "text",
         x: [RADIO_ESPIRA / 2],
-        y: [-0.18],
-        text: ["R"],
+        y: [0.18],
+        text: ["R=0.1 m"],
         textfont: {size: 16},
         hoverinfo: "skip",
         showlegend: false
@@ -399,6 +399,23 @@ function crearTracesCorriente2D() {
         });
     }
     return traces;
+}
+
+// Etiqueta de Corriente
+function crearTraceEtiquetaCorriente2D() {
+    return {
+        type: "scatter",
+        mode: "text",
+        x: [2],
+        y: [1.75],
+        text: ["I = 10 A"],
+        textfont: {
+            size: 18,
+            color: COLORES.corriente
+        },
+        hoverinfo: "skip",
+        showlegend: false
+    };
 }
 
 // Campo
@@ -465,6 +482,24 @@ function crearTraceEtiquetaCampo2D() {
 
 }
 
+function crearTraceCampoTemporal() {
+    return {
+        type: "scatter",
+        mode: "text",
+        x: [0],
+        y: [0],
+        text: ["⊙"],
+        textfont: {
+            size: 34,
+            color: COLORES.campo,
+            family: "Arial Black"
+        },
+
+        hoverinfo: "skip",
+        showlegend: false
+    };
+}
+
 // Layout
 function crearLayout2D() {
     return {
@@ -483,12 +518,14 @@ function crearGraficoEjercicio2D() {
         "grafico-ejercicio-bobina",
         [
             crearTraceEspira2D(),
-            crearTraceCentro2D(),
+            // crearTraceCentro2D(),
             crearTraceRadio2D(),
             crearTraceEtiquetaRadio2D(),
             ...crearTracesCorriente2D(),
-            ...crearTracesCampo2D(),
-            crearTraceEtiquetaCampo2D()
+            crearTraceCampoTemporal(),
+            crearTraceEtiquetaCorriente2D()
+            // ...crearTracesCampo2D(),
+            // crearTraceEtiquetaCampo2D()
         ],
         crearLayout2D(),
         { responsive: true,displayModeBar: false,staticPlot: true}
