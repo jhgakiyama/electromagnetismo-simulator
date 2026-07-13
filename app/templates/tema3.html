@@ -161,25 +161,124 @@
     <div class="card shadow-sm mb-4">
         <div class="card-body">
             <h2 class="h4 mb-3">4. Ejercicio Resuelto</h2>
-                <p>
-                En esta sección se resolverá paso a paso un problema típico de una
-                bobina circular, aplicando la expresión desarrollada anteriormente.
-                </p>
-
-                <p>
-                El objetivo no es únicamente obtener el resultado final, sino comprender
-                el procedimiento utilizado para resolver este tipo de ejercicios.
+                <p class="mb-4">
+                <strong>Enunciado:</strong>
+                ¿De cuántas vueltas deberá ser una bobina circular delgada de radio <strong>0,10 m</strong> para que una corriente de <strong>10 A</strong> produzca un campo magnético de <strong>3 × 10<sup>-3</sup> T</strong> en su centro?
                 </p>
         </div>
 
-        <div id="ejercicio-tema3">
+        <div class="row g-4 align-items-start">
 
-        <!-- Se completa en la próxima sesión -->
+            <div class="col-lg-5">
+                <div class="card shadow-sm h-100">
+                    <div class="card-body text-center">
+                        <div id="grafico-ejercicio-bobina" style="height:350px;">
+                            <!-- ACA ESTA EL GRAFICO -->
+                        </div>
+                    </div>
+                </div>
+            </div>
 
+            <!-- ===================== -->
+            <!-- Datos                 -->
+            <!-- ===================== -->
+
+            <div class="col-lg-7">
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <table class="table table-hover align-middle">
+                            <thead>
+                                <tr>
+                                    <th>Magnitud</th>
+                                    <th class="text-center">Símbolo</th>
+                                    <th>Valor</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+
+                                <tr>
+                                    <td>Radio</td>
+                                    <td class="text-center"><strong>R</strong></td>
+                                    <td>0,10 m</td>
+                                </tr>
+
+                                <tr>
+                                    <td>Corriente</td>
+                                    <td class="text-center"><strong>I</strong></td>
+                                    <td>10 A</td>
+                                </tr>
+
+                                <tr>
+                                    <td>Campo magnético</td>
+                                    <td class="text-center"><strong>B</strong></td>
+                                    <td>3 × 10<sup>-3</sup> T</td>
+                                </tr>
+
+                                <tr class="table-warning">
+                                    <td>Espiras</td>
+                                    <td class="text-center"><strong>N</strong></td>
+                                    <td><strong>?</strong></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="alert alert-success mt-3 mb-0">
+                <strong>↺</strong> El sentido de la circulacion de la corriente es antihorario, esto produce en el centro un Campo Magnetico saliente.
+            </div>
+            </div>
         </div>
 
+        
+
+        <div class="card-body">
+            <h4 class="mt-5 mb-3">4.2 Despeje de la incógnita</h4>
+
+            <p>
+                Como la incógnita es el número de espiras <strong>N</strong>, despejamos la
+                ecuación del campo magnético:
+            </p>
+
+            <div class="alert alert-light text-center fs-5">
+
+                <strong>
+                    B = (μ₀ · N · I) / (2 · R)
+                </strong>
+                
+                <br>
+                ↓
+                <br>
+                <strong>
+                    N = (2 · R · B) / (μ₀ · I)
+                </strong>
+            </div>
+            
+            <p>
+            Reemplazamos los valores conocidos en la expresión obtenida para
+            calcular el número de espiras.
+            </p>
+
+            <div class="alert alert-warning text-center fs-5">
+                <strong>N = (2 · 0,10 m· 3 × 10<sup>-3</sup>T) / (4π × 10<sup>-7</sup>(T.m/A) · 10A)</strong>
+            </div>
+
+            <div class="alert alert-warning text-center fs-5">
+                <strong>N ≈ 47,75 = 48 vueltas</strong>
+            </div>
+
+            <p>
+                Para generar un campo magnético de
+                <strong>3 × 10<sup>-3</sup> T</strong>
+                en el centro de una bobina de radio
+                <strong>0,10 m</strong>
+                recorrida por una corriente de
+                <strong>10 A</strong>,
+                se requieren aproximadamente
+                <strong>48 espiras</strong>.
+            </p>
+        </div>
     </div>
-
     
 
     <!-- ========================================================= -->
