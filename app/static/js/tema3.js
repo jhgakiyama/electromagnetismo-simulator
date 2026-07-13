@@ -27,6 +27,8 @@ const CAMARA_INICIAL = {
 
 // Compensa el punto de anclaje del marker "arrow" de Plotly.
 const AJUSTE_PUNTA_FLECHA_2D = -0.20;
+const LONGITUD_CAMPO_2D = 0.80;
+const AJUSTE_PUNTA_CAMPO_2D = -0.20;
 /* ============================================================================
  * Variaes Globales
  * ========================================================================== */
@@ -399,6 +401,70 @@ function crearTracesCorriente2D() {
     return traces;
 }
 
+// Campo
+function crearTracesCampo2D() {
+    const traces = [];
+
+    const x1 = 0;
+    const y1 = 0;
+
+    const x2 = 0;
+    const y2 = LONGITUD_CAMPO_2D;
+
+    traces.push({
+        type: "scatter",
+        mode: "lines",
+        x: [x1, x2],
+        y: [y1, y2],
+
+        line: {
+            color: COLORES.campo,
+            width: 4
+        },
+        hoverinfo: "skip",
+        showlegend: false
+    });
+
+    const xm = x2;
+    const ym = y2 - AJUSTE_PUNTA_CAMPO_2D;
+
+    traces.push({
+        type: "scatter",
+        mode: "markers",
+        x: [xm],
+        y: [ym],
+
+        marker: {
+            symbol: "arrow",
+            size: 16,
+            color: COLORES.campo,
+            angle: 0
+        },
+
+        hoverinfo: "skip",
+        showlegend: false
+    });
+
+    return traces;
+}
+
+// Etiqueta B
+function crearTraceEtiquetaCampo2D() {
+
+    return {
+        type: "scatter",
+        mode: "text",
+        x: [0],
+        y: [LONGITUD_CAMPO_2D + 0.25],
+        text: ["B"],
+
+        textfont: {size: 18,color: COLORES.campo},
+        hoverinfo: "skip",
+        showlegend: false
+    };
+
+}
+
 // Layout
 function crearLayout2D() {
     return {
@@ -420,7 +486,9 @@ function crearGraficoEjercicio2D() {
             crearTraceCentro2D(),
             crearTraceRadio2D(),
             crearTraceEtiquetaRadio2D(),
-            ...crearTracesCorriente2D()
+            ...crearTracesCorriente2D(),
+            ...crearTracesCampo2D(),
+            crearTraceEtiquetaCampo2D()
         ],
         crearLayout2D(),
         { responsive: true,displayModeBar: false,staticPlot: true}
