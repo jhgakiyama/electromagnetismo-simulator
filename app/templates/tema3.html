@@ -280,38 +280,203 @@
         </div>
     </div>
     
-
-    <!-- ========================================================= -->
-    <!-- 5 Laboratorio -->
-    <!-- ========================================================= -->
-
-    <div class="card shadow-sm">
+     <div class="card shadow-sm mb-4">
         <div class="card-body">
-            <h2 class="h4">🧪 Laboratorio Virtual</h2>
-            <p>
-                Modifique los parámetros de la bobina y observe cómo cambia el
-                campo magnético generado en su centro.
-            </p>
+            <!-- ==========================================================
+     5. Laboratorio Virtual
+=========================================================== -->
 
-            <div class="alert alert-info">
-                <strong>¿Qué puede hacer?</strong>
+<section class="mb-5">
 
-                <ul class="mb-0 mt-2">
-                    <li>Modificar la corriente eléctrica.</li>
-                    <li>Modificar el radio de la espira.</li>
-                    <li>Modificar el número de espiras.</li>
-                    <li>Comparar el campo de una espira con el campo total de la bobina.</li>
-                </ul>
-            </div>
-        
-            <div id="laboratorio-tema3">
+    <h2 class="mb-3">
+        5. Laboratorio Virtual
+    </h2>
 
-                <!-- Laboratorio Virtual -->
+    <p class="mb-4">
+        Modifique los parámetros de la bobina y observe cómo cambia el
+        campo magnético generado en su centro.
+    </p>
+
+    <!-- ========================================= -->
+    <!-- Fila superior                             -->
+    <!-- ========================================= -->
+
+    <div class="row g-4 mb-4">
+
+        <!-- Parámetros -->
+
+        <div class="col-lg-6">
+
+            <div class="card shadow-sm h-100">
+
+                <div class="card-header bg-primary text-white">
+                    Parámetros
+                </div>
+
+                <div class="card-body">
+
+                    <!-- Número de espiras -->
+
+                    <label
+                        for="slider-n"
+                        class="form-label fw-bold">
+
+                        Número de espiras (N)
+
+                    </label>
+
+                    <input
+                        type="range"
+                        class="form-range"
+                        id="slider-n"
+                        min="1"
+                        max="100"
+                        value="48">
+
+                    <div
+                        id="valor-n"
+                        class="text-center mb-4">
+
+                        48 espiras
+
+                    </div>
+
+                    <!-- Corriente -->
+
+                    <label
+                        for="slider-i"
+                        class="form-label fw-bold">
+
+                        Corriente (I)
+
+                    </label>
+
+                    <input
+                        type="range"
+                        class="form-range"
+                        id="slider-i"
+                        min="1"
+                        max="20"
+                        value="10">
+
+                    <div
+                        id="valor-i"
+                        class="text-center mb-4">
+
+                        10 A
+
+                    </div>
+
+                    <!-- Radio -->
+
+                    <label
+                        for="slider-r"
+                        class="form-label fw-bold">
+
+                        Radio (R)
+
+                    </label>
+
+                    <input
+                        type="range"
+                        class="form-range"
+                        id="slider-r"
+                        min="0.05"
+                        max="0.30"
+                        step="0.01"
+                        value="0.10">
+
+                    <div
+                        id="valor-r"
+                        class="text-center">
+
+                        0.10 m
+
+                    </div>
+
+                </div>
 
             </div>
 
         </div>
+
+        <!-- Resultados -->
+
+        <div class="col-lg-6">
+
+            <div class="card shadow-sm h-100">
+
+                <div class="card-header bg-primary text-white">
+                    Resultados
+                </div>
+
+                <div class="card-body text-center">
+
+                    <h6 class="mb-2">
+
+                        Campo Magnético
+
+                    </h6>
+
+                    <h2
+                        id="resultado-b"
+                        class="text-primary fw-bold">
+
+                        3.000 × 10<sup>-3</sup> T
+
+                    </h2>
+
+                    <p
+                        id="resultado-b-ut"
+                        class="fs-4 text-muted mb-0">
+
+                        3000 μT
+
+                    </p>
+
+                    
+                </div>
+                <hr class="my-4">
+                    <div class="card-body">
+                        <div class="text-center">
+                            <button id="btn-restablecer" type="button" class="btn btn-outline-primary btn-sm">
+                                Restablecer valores
+                            </button>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    
+        <hr class="my-4">
     </div>
+
+    <!-- ========================================= -->
+    <!-- Visualización                             -->
+    <!-- ========================================= -->
+
+    <div class="card shadow-sm">
+
+        <div class="card-header bg-primary text-white">
+
+            Visualización
+
+        </div>
+
+        <div class="card-body">
+
+            <div
+                id="grafico-laboratorio-bobina"
+                style="height:800px;">
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+        </div>
+    </div>
+
 </div>
 
 {% endblock %}
