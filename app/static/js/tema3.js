@@ -543,15 +543,55 @@ function actualizarGraficoBobina() {
 
 }
 
+/******************************************************************************
+ * LABORATORIO VIRTUAL
+ ******************************************************************************/
 
-/* ============================================================================
- * Laboratorio Virtual
- * ========================================================================== */
+let sliderN;
+let sliderI;
+let sliderR;
+let btnRestablecer;
+
+let valorN;
+let valorI;
+let valorR;
+
 
 function inicializarLaboratorio() {
 
-    // Implementar en T3-05
+    sliderN = document.getElementById("slider-n");
+    sliderI = document.getElementById("slider-i");
+    sliderR = document.getElementById("slider-r");
+    btnRestablecer = document.getElementById("btn-restablecer");
 
+    valorN = document.getElementById("valor-n");
+    valorI = document.getElementById("valor-i");
+    valorR = document.getElementById("valor-r");
+
+    sliderN.addEventListener("input",actualizarControles);
+    sliderI.addEventListener("input",actualizarControles);
+    sliderR.addEventListener("input",actualizarControles);
+
+    actualizarControles();
+    btnRestablecer.addEventListener("click",restablecerValores);
+}
+
+function restablecerValores() {
+    sliderN.value = 48;
+    sliderI.value = 10;
+    sliderR.value = 0.10;
+
+    document.getElementById("corriente-antihoraria").checked = true;
+    actualizarControles();
+}
+
+function actualizarControles() {
+// Actualizar los textos debajo de los controles.
+    
+    // actualizo los texto
+    valorN.textContent = `${sliderN.value} espiras`;
+    valorI.textContent = `${sliderI.value} A`;
+    valorR.textContent = `${Number(sliderR.value).toFixed(2)} m`;
 }
 
 
@@ -561,7 +601,36 @@ function actualizarResultados() {
 
 }
 
+function crearGraficoLaboratorio() {
 
+    Plotly.newPlot(
+        "grafico-laboratorio-bobina",
+
+        [
+            crearTraceEspira(),
+            crearTraceCentro(),
+            crearTraceRadio(),
+            crearTraceEtiquetaRadio(),
+            ...crearTracesCorriente(),
+            ...crearTraceCampo(),
+            crearTraceEtiquetaCampo()
+        ],
+
+        crearLayout(),
+
+        {
+            responsive: true
+        }
+
+    );
+
+}
+
+function actualizarLaboratorio() {
+
+    actualizarControles();
+
+}
 /* ============================================================================
  * Inicialización
  * ========================================================================== */
@@ -572,4 +641,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     crearGraficoEjercicio2D();
 
+    crearGraficoLaboratorio();
+    inicializarLaboratorio();
 });
