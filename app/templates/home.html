@@ -7,41 +7,30 @@ Inicio - Simulador de Electromagnetismo
 {% block content %}
 
 <div class="card mb-4">
+    <div class="card-body">
+        <h2>Bienvenido</h2>
+        
+        <p>
+            Esta aplicación fue desarrollada como
+            apoyo didáctico para la asignatura
+            Física II de la Universidad Tecnológica Nacional.
+        </p>
 
-<div class="card-body">
-
-    <h2>
-        Bienvenido
-    </h2>
-    
-    <p>
-        Esta aplicación fue desarrollada como
-        apoyo didáctico para la asignatura
-        Física II de la Universidad Tecnológica Nacional.
-    </p>
-
-    <p>
-        El objetivo es visualizar y comprender
-        los conceptos fundamentales de Campo
-        Magnético e Inducción mediante teoría,
-        simulaciones, gráficos interactivos y
-        ejercicios resueltos.
-    </p>
-
-</div>
-
+        <p>
+            El objetivo es visualizar y comprender
+            los conceptos fundamentales de Campo
+            Magnético e Inducción mediante teoría,
+            simulaciones, gráficos interactivos y
+            ejercicios resueltos.
+        </p>
+    </div>
 </div>
 
 <div class="row g-4">
-
 <!-- Tema 1 -->
-
 <div class="col-lg-4">
-
     <div class="card h-100">
-
         <div class="card-body">
-
             <span class="badge bg-success mb-3">
                 Disponible
             </span>
@@ -69,7 +58,7 @@ Inicio - Simulador de Electromagnetismo
 
         <div class="card-footer bg-white border-0">
             <a href="{{ url_for('conductor.conductor') }}" class="btn btn-primary w-100" >
-                Ingresar al Tema
+                Ingresar al Tema 1
             </a>
         </div>
     </div>
@@ -81,7 +70,6 @@ Inicio - Simulador de Electromagnetismo
     <div class="card h-100">
         <div class="card-body">
             <span class="badge bg-success mb-3"> Disponible </span>
-
             <h3>Ejercicio 2</h3>
 
             <img src="{{ url_for('static', filename='img/paralelos.png') }}" class="card-img-top mb-3" alt="Conductores Paralelos">
@@ -114,7 +102,6 @@ Inicio - Simulador de Electromagnetismo
                 🧲 Ir al Laboratorio
             </a>
         </div>
-
     </div>
 </div>
 
@@ -124,7 +111,7 @@ Inicio - Simulador de Electromagnetismo
     <div class="card h-100">
         <div class="card-body">
             <span class="badge bg-warning text-dark mb-3">
-                Próximamente
+                En desarrollo
             </span>
 
             <h3>Ejercicio 3</h3>
@@ -149,15 +136,10 @@ Inicio - Simulador de Electromagnetismo
         </div>
 
         <div class="card-footer bg-white border-0">
-            <button
-                class="btn btn-secondary w-100"
-                disabled
-            >
-                En desarrollo
-            </button>
-
+            <a href="{{ url_for('tema3.tema3') }}" class="btn btn-primary w-100" >
+                Ingresar al Tema 3
+            </a>
         </div>
-
     </div>
 
 </div>

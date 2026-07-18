@@ -78,7 +78,7 @@ Simulador de Electromagnetismo
             <li class="nav-item">
                 <a
                     class="nav-link {% if request.endpoint == '/tema3' %}active{% endif %}"
-                    href="/tema3"
+                    href="{{ url_for('tema3.tema3') }}"
                 >
                     Bobina
                 </a>
