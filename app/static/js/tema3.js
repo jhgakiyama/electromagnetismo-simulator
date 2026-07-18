@@ -29,12 +29,40 @@ const CAMARA_INICIAL = {
 const AJUSTE_PUNTA_FLECHA_2D = -0.20;
 const LONGITUD_CAMPO_2D = 0.80;
 const AJUSTE_PUNTA_CAMPO_2D = -0.20;
+
+const MU_0 = 4 * Math.PI * 1e-7;
 /* ============================================================================
  * Variaes Globales
  * ========================================================================== */
 
 let graficoBobina = null;
 
+let sliderN;
+let sliderI;
+let sliderR;
+let btnRestablecer;
+
+let valorN;
+let valorI;
+let valorR;
+
+
+/******************************************************************************
+ * Funciones auxiliares
+ ******************************************************************************/
+
+function formatearCampoMagnetico(campoMagnetico) {
+
+    const partes = campoMagnetico
+        .toExponential(3)
+        .split("e");
+
+    const mantisa = partes[0];
+    const exponente = Number(partes[1]);
+
+    return `${mantisa} × 10<sup>${exponente}</sup>`;
+
+}
 
 /* ============================================================================
  * Geometría
@@ -533,85 +561,10 @@ function crearGraficoEjercicio2D() {
 }
 
 
-/* ============================================================================
- * Actualización del gráfico
- * ========================================================================== */
-
-function actualizarGraficoBobina() {
-
-    // Implementar en el laboratorio.
-
-}
-
 /******************************************************************************
  * LABORATORIO VIRTUAL
  ******************************************************************************/
 
-let sliderN;
-let sliderI;
-let sliderR;
-let btnRestablecer;
-
-let valorN;
-let valorI;
-let valorR;
-
-const MU_0 = 4 * Math.PI * 1e-7;
-
-function inicializarLaboratorio() {
-
-    sliderN = document.getElementById("slider-n");
-    sliderI = document.getElementById("slider-i");
-    sliderR = document.getElementById("slider-r");
-
-    radioAntihorario = document.getElementById("corriente-antihoraria");
-    radioHorario = document.getElementById("corriente-horaria");
-
-    btnRestablecer = document.getElementById("btn-restablecer");
-
-    valorN = document.getElementById("valor-n");
-    valorI = document.getElementById("valor-i");
-    valorR = document.getElementById("valor-r");
-
-    sliderN.addEventListener("input",actualizarLaboratorio);
-    sliderI.addEventListener("input",actualizarLaboratorio);
-    sliderR.addEventListener("input",actualizarLaboratorio);
-
-    radioAntihorario.addEventListener("change", actualizarLaboratorio);
-    radioHorario.addEventListener("change", actualizarLaboratorio);
-
-    btnRestablecer.addEventListener("click",restablecerValores);
-    actualizarLaboratorio();
-}
-
-function restablecerValores() {
-    sliderN.value = 48;
-    sliderI.value = 10;
-    sliderR.value = 0.10;
-
-    document.getElementById("corriente-antihoraria").checked = true;
-    actualizarLaboratorio();
-}
-
-function actualizarValoresParametros() {
-// Actualizar los textos debajo de los controles.
-    
-    // actualizo los texto
-    valorN.textContent = `${sliderN.value} espiras`;
-    valorI.textContent = `${sliderI.value} A`;
-    valorR.textContent = `${Number(sliderR.value).toFixed(2)} m`;
-}
-
-function leerParametrosLaboratorio() {
-    // Leer el estado actual del experimento.
-    return {
-        numeroEspiras: Number(sliderN.value),
-        corriente: Number(sliderI.value),
-        radio: Number(sliderR.value),
-        sentidoCorriente: radioAntihorario.checked ? 1 : -1
-    };
-
-}
 
 function crearGraficoLaboratorio() {
 
@@ -638,24 +591,41 @@ function crearGraficoLaboratorio() {
 
 }
 
-function calcularCampoMagnetico(parametrosLaboratorio) {
-
-    return (
-        MU_0 *
-        parametrosLaboratorio.numeroEspiras *
-        parametrosLaboratorio.corriente
-    ) / (
-        2 * parametrosLaboratorio.radio
-    );
+function leerParametrosLaboratorio() {
+    // Leer el estado actual del experimento.
+    return {
+        numeroEspiras: Number(sliderN.value),
+        corriente: Number(sliderI.value),
+        radio: Number(sliderR.value),
+        sentidoCorriente: radioAntihorario.checked ? 1 : -1
+    };
 
 }
+
+
+function calcularCampoMagnetico(parametrosLaboratorio) {
+    return (
+        MU_0 * parametrosLaboratorio.numeroEspiras * parametrosLaboratorio.corriente
+    ) / ( 2 * parametrosLaboratorio.radio);
+}
+
+
+function actualizarValoresParametros() {
+// Actualizar los textos debajo de los controles.
+    
+    // actualizo los texto
+    valorN.textContent = `${sliderN.value} espiras`;
+    valorI.textContent = `${sliderI.value} A`;
+    valorR.textContent = `${Number(sliderR.value).toFixed(2)} m`;
+}
+
 
 function actualizarResultados(campoMagnetico,sentidoCorriente) {
     const resultadoB = document.getElementById("resultado-b");
     const resultadoMicroTesla = document.getElementById("resultado-b-ut");
     const direccionCampo = document.getElementById("direccion-campo");
 
-    resultadoB.innerHTML = `${campoMagnetico.toExponential(3)} T`;
+    resultadoB.innerHTML = `${formatearCampoMagnetico(campoMagnetico)} T`;
     resultadoMicroTesla.textContent = `${(campoMagnetico * 1e6).toFixed(0)} μT`;
 
     if (sentidoCorriente ===  1) {
@@ -674,6 +644,40 @@ function actualizarLaboratorio() {
     actualizarResultados(campoMagnetico,parametrosLaboratorio.sentidoCorriente);
 }
 
+function restablecerValores() {
+    sliderN.value = 48;
+    sliderI.value = 10;
+    sliderR.value = 0.10;
+
+    document.getElementById("corriente-antihoraria").checked = true;
+    actualizarLaboratorio();
+}
+
+function inicializarLaboratorio() {
+
+    sliderN = document.getElementById("slider-n");
+    sliderI = document.getElementById("slider-i");
+    sliderR = document.getElementById("slider-r");
+
+    radioAntihorario = document.getElementById("corriente-antihoraria");
+    radioHorario = document.getElementById("corriente-horaria");
+
+    btnRestablecer = document.getElementById("btn-restablecer");
+
+    valorN = document.getElementById("valor-n");
+    valorI = document.getElementById("valor-i");
+    valorR = document.getElementById("valor-r");
+
+    sliderN.addEventListener("input",actualizarLaboratorio);
+    sliderI.addEventListener("input",actualizarLaboratorio);
+    sliderR.addEventListener("input",actualizarLaboratorio);
+
+    radioAntihorario.addEventListener("change", actualizarLaboratorio);
+    radioHorario.addEventListener("change", actualizarLaboratorio);
+
+    btnRestablecer.addEventListener("click",restablecerValores);
+    actualizarLaboratorio();
+}
 
 
 /* ============================================================================
