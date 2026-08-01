@@ -582,7 +582,8 @@ function crearGraficoEjercicio2D() {
 
 
 function crearGraficoLaboratorio() {
-
+    // 1. Construye los traces
+    // 2 Los dibuja con Plotly
     Plotly.newPlot(
         "grafico-laboratorio-bobina",
 
@@ -601,9 +602,7 @@ function crearGraficoLaboratorio() {
         {
             responsive: true
         }
-
     );
-
 }
 
 function leerParametrosLaboratorio() {
@@ -709,12 +708,43 @@ function calcularLongitudVectorCampo(campoMagnetico) {
 }
 
 function actualizarGraficoLaboratorio(parametrosLaboratorio,campoMagnetico) {
-
     const longitudVector = calcularLongitudVectorCampo(campoMagnetico);
+    const traceCampo = crearTraceVectorCampo(
+        longitudVector,
+        parametrosLaboratorio.sentidoCorriente
+    );
 
-    console.log({parametrosLaboratorio,campoMagnetico,longitudVector});
-
+    console.log(traceCampo);
 }
+
+function crearTraceVectorCampo(longitudVector,sentidoCorriente){
+    // construir el trace del vector B.
+    const xCentro = 0;
+    const yCentro = 0;
+    const zInicio = 0;
+
+    const zFinal = 
+    sentidoCorriente === 1
+        ? longitudVector
+        : -longitudVector;
+
+    return {
+        type: "scatter3d",
+        mode: "lines+text",
+
+        x: [xCentro, xCentro],
+        y: [yCentro, yCentro],
+        z: [zInicio, zFinal],
+
+        line: {color: COLORES.campo,width: 8},
+        text: ["","B"],
+        textposition: "top center",
+        textfont: {size: 18,color: COLORES.campo},
+        hoverinfo: "skip",
+        showlegend: false
+    };
+}
+
 
 /* ============================================================================
  * Inicialización
