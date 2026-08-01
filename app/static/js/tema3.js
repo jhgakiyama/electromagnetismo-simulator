@@ -31,6 +31,21 @@ const LONGITUD_CAMPO_2D = 0.80;
 const AJUSTE_PUNTA_CAMPO_2D = -0.20;
 
 const MU_0 = 4 * Math.PI * 1e-7;
+
+const LONGITUD_VECTOR_B_MIN = 0.20;
+const LONGITUD_VECTOR_B_MAX = 0.70;
+
+const CAMPO_B_MIN = calcularCampoMagnetico({
+    numeroEspiras: 10,
+    corriente: 1,
+    radio: 0.20
+});
+
+const CAMPO_B_MAX = calcularCampoMagnetico({
+    numeroEspiras: 100,
+    corriente: 20,
+    radio: 0.05
+});
 /* ============================================================================
  * Variaes Globales
  * ========================================================================== */
@@ -636,12 +651,17 @@ function actualizarResultados(campoMagnetico,sentidoCorriente) {
 }
 
 function actualizarLaboratorio() {
-
+    // Sigo esta idea: 
+    // Leer -> Calcular -> Mostrar Resultados -> Actualizar el grafico 
     actualizarValoresParametros();
-    const parametrosLaboratorio  = leerParametrosLaboratorio();
+
+    const parametrosLaboratorio = leerParametrosLaboratorio();
     const campoMagnetico = calcularCampoMagnetico(parametrosLaboratorio);
 
     actualizarResultados(campoMagnetico,parametrosLaboratorio.sentidoCorriente);
+
+    actualizarGraficoLaboratorio(parametrosLaboratorio,campoMagnetico);
+
 }
 
 function restablecerValores() {
@@ -679,6 +699,22 @@ function inicializarLaboratorio() {
     actualizarLaboratorio();
 }
 
+
+function calcularLongitudVectorCampo(campoMagnetico) {
+// Si B vale X Tesla, ¿qué longitud debe tener el vector B en el gráfico?"
+    const factor = (campoMagnetico - CAMPO_B_MIN) / (CAMPO_B_MAX - CAMPO_B_MIN);
+
+    return LONGITUD_VECTOR_B_MIN + factor * (LONGITUD_VECTOR_B_MAX - LONGITUD_VECTOR_B_MIN);
+
+}
+
+function actualizarGraficoLaboratorio(parametrosLaboratorio,campoMagnetico) {
+
+    const longitudVector = calcularLongitudVectorCampo(campoMagnetico);
+
+    console.log({parametrosLaboratorio,campoMagnetico,longitudVector});
+
+}
 
 /* ============================================================================
  * Inicialización
