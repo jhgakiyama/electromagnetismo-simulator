@@ -579,7 +579,24 @@ function crearGraficoEjercicio2D() {
 /******************************************************************************
  * LABORATORIO VIRTUAL
  ******************************************************************************/
+function obtenerTracesLaboratorio(parametrosLaboratorio,longitudVector) {
+    // Construir y devolver todos los traces necesarios 
+    // para representar el laboratorio en un instante determinado.
+    return [
+        crearTraceEspira(),
+        crearTraceCentro(),
+        crearTraceRadio(),
+        crearTraceEtiquetaRadio(),
+        ...crearTracesCorriente(),
+        crearTraceVectorCampo(
+            longitudVector,
+            parametrosLaboratorio.sentidoCorriente
+        ),
 
+        crearTraceEtiquetaCampo()
+
+    ];
+}
 
 function crearGraficoLaboratorio() {
     // 1. Construye los traces
@@ -708,13 +725,20 @@ function calcularLongitudVectorCampo(campoMagnetico) {
 }
 
 function actualizarGraficoLaboratorio(parametrosLaboratorio,campoMagnetico) {
+    // Funcion hermana de crearGraficoLaboratorio
+    // La uso para actualizar el grafico y no tocar el inicial
     const longitudVector = calcularLongitudVectorCampo(campoMagnetico);
-    const traceCampo = crearTraceVectorCampo(
-        longitudVector,
-        parametrosLaboratorio.sentidoCorriente
+    
+    Plotly.react(
+        "grafico-laboratorio-bobina",
+
+        obtenerTracesLaboratorio(parametrosLaboratorio,longitudVector),
+
+        crearLayout(),
+
+        { responsive: true }
     );
 
-    console.log(traceCampo);
 }
 
 function crearTraceVectorCampo(longitudVector,sentidoCorriente){
