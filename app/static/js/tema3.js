@@ -588,7 +588,7 @@ function obtenerTracesLaboratorio(parametrosLaboratorio,longitudVector) {
         crearTraceRadio(),
         crearTraceEtiquetaRadio(),
         ...crearTracesCorriente(),
-        crearTraceVectorCampo(
+        ...crearTraceVectorCampo(
             longitudVector,
             parametrosLaboratorio.sentidoCorriente
         ),
@@ -741,32 +741,30 @@ function actualizarGraficoLaboratorio(parametrosLaboratorio,campoMagnetico) {
 
 }
 
-function crearTraceVectorCampo(longitudVector,sentidoCorriente){
-    // construir el trace del vector B.
+
+function crearTraceVectorCampo(longitudVector, sentidoCorriente) {
+    // construir el trace dinamico del vector B.
     const xCentro = 0;
     const yCentro = 0;
     const zInicio = 0;
 
-    const zFinal = 
-    sentidoCorriente === 1
-        ? longitudVector
-        : -longitudVector;
+    const zFinal =
+        sentidoCorriente === 1
+            ? longitudVector
+            : -longitudVector;
 
-    return {
-        type: "scatter3d",
-        mode: "lines+text",
+    return crearTraceFlecha(
+        xCentro,
+        yCentro,
+        zInicio,
+        0,
+        0,
+        zFinal,
+        COLORES.campo,
+        "Campo B",
+        false
+    );
 
-        x: [xCentro, xCentro],
-        y: [yCentro, yCentro],
-        z: [zInicio, zFinal],
-
-        line: {color: COLORES.campo,width: 8},
-        text: ["","B"],
-        textposition: "top center",
-        textfont: {size: 18,color: COLORES.campo},
-        hoverinfo: "skip",
-        showlegend: false
-    };
 }
 
 
