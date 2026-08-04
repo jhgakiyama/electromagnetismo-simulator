@@ -757,6 +757,8 @@ function crearTraceVectorCampo(longitudVector, sentidoCorriente) {
             ? longitudVector
             : -longitudVector;
 
+    const verLeyenda = true
+
     return crearTraceFlecha(
         xCentro,
         yCentro,
@@ -766,7 +768,7 @@ function crearTraceVectorCampo(longitudVector, sentidoCorriente) {
         zFinal,
         COLORES.campo,
         "Campo B",
-        false
+        verLeyenda
     );
 
 }
