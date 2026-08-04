@@ -218,11 +218,8 @@ function crearTraceEtiquetaRadio() {
 }
 
 
-/**
- * Flechas que indican el sentido de circulación
- * de la corriente eléctrica.
- */
-function crearTracesCorriente() {
+//   Flechas que indican el sentido de circulación de la corriente eléctrica
+function crearTracesCorriente(sentidoCorriente) {
     const longitud = 0.45;
     const traces = [];
     const angulos = [
@@ -231,21 +228,25 @@ function crearTracesCorriente() {
         Math.PI,
         (3 * Math.PI) / 2
     ];
-
+    const factor = 
+        sentidoCorriente === 1 ? 1 : -1;
+        
     for (let i = 0; i < angulos.length; i++) {
         const angulo = angulos[i];
         const x = RADIO_ESPIRA * Math.cos(angulo);
         const y = RADIO_ESPIRA * Math.sin(angulo);
         const tx = -Math.sin(angulo);
         const ty = Math.cos(angulo);
-
+        const dx = longitud * tx * factor;
+        const dy = longitud * ty * factor;
+        
         traces.push(
             ...crearTraceFlecha(
                 x,
                 y,
                 0,
-                longitud * tx,
-                longitud * ty,
+                dx,
+                dy,
                 0,
                 COLORES.corriente,
                 "Corriente",
@@ -299,6 +300,7 @@ function crearLayout() {
  * ========================================================================== */
 
 function crearGraficoBobina() {
+    sentidoAntihorario = 1
     graficoBobina = Plotly.newPlot(
         "grafico-bobina",
         [
@@ -306,7 +308,7 @@ function crearGraficoBobina() {
             crearTraceCentro(),
             crearTraceRadio(),
             crearTraceEtiquetaRadio(),
-            ...crearTracesCorriente(),
+            ...crearTracesCorriente(sentidoAntihorario),
             ...crearTraceCampo(),
             crearTraceEtiquetaCampo()
         ],
@@ -587,7 +589,9 @@ function obtenerTracesLaboratorio(parametrosLaboratorio,longitudVector) {
         crearTraceCentro(),
         crearTraceRadio(),
         crearTraceEtiquetaRadio(),
-        ...crearTracesCorriente(),
+        ...crearTracesCorriente(
+            parametrosLaboratorio.sentidoCorriente
+        ),
         ...crearTraceVectorCampo(
             longitudVector,
             parametrosLaboratorio.sentidoCorriente
