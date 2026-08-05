@@ -78,7 +78,7 @@ def tema2():
     fig_resultado = visualizacion_resultado_final()
 
     return render_template(
-        "tema2_resolucion_p1.html",
+        "tema2.html",
         grafico_conceptual_2a=fig_concep_1.to_html(
             full_html=False,
             include_plotlyjs="cdn"
