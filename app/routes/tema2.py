@@ -18,42 +18,6 @@ bp = Blueprint(
     __name__
 )
 
-@bp.route("/tema2/demo/1")
-def tema2_demo1():
-
-    fig = visualizacion_conceptual_2a()
-
-    return render_template(
-        "tema2_demo.html",
-        grafico=fig.to_html(
-            full_html=False
-        )
-    )
-
-@bp.route("/tema2/demo/2")
-def tema2_demo2():
-
-    fig = visualizacion_conceptual_2b()
-
-    return render_template(
-        "tema2_demo.html",
-        grafico=fig.to_html(
-            full_html=False
-        )
-    )
-
-@bp.route("/tema2/ejercicio")
-def ejercicio():
-    fig_ejer = visualizacion_ejercicio_2()
-
-    return render_template(
-        "tema2_ejercicio.html",
-        grafico=fig_ejer.to_html(
-            full_html=False,
-            include_plotlyjs="cdn"
-        )
-    )
-
 @bp.route("/tema2")
 def tema2():
     # Todos los calculos son para P1
