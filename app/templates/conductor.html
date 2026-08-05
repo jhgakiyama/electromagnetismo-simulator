@@ -5,14 +5,8 @@ Conductor Rectilíneo
 {% endblock %}
 
 {% block content %}
-
-<div class="card mb-4">
-    <div class="card-body">
-        <h2>Campo Magnético de un Conductor Rectilíneo Infinito</h2>
-
-        <p class="mb-0">Problema 1</p>
-    </div>
-</div>
+<div class="container py-4">
+<h1 class="mb-4">Campo Magnético de un Conductor Rectilíneo Infinito</h1>
 
 <div class="card mb-4">
     <div class="card-body">
@@ -126,26 +120,12 @@ Conductor Rectilíneo
 
 <h5>Variables</h5>
 
-<ul>
-
-<li>
-    <strong>B</strong> = Campo magnético (Tesla)
-</li>
-
-<li>
-    <strong>μ₀</strong> = Permeabilidad magnética del vacío (T·m/A)
-    
-</li>
-
-<li>
-    <strong>I</strong> = Corriente eléctrica (Ampere)
-</li>
-
-<li>
-    <strong>r</strong> = Distancia al conductor (metro)
-</li>
-
-</ul>
+    <ul>
+        <li><strong>B</strong> = Campo magnético (Tesla)</li>
+        <li><strong>μ₀</strong> = Permeabilidad magnética del vacío (T·m/A)</li>
+        <li><strong>I</strong> = Corriente eléctrica (Ampere)</li>
+        <li><strong>r</strong> = Distancia al conductor (metro)</li>
+    </ul>
 
 <p>
     Esta ecuación permite calcular la magnitud del campo magnético en cualquier punto
@@ -245,21 +225,11 @@ Conductor Rectilíneo
 
 <h5>Conversiones frecuentes</h5>
 
-<ul>
-
-<li>
-    1 cm = 0.01 m
-</li>
-
-<li>
-    10 cm = 0.10 m
-</li>
-
-<li>
-    100 cm = 1.00 m
-</li>
-
-</ul>
+    <ul>
+        <li>1 cm = 0.01 m</li>
+        <li>10 cm = 0.10 m</li>
+        <li>100 cm = 1.00 m</li>
+    </ul>
 
     <div class="alert alert-danger">
 
@@ -750,7 +720,7 @@ Campo Magnético: <strong>B = {{ resultado_formateado }} T</strong>
         </ul>      
     </div>
 </div>
-
+</div>
 {% endblock %}
 
 {% block scripts %}
