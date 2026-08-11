@@ -1,21 +1,19 @@
 {% extends "base.html" %}
 
-{% block title %}
-Conductores Paralelos
-{% endblock %}
+{% block title %}Conductores Paralelos{% endblock %}
 
 {% block content %}
+
 <div class="container py-4">
 <h1 class="mb-4">Campo Magnético de dos Hilos Paralelos</h1>
 
-<!-- Seccion 1 -->
-<div class="card mb-4">
+<!-- ========================================================= -->
+<!-- 1 Introducción -->
+<!-- ========================================================= -->
 
-    <div class="card-header">
-        <strong>1. Introducción</strong>
-    </div>
-
+<div class="card shadow-sm mb-4">
     <div class="card-body">
+        <h2 class="h4">1. Introducción</h2>
 
         <p>
             En el tema anterior aprendimos a calcular el campo magnético
@@ -47,14 +45,14 @@ Conductores Paralelos
     </div>
 </div>
 
+<!-- ========================================================= -->
+<!-- 2 Principio de superposicion -->
+<!-- ========================================================= -->
 
-<!-- Seccion 2 -->
-<div class="card mb-4">
-    <div class="card-header">
-        <strong>2. Principio de Superposición</strong>
-    </div>
-
+<div class="card shadow-sm mb-4">
     <div class="card-body">
+        <h2 class="h4">2. Principio de Superposición</h2>
+                
         <p>
             Cuando en una región del espacio existen varios conductores
             recorridos por corriente eléctrica, cada uno genera su propio
@@ -72,19 +70,19 @@ Conductores Paralelos
         </p>
         
         <div class="alert alert-success mt-3 mb-0">
-            Campo magnético total = Suma vectorial de los campos
+            <strong>Campo magnético total</strong> = Suma vectorial de los campos
             producidos por cada conductor.
         </div>
     </div>
 </div>
 
-<div class="card mb-4">
+<!-- ========================================================= -->
+<!-- 3 Geometría -->
+<!-- ========================================================= -->
 
-    <div class="card-header">
-        <strong>3. Geometría del Problema</strong>
-    </div>
-
+<div class="card shadow-sm mb-4">
     <div class="card-body">
+        <h2 class="h4">3. Geometría del Problema</h2>
         <p>
             Identifiquemos los elementos geométricos que intervienen en el problema.
         </p>
@@ -106,47 +104,48 @@ Conductores Paralelos
     </div>
 </div>
 
-<hr class="my-5">
-<h2 class="mb-3">4. Visualización Conceptual</h2>
-<div class="card mb-4">
+<!-- ========================================================= -->
+<!-- 4 Visualizacion Conceptual -->
+<!-- ========================================================= -->
 
-    <div class="card-header">
-        <strong>Concepto 1 - Cada conductor genera su propio campo magnético</strong>
-    </div>
-
+<div class="card shadow-sm mb-4">
     <div class="card-body">
-        <p>
-            Cada conductor produce un campo magnético independiente en el
-            punto de observación <strong>P</strong>. En el gráfico se muestran
-            ambos campos (<strong>B₁</strong> y <strong>B₂</strong>) y el
-            vector resultante obtenido mediante su superposición.
-        </p>
-
-        {{ grafico_conceptual_2a|safe }}
-
-        <div class="small text-muted mt-3">
-            <strong>Elementos del gráfico</strong>
-            <ul class="mb-0">
-                <li><strong>I₁</strong> e <strong>I₂</strong>: conductores rectilíneos paralelos, con corriente entrante</li>
-                <li><strong>P</strong>: punto donde se analiza el campo magnético.</li>
-                <li><strong>B₁</strong>: campo producido por el conductor I₁.</li>
-                <li><strong>B₂</strong>: campo producido por el conductor I₂.</li>
-                <li><strong>Btotal</strong>: suma vectorial de B₁ y B₂.</li>
-            </ul>
+        <h2 class="h4">4. Visualización Conceptual</h2>
+        <div class="card-header">
+            <strong>Concepto 1 - Cada conductor genera su propio campo magnético</strong>
         </div>
 
-        <div class="alert alert-success mt-4 mb-0">
-            Cada conductor contribuye de forma independiente al campo magnético existente en el punto de observación.
-        </div>
-    </div>
-</div>
+            <p>
+                Cada conductor produce un campo magnético independiente en el
+                punto de observación <strong>P</strong>. En el gráfico se muestran
+                ambos campos (<strong>B₁</strong> y <strong>B₂</strong>) y el
+                vector resultante obtenido mediante su superposición.
+            </p>
 
-<div class="card mb-5">
-    <div class="card-header">
-        <strong>Concepto 2 - La suma se realiza mediante componentes cartesianas</strong>
+            {{ grafico_conceptual_2a|safe }}
+
+            <div class="small text-muted mt-3">
+                <strong>Elementos del gráfico</strong>
+                <ul class="mb-0">
+                    <li><strong>I₁</strong> e <strong>I₂</strong>: conductores rectilíneos paralelos, con corriente entrante</li>
+                    <li><strong>P</strong>: punto donde se analiza el campo magnético.</li>
+                    <li><strong>B₁</strong>: campo producido por el conductor I₁.</li>
+                    <li><strong>B₂</strong>: campo producido por el conductor I₂.</li>
+                    <li><strong>Btotal</strong>: suma vectorial de B₁ y B₂.</li>
+                </ul>
+            </div>
+
+            <div class="alert alert-success mt-4 mb-0">
+                Cada conductor contribuye de forma independiente al campo magnético existente en el punto de observación.
+            </div>
     </div>
+
+    <hr class="my-2">
 
     <div class="card-body">
+        <div class="card-header">
+            <strong>Concepto 2 - La suma se realiza mediante componentes cartesianas</strong>
+        </div>
         <p>
             Para obtener el campo magnético resultante no basta con sumar
             los módulos de los vectores. Es necesario descomponer cada
@@ -186,24 +185,16 @@ Conductores Paralelos
 </div>
 
 <!-- ========================================================= -->
-<!-- Hoja de Ruta de la Resolución -->
+<!-- 5 Hoja de Ruta de la Resolución -->
 <!-- ========================================================= -->
 
-<h2 class="mt-5">Hoja de Ruta de la Resolución</h2>
-
 <div class="card shadow-sm mb-4">
-
     <div class="card-header fw-bold">
-        ¿Cómo resolveremos este ejercicio?
+        ¿Cómo se resuelve este ejercicio?
     </div>
 
     <div class="card-body">
-
-        <p>
-            Ahora que comprendemos el principio de superposición, ya estamos en
-            condiciones de resolver el problema.
-        </p>
-
+        <h2 class="h4">5. Hoja de Ruta de la Resolución</h2>
         <p>
             Para mantener un procedimiento ordenado analizaremos por separado el
             campo magnético generado por cada conductor y, finalmente,
@@ -242,130 +233,112 @@ Conductores Paralelos
     </div>
 </div>
 
-<div class="container mt-4">
-    <h2>Ejercicio Propuesto</h2>
-    
-    <div class="card mb-4">
-    <div class="card-header"><strong>Enunciado</strong></div>
+<!-- ========================================================= -->
+<!-- 6 Ejercicio -->
+<!-- ========================================================= -->
+
+<div class="card shadow-sm mb-4">
     <div class="card-body">
+    <h2 class="h4">6. Ejercicio Propuesto</h2>
+        
     <p>
-        Considerando dos conductores rectilíneos infinitos separados
+        <strong>Enunciado: </strong> dos conductores rectilíneos infinitos separados
         una distancia de 2 cm y recorridos por corrientes de 1 A con
         sentido entrante, determinar el campo magnético en los puntos
         P₁=(1, 1) y P₂(1.5, 0).
     </p>
-    </div>
-    </div>
 
     {{ grafico_ejer | safe }}
 
-    <h3 class="mt-5">Paso 1 - Calcular el campo magnético B₁</h3>    
     <p class="text-muted">
         En este paso analizaremos únicamente el campo
         magnético generado por el conductor I₁ sobre el
         punto P₁.
     </p>
+    
+    <h3 class="h5">6.1 - Calcular el campo magnético B₁</h3>       
 
     <hr>
 
     {{ grafico | safe }}
-
-    <hr class="my-4">
-
-    <div class="card mb-4">
-
+    </div>
+    
+    <!-- Paso 1 -->
+    <div class="card-body">
         <div class="card-header">
             <strong>Paso 1 - Calcular el vector radio r₁</strong>
         </div>
+        <p>
+            El vector radio une el conductor I₁ con el
+            punto de observación P₁.
+        </p>
 
-        <div class="card-body">
+        <ul>
+            <li>Δx = {{ dx1 }} cm</li>
+            <li>Δy = {{ dy1 }} cm</li>
+        </ul>
 
-            <p>
-                El vector radio une el conductor I₁ con el
-                punto de observación P₁.
-            </p>
+        <p> r₁ = √(Δx² + Δy²)</p>
+        <p>r₁ = √({{ dx1 }}² + {{ dy1 }}²)</p>
 
-            <ul>
-                <li>Δx = {{ dx1 }} cm</li>
-                <li>Δy = {{ dy1 }} cm</li>
-            </ul>
-
-            <p>
-                r₁ = √(Δx² + Δy²)
-            </p>
-
-            <p>
-                r₁ = √({{ dx1 }}² + {{ dy1 }}²)
-            </p>
-
-            <div class="alert alert-success mt-3">
-                <h5 class="mb-1">Resultado</h5>
-                <h4 class="mb-0">
-                    r<sub>1</sub> = {{ "%.2f"|format(r1) }} cm = 0,0141 m
-                </h4>
-            </div>
-
+        <div class="alert alert-success mt-3">
+            <h4 class="mb-0">
+                r<sub>1</sub> = {{ "%.2f"|format(r1) }} cm = 0,0141 m
+            </h4>
         </div>
-
     </div>
+    <!-- FIN Paso 1 -->
 
-    <div class="card mb-4">
-
+    <!-- Paso 2 -->
+    <div class="card-body">
         <div class="card-header">
             <strong>Paso 2 - Calcular el módulo de B₁</strong>
         </div>
-        <div class="card-body">
-            <p>
-                Aplicamos la expresión del campo magnético
-                producido por un conductor rectilíneo infinito.
-            </p>
-            <pre>
-    B1 = μ₀ · I1
-        ───────
-        2π · r1
-            </pre>
-            <p>I1 = 1 A</p>
-            <p>r1 = {{ "%.4f"|format(r1 / 100) }} m</p>
-            
-            <div class="alert alert-success mt-3">
-                <h5 class="mb-1">Resultado</h5>
-                <h4 class="mb-0">|B<sub>1</sub>| = {{ "%.2e"|format(b1) }} T</h4>
-            </div>
+        <p>
+            Aplicamos la expresión del campo magnético
+            producido por un conductor rectilíneo infinito.
+        </p>
+        <pre>
+            B1 = μ₀ · I1
+                ───────
+                2π · r1
+        </pre>
+        <p>I1 = 1 A</p>
+        <p>r1 = {{ "%.4f"|format(r1 / 100) }} m</p>
+        
+        <div class="alert alert-success mt-3">
+            <h4 class="mb-0">|B<sub>1</sub>| = {{ "%.2e"|format(b1) }} T</h4>
         </div>
-
     </div>
-
-    <div class="card">
-
+    <!-- FIN Paso 2 -->
+    
+    <!-- Paso 3 -->
+    <div class="card-body">
         <div class="card-header">
             <strong>Paso 3 - Determinar la dirección</strong>
         </div>
-
-        <div class="card-body">
-            <p>
-                Aplicando la regla de la mano derecha,
-                el vector B₁ es perpendicular al vector
-                radio r₁ y apunta en el sentido mostrado
-                en el gráfico.
-            </p>
-        </div>
-
+        <p>
+            Aplicando la regla de la mano derecha,
+            el vector B₁ es perpendicular al vector
+            radio r₁ y apunta en el sentido mostrado
+            en el gráfico.
+        </p>
     </div>
+    <!-- FIN Paso 3 -->
 
-    <div class="card mt-4">
-    <div class="card-header">
-        <strong>Paso 4 - Componentes del vector B₁</strong>
-    </div>
-
+    <!-- Paso 4 -->
     <div class="card-body">
+        <div class="card-header">
+            <strong>Paso 4 - Componentes del vector B₁</strong>
+        </div>
         <p>
             El campo magnético es un vector. Para poder
             sumarlo con el campo producido por el segundo
             conductor es necesario descomponerlo en sus
             componentes cartesianas.
         </p>
-        
-        
+            
+            
         <h5 class="mt-4">Componentes obtenidas</h5>
 
         <table class="table table-bordered table-striped mt-3">
@@ -394,135 +367,117 @@ Conductores Paralelos
             </tbody>
         </table>
     </div>
-</div>
+    <!-- FIN Paso 4 -->
 
-<hr class="my-5">
+</div> <!-- fin  card -->
 
-<h3 class="mt-5">Paso 2 - Análisis del conductor I₂</h3>
-
-    {{ grafico_i2 | safe }}
+<!-- ========================================================= -->
+<!-- Ejercicio Parte 2-->
+<!-- ========================================================= -->
+ <h3 class="mt-5">Paso 6.2 - Análisis del conductor I₂</h3>
+ <div class="card shadow-sm mb-4">
+        {{ grafico_i2 | safe }}
     <hr class="my-4">
-    
-    <div class="card mb-4">
 
+    <div class="card-body">
         <div class="card-header">
             <strong>Paso 1 - Calcular el vector radio r2</strong>
         </div>
+        <p>El vector radio une el conductor I2 con el
+            punto de observación P₁.
+        </p>
 
-        <div class="card-body">
+        <ul>
+            <li>Δx = {{ dx2 }} cm</li>
+            <li>Δy = {{ dy2 }} cm</li>
+        </ul>
 
-            <p>El vector radio une el conductor I2 con el
-                punto de observación P₁.
-            </p>
+        <p>r2 = √(Δx² + Δy²)</p>
+        <p>r2 = √({{ dx2 }}² + {{ dy2 }}²)</p>
 
-            <ul>
-                <li>Δx = {{ dx2 }} cm</li>
-                <li>Δy = {{ dy2 }} cm</li>
-            </ul>
-
-            <p>r2 = √(Δx² + Δy²)</p>
-            <p>r2 = √({{ dx2 }}² + {{ dy2 }}²)</p>
-
-            <div class="alert alert-success mt-3">
-                <h5 class="mb-1">Resultado</h5>
-                <h4 class="mb-0">
-                    r<sub>2</sub> = {{ "%.2f"|format(r2) }} cm = 0,0141 m
-                </h4>
-            </div>
-
+        <div class="alert alert-success mt-3">
+            <h4 class="mb-0">
+                r<sub>2</sub> = {{ "%.2f"|format(r2) }} cm = 0,0141 m
+            </h4>
         </div>
-
-    </div>
-
-    <div class="card mb-4">
-        <div class="card-header">
-            <strong>Paso 2 - Calcular el módulo de B2</strong>
-        </div>
-        <div class="card-body">
-            <p>
-                Aplicamos la expresión del campo magnético
-                producido por un conductor rectilíneo infinito.
-            </p>
-
-            <pre>
-B2 = μ₀ · I2
-    ───────
-     2π · r2
-            </pre>
-
-            <p>I2 = 1 A</p>
-            <p>r2 = {{ "%.4f"|format(r2 / 100) }} m</p>
-            
-            <div class="alert alert-success mt-3">
-                <h5 class="mb-1">Resultado</h5>
-
-                <h4 class="mb-0">
-                    |B<sub>2</sub>| = {{ "%.2e"|format(b2) }} T
-                </h4>
-            </div>
-        </div>
-    </div>
-
-    <div class="card">
-        <div class="card-header">
-            <strong>Paso 3 - Determinar la dirección</strong>
-        </div>
-        <div class="card-body">
-            <p>
-                Aplicando la regla de la mano derecha,
-                el vector B2 es perpendicular al vector
-                radio r2 y apunta en el sentido mostrado
-                en el gráfico.
-            </p>
-        </div>
-
-    </div>
-
-    <div class="card mt-4">
-        <div class="card-header">
-            <strong>Paso 4 - Componentes del vector B2</strong>
-        </div>
-
-        <div class="card-body">       
-            <h5 class="mt-4">Componentes obtenidas</h5>
-
-            <table class="table table-bordered table-striped mt-3">
-
-                <thead class="table-light">
-                    <tr>
-                        <th>Componente</th>
-                        <th>Valor</th>
-                        <th>Unidad</th>
-                    </tr>
-                </thead>
-
-                <tbody>
-
-                    <tr>
-                        <td><strong>Bx<sub>2</sub></strong></td>
-                        <td>{{ "%.2e"|format(bx2) }}</td>
-                        <td>T</td>
-                    </tr>
-
-                    <tr>
-                        <td><strong>By<sub>2</sub></strong></td>
-                        <td>{{ "%.2e"|format(by2) }}</td>
-                        <td>T</td>
-                    </tr>
-                </tbody>
-
-            </table>
-    </div>
-</div>
-
-<div class="card mt-4">
-
-    <div class="card-header">
-        <strong>Construcción del campo magnético total</strong>
     </div>
 
     <div class="card-body">
+        <div class="card-header">
+            <strong>Paso 2 - Calcular el módulo de B2</strong>
+        </div>
+        
+        <p>
+            Aplicamos la expresión del campo magnético
+            producido por un conductor rectilíneo infinito.
+        </p>
 
+        <pre>
+            B2 = μ₀ · I2
+                ───────
+                2π · r2
+        </pre>
+
+        <p>I2 = 1 A</p>
+        <p>r2 = {{ "%.4f"|format(r2 / 100) }} m</p>
+        
+        <div class="alert alert-success mt-3">
+            <h4 class="mb-0">
+                |B<sub>2</sub>| = {{ "%.2e"|format(b2) }} T
+            </h4>
+        </div>
+    </div>
+
+    <div class="card-body">
+        <div class="card-header">
+            <strong>Paso 3 - Determinar la dirección</strong>
+        </div>
+        <p>
+            Aplicando la regla de la mano derecha,
+            el vector B2 es perpendicular al vector
+            radio r2 y apunta en el sentido mostrado
+            en el gráfico.
+        </p>
+    </div>
+    <!-- Final Paso 3 -->
+
+    <div class="card-body">       
+        <div class="card-header">
+            <strong>Paso 4 - Componentes del vector B2</strong>
+        </div>
+        
+        <h5 class="mt-4">Componentes obtenidas</h5>
+        
+        <table class="table table-bordered table-striped mt-3">
+            <thead class="table-light">
+                <tr>
+                    <th>Componente</th>
+                    <th>Valor</th>
+                    <th>Unidad</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr>
+                    <td><strong>Bx<sub>2</sub></strong></td>
+                    <td>{{ "%.2e"|format(bx2) }}</td>
+                    <td>T</td>
+                </tr>
+
+                <tr>
+                    <td><strong>By<sub>2</sub></strong></td>
+                    <td>{{ "%.2e"|format(by2) }}</td>
+                    <td>T</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <!-- Final Paso 4 -->
+    
+    <div class="card-body">
+        <div class="card-header">
+            <strong>Construcción del campo magnético total</strong>
+        </div>
         <p>
             Hasta este momento analizamos por separado el
             campo magnético generado por cada conductor.
@@ -531,16 +486,11 @@ B2 = μ₀ · I2
             el punto P₁, el siguiente paso consiste en
             sumar sus componentes cartesianas.
         </p>
-
     </div>
-
-</div>
-
-<div class="card mt-4">
 
     <div class="card-header">
-        <strong>Tabla de componentes</strong>
-    </div>
+            <strong>Tabla de componentes</strong>
+        </div>
 
     <div class="card-body">
         <table class="table table-bordered table-hover">
@@ -569,20 +519,16 @@ B2 = μ₀ · I2
             </tbody>
         </table>
     
-    <div class="alert alert-warning mt-3">
-        Antes de realizar la suma, observá el signo de cada componente. 
-        Que deducción gráfica se puede hacer ?
-    </div>
-
-</div>  
-</div>
-
-<div class="card mt-4">
-    <div class="card-header">
-        <strong>Paso 5 - Suma de componentes</strong>
-    </div>
+        <div class="alert alert-warning mt-3">
+            Antes de realizar la suma, observá el signo de cada componente. 
+            Que deducción gráfica se puede hacer ?
+        </div>
+    </div>  
 
     <div class="card-body">
+        <div class="card-header">
+            <strong>Paso 5 - Suma de componentes</strong>
+        </div>
         <p>Componente horizontal</p>
 
         <div class="alert alert-light">
@@ -598,20 +544,16 @@ B2 = μ₀ · I2
         <div class="alert alert-success mt-3">
             Para este caso de <strong>geometria simétrica</strong>
             <ul>
-            <li>Las componentes X se suman</li>
-            <li>Las componentes en Y se anulan</li>
+                <li>Las componentes X se suman</li>
+                <li>Las componentes en Y se anulan</li>
             </ul>
         </div>
     </div>  
-</div>
-
-<div class="card mt-4">
-
-    <div class="card-header">
-        <strong>Paso 6 - Módulo del campo magnético total</strong>
-    </div>
 
     <div class="card-body">
+        <div class="card-header">
+            <strong>Paso 6 - Módulo del campo magnético total</strong>
+        </div>
         <p>
             Una vez obtenidas las componentes horizontal y
             vertical del campo magnético total, calculamos
@@ -625,59 +567,47 @@ B2 = μ₀ · I2
         </p>
 
         <div class="alert alert-success mt-3">
-            <h5 class="mb-1">Resultado</h5>
-
             <h4 class="mb-0">
                 |B| = {{ "%.2e"|format(b_total) }} T
             </h4>
         </div>
     </div>
-</div>
+ </div>  <!-- Final card -->
 
-<hr class="my-5">
-
-<h2>Resultado Final</h2>
-
-<p class="text-muted">
-    Finalmente representamos el campo magnético resultante obtenido a partir de la suma vectorial de los campos producidos por ambos conductores.
-</p>
-
-<div class="card mt-4">
-
-    <div class="card-header">
-        <strong>Grafico del Campo Magnético Total</strong>
-    </div>
-
+<!-- ========================================================= -->
+<!-- 7 Resultado Final -->
+<!-- ========================================================= -->
+<div class="card shadow-sm mb-4">
     <div class="card-body">
+        <h2 class="h4">7. Resultado Final</h2>
+
+        <p class="text-muted">
+            Finalmente representamos el campo magnético resultante obtenido a partir de la suma vectorial de los campos producidos por ambos conductores.
+        </p>
+
         {{ grafico_resultado | safe }}
 
-		<div class="small text-muted mt-3">
-			<strong><strong>Elementos del gráfico</strong></strong>
+        <div class="small text-muted mt-3">
+            <strong><strong>Elementos del gráfico</strong></strong>
 
-			<ul class="mb-0">
-				Para mejorar la visualizacion final del Campo Total se eliminó del grafico los siguientes elementos:                
-				<li>❌ d = 2 cm</li>
-				<li>❌ P₂</li>
-				<li>❌ r₁ y r₂</li>      
-				<li>❌ Bx1 y By1</li>
-				<li>❌ Bx2 y By2</li>
-			</ul>
-		</div>
-	</div>
+            <ul class="mb-0">
+                Para mejorar la visualizacion final del Campo Total se eliminó del grafico los siguientes elementos:                
+                <li>❌ d = 2 cm</li>
+                <li>❌ P₂</li>
+                <li>❌ r₁ y r₂</li>      
+                <li>❌ Bx1 y By1</li>
+                <li>❌ Bx2 y By2</li>
+            </ul>
+        </div>
+    </div>
 </div>
 
-<br>
-
-<h2>Conclusión del Tema</h2>
-
-<div class="card mb-4">
-
-    <div class="card-header">
-        <strong>¿Qué aprendimos?</strong>
-    </div>
-
+<!-- ========================================================= -->
+<!-- 8 Conclusion -->
+<!-- ========================================================= -->
+<div class="card shadow-sm mb-4">
     <div class="card-body">
-
+        <h2 class="h4">8. Conclusiones</h2>
         <p>
             A lo largo de este tema estudiamos cómo determinar el campo
             magnético generado por <strong>dos conductores rectilíneos
@@ -685,78 +615,35 @@ B2 = μ₀ · I2
             <strong>principio de superposición</strong>.
         </p>
 
-        <p>
-            Para resolver el problema analizamos el aporte de cada conductor
-            de manera independiente, calculamos sus respectivos campos
-            magnéticos y posteriormente los descompusimos en componentes
-            cartesianas para poder realizar una suma vectorial.
-        </p>
-
         <p class="mb-0">
-            Finalmente obtuvimos el campo magnético resultante tanto desde el
-            punto de vista numérico como mediante una representación gráfica,
-            comprobando que el procedimiento seguido permite interpretar el
-            comportamiento físico del sistema y no solamente obtener un
-            resultado matemático.
+            El campo magnético total producido por varios conductores se obtiene aplicando el <strong>principio de superposición</strong>, es decir,
+            calculando el campo generado por cada conductor y realizando una <strong>suma vectorial</strong> de sus componentes.
         </p>
-
+        <br>
         <div class="alert alert-success">
-    <p>
-        El campo magnético total producido por varios conductores se obtiene
-        aplicando el <strong>principio de superposición</strong>, es decir,
-        calculando el campo generado por cada conductor y realizando una
-        <strong>suma vectorial</strong> de sus componentes.
-    </p>
+            <p>
+                <strong>Conceptos claves:</strong>
+            </p>
 
-    <ul class="mb-0">
-        <li>Cada conductor genera su propio campo magnético.</li>
-        <li>Los campos existen simultáneamente en el punto de observación.</li>
-        <li>Los módulos no se suman directamente.</li>
-        <li>La suma se realiza componente a componente.</li>
-        <li>El vector obtenido representa el campo magnético resultante.</li>
-    </ul>
+            <ul>
+                <li>Cada conductor genera su propio campo magnético.</li>
+                <li>Los campos existen simultáneamente en el punto de observación.</li>
+                <li>Los módulos no se suman directamente.</li>
+                <li>La suma se realiza componente a componente.</li>
+                <li>El vector obtenido representa el campo magnético resultante.</li>
+            </ul>
+        </div>
+    </div>
 </div>
 
-    </div>
-
-</div>
-
-
-
-<div class="card mt-4">
-    <div class="card-header">
-        <strong>Estamos listos para continuar</strong>
-    </div>
-
-    <div class="card-body">
-        <p>
-            En la siguiente sección encontrarás el segundo punto del
-            ejercicio original (<strong>P₂</strong>), que podrás resolver
-            aplicando exactamente la misma metodología desarrollada para
-            <strong>P₁</strong>.
-        </p>
-        <p class="mb-0">
-            Intenta resolverlo por tu cuenta antes de consultar la solución.
-            Ese ejercicio será una excelente oportunidad para comprobar que
-            has comprendido tanto los conceptos físicos como el procedimiento
-            matemático presentado en este tema.
-        </p>
-    </div>
-
-    
-</div>
-
-
-<hr class="my-5">
+<hr class="my-3">
 <h2>Ejercicio para resolver</h2>
 <div class="card mb-4">
-
     <div class="card-header">
-        <strong>Pon a prueba lo aprendido</strong>
+        <strong>Parte 6.2.B</strong>
     </div>
 
     <div class="card-body">
-
         <p>
             Durante este tema resolvimos paso a paso el cálculo del campo
             magnético en el punto <strong>P₁</strong>. Ahora es el momento
@@ -781,30 +668,6 @@ B2 = μ₀ · I2
     </div>
 </div>
 
-<div class="card mb-4">
-    <div class="card-header">
-        <strong>Guía de resolución</strong>
-    </div>
-
-    <div class="card-body">
-        <p>
-            Si en algún momento tienes dudas, verifica que hayas seguido
-            estos pasos:
-        </p>
-
-        <ol class="mb-0">
-            <li>Calcular r₁.</li>
-            <li>Calcular r₂.</li>
-            <li>Obtener B₁.</li>
-            <li>Obtener B₂.</li>
-            <li>Descomponer ambos campos en componentes.</li>
-            <li>Sumar las componentes.</li>
-            <li>Calcular el módulo del campo resultante.</li>
-            <li>Interpretar el resultado obtenido.</li>
-        </ol>
-    </div>
-</div>
-
 <div class="text-center my-4">
     <button
         class="btn btn-outline-primary"
@@ -814,7 +677,6 @@ B2 = μ₀ · I2
         Mostrar solución
     </button>
 </div>
-
 
 <div class="collapse mt-4" id="solucionP2">
     <div class="card border-success">
