@@ -231,24 +231,25 @@
     </div>
 </div>
 
-<div class="container mt-4">
-    <h2>Ejercicio Propuesto</h2>
-    
-    <div class="card mb-4">
-    <div class="card-header"><strong>Enunciado</strong></div>
+<!-- ========================================================= -->
+<!-- Ejercicio -->
+<!-- ========================================================= -->
+
+<div class="card shadow-sm mb-4">
     <div class="card-body">
+    <h2 class="h4">5. Ejercicio Propuesto</h2>
+        
     <p>
-        Considerando dos conductores rectilíneos infinitos separados
+        <strong>Enunciado: </strong> dos conductores rectilíneos infinitos separados
         una distancia de 2 cm y recorridos por corrientes de 1 A con
         sentido entrante, determinar el campo magnético en los puntos
         P₁=(1, 1) y P₂(1.5, 0).
     </p>
-    </div>
-    </div>
 
     {{ grafico_ejer | safe }}
 
-    <h3 class="mt-5">Paso 1 - Calcular el campo magnético B₁</h3>    
+    <h3 class="h5">5.1 - Calcular el campo magnético B₁</h3>    
+    
     <p class="text-muted">
         En este paso analizaremos únicamente el campo
         magnético generado por el conductor I₁ sobre el
@@ -258,6 +259,10 @@
     <hr>
 
     {{ grafico | safe }}
+    </div>
+</div>
+
+    
 
     <hr class="my-4">
 
@@ -741,7 +746,7 @@ B2 = μ₀ · I2
 <div class="card mb-4">
 
     <div class="card-header">
-        <strong>Pon a prueba lo aprendido</strong>
+        <strong>Parte B</strong>
     </div>
 
     <div class="card-body">
@@ -770,106 +775,82 @@ B2 = μ₀ · I2
     </div>
 </div>
 
-<div class="card mb-4">
-    <div class="card-header">
-        <strong>Guía de resolución</strong>
+    <div class="text-center my-4">
+        <button
+            class="btn btn-outline-primary"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#solucionP2">
+            Mostrar solución
+        </button>
     </div>
 
-    <div class="card-body">
-        <p>
-            Si en algún momento tienes dudas, verifica que hayas seguido
-            estos pasos:
-        </p>
 
-        <ol class="mb-0">
-            <li>Calcular r₁.</li>
-            <li>Calcular r₂.</li>
-            <li>Obtener B₁.</li>
-            <li>Obtener B₂.</li>
-            <li>Descomponer ambos campos en componentes.</li>
-            <li>Sumar las componentes.</li>
-            <li>Calcular el módulo del campo resultante.</li>
-            <li>Interpretar el resultado obtenido.</li>
-        </ol>
-    </div>
-</div>
+    <div class="collapse mt-4" id="solucionP2">
+        <div class="card border-success">
+            <div class="card-header bg-success text-white">Solución resumida</div>
 
-<div class="text-center my-4">
-    <button
-        class="btn btn-outline-primary"
-        type="button"
-        data-bs-toggle="collapse"
-        data-bs-target="#solucionP2">
-        Mostrar solución
-    </button>
-</div>
+            <div class="card-body">
+                <p>
+                    Si resolviste el ejercicio, puedes comparar tus resultados
+                    con los valores obtenidos.
+                </p>
 
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Magnitud</th>
+                            <th>Valor</th>
+                        </tr>
+                    </thead>
 
-<div class="collapse mt-4" id="solucionP2">
-    <div class="card border-success">
-        <div class="card-header bg-success text-white">Solución resumida</div>
+                    <tbody>
+                        <tr>
+                            <td>r₁</td>
+                            <td>{{ "%.4f"|format(r1_p2) }} cm</td>
+                        </tr>
 
-        <div class="card-body">
-            <p>
-                Si resolviste el ejercicio, puedes comparar tus resultados
-                con los valores obtenidos.
-            </p>
+                        <tr>
+                            <td>r₂</td>
+                            <td>{{ "%.4f"|format(r2_p2) }} cm</td>
+                        </tr>
 
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <th>Magnitud</th>
-                        <th>Valor</th>
-                    </tr>
-                </thead>
+                        <tr>
+                            <td>B₁</td>
+                            <td>{{ "%.2e"|format(b1_p2) }} T</td>
+                        </tr>
 
-                <tbody>
-                    <tr>
-                        <td>r₁</td>
-                        <td>{{ "%.4f"|format(r1_p2) }} cm</td>
-                    </tr>
+                        <tr>
+                            <td>B₂</td>
+                            <td>{{ "%.2e"|format(b2_p2) }} T</td>
+                        </tr>
 
-                    <tr>
-                        <td>r₂</td>
-                        <td>{{ "%.4f"|format(r2_p2) }} cm</td>
-                    </tr>
+                        <tr>
+                            <td>Bx</td>
+                            <td>{{ "%.2e"|format(bx_total_p2) }} T</td>
+                        </tr>
 
-                    <tr>
-                        <td>B₁</td>
-                        <td>{{ "%.2e"|format(b1_p2) }} T</td>
-                    </tr>
+                        <tr>
+                            <td>By</td>
+                            <td>{{ "%.2e"|format(by_total_p2) }} T</td>
+                        </tr>
 
-                    <tr>
-                        <td>B₂</td>
-                        <td>{{ "%.2e"|format(b2_p2) }} T</td>
-                    </tr>
+                        <tr class="table-success">
+                            <td><strong>|B|</strong></td>
+                            <td><strong>{{ "%.2e"|format(b_total_p2) }} T</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
 
-                    <tr>
-                        <td>Bx</td>
-                        <td>{{ "%.2e"|format(bx_total_p2) }} T</td>
-                    </tr>
+                {{ grafico_p2|safe }}
 
-                    <tr>
-                        <td>By</td>
-                        <td>{{ "%.2e"|format(by_total_p2) }} T</td>
-                    </tr>
-
-                    <tr class="table-success">
-                        <td><strong>|B|</strong></td>
-                        <td><strong>{{ "%.2e"|format(b_total_p2) }} T</strong></td>
-                    </tr>
-                </tbody>
-            </table>
-
-            {{ grafico_p2|safe }}
-
-            <div class="alert alert-success mt-4 mb-0">
-                Si tus resultados coinciden con los valores mostrados,
-                significa que aplicaste correctamente el procedimiento de
-                superposición desarrollado durante este tema.
+                <div class="alert alert-success mt-4 mb-0">
+                    Si tus resultados coinciden con los valores mostrados,
+                    significa que aplicaste correctamente el procedimiento de
+                    superposición desarrollado durante este tema.
+                </div>
             </div>
         </div>
     </div>
-</div>
 </div>
 {% endblock %}
