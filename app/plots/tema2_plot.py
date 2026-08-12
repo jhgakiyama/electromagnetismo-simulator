@@ -918,6 +918,7 @@ def visualizacion_autoevaluacion_p2():
 
     # Layout
     fig.update_layout(
+        autosize=True,
         title="Campo Magnético Resultante en P2"
     )
 

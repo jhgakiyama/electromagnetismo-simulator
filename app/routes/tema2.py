@@ -111,5 +111,11 @@ def tema2():
         r1_p2=r1_p2,r2_p2=r2_p2,b1_p2=b1_p2,b2_p2=b2_p2,
         bx_total_p2=bx_total_p2,by_total_p2=by_total_p2,b_total_p2=b_total_p2,
 
-        grafico_p2=grafico_p2.to_html(full_html=False,include_plotlyjs=False)
+        grafico_p2=grafico_p2.to_html(
+            full_html=False,
+            include_plotlyjs=False,
+            config={
+                "responsive": True
+            }
+        )
     )
