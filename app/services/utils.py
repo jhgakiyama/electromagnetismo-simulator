@@ -31,3 +31,18 @@ def formatear_cientifico(valor):
         f"{mantisa} × 10"
         f"{exponente_a_superindice(exponente)}"
     )
+
+
+def formatear_cientifico_laboratorio(valor):
+
+    if abs(valor) < 1e-12:
+        return "0"
+
+    mantisa, exponente = f"{valor:.3e}".split("e")
+
+    exponente = int(exponente)
+
+    return (
+        f"{mantisa} × 10"
+        f"{exponente_a_superindice(exponente)}"
+    )
