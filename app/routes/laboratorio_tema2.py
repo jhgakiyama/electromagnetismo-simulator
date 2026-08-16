@@ -1,6 +1,7 @@
 from flask import Blueprint,render_template, request
 from app.physics.laboratorio import calcular_simulacion
 from app.plots.laboratorio_plot import visualizacion_resultado_laboratorio
+from app.services.utils import formatear_resultado_laboratorio
 
 
 bp = Blueprint(
@@ -48,6 +49,7 @@ def tema2_laboratorio():
                 py=py
             )
 
+            resultado_formateado = formatear_resultado_laboratorio(resultado)
             grafico = visualizacion_resultado_laboratorio(resultado)
             grafico_html = grafico.to_html(
                 full_html=False,
@@ -61,6 +63,7 @@ def tema2_laboratorio():
     return render_template(
         template,
         resultado=resultado,
+        resultado_formateado=resultado_formateado,
         grafico=grafico_html,
         mensaje_error=mensaje_error,
         corriente1=corriente1,
