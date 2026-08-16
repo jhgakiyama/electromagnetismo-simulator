@@ -46,3 +46,45 @@ def formatear_cientifico_laboratorio(valor):
         f"{mantisa} × 10"
         f"{exponente_a_superindice(exponente)}"
     )
+
+def formatear_resultado_laboratorio(resultado):
+    """
+    Funcion encargada de formatear el resultado del laboratorio
+    """
+    return {
+        "b1": {
+            "magnitud": formatear_cientifico_laboratorio(
+                resultado["b1"]["magnitud"]
+            ),
+            "bx": formatear_cientifico_laboratorio(
+                resultado["b1"]["bx"]
+            ),
+            "by": formatear_cientifico_laboratorio(
+                resultado["b1"]["by"]
+            )
+        },
+
+        "b2": {
+            "magnitud": formatear_cientifico_laboratorio(
+                resultado["b2"]["magnitud"]
+            ),
+            "bx": formatear_cientifico_laboratorio(
+                resultado["b2"]["bx"]
+            ),
+            "by": formatear_cientifico_laboratorio(
+                resultado["b2"]["by"]
+            )
+        },
+
+        "campo_total": {
+            "magnitud": formatear_cientifico_laboratorio(
+                resultado["campo_total"]["magnitud"]
+            ),
+            "bx": formatear_cientifico_laboratorio(
+                resultado["campo_total"]["bx"]
+            ),
+            "by": formatear_cientifico_laboratorio(
+                resultado["campo_total"]["by"]
+            )
+        }
+    }
