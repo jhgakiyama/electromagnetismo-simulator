@@ -32,7 +32,7 @@ Conductor Rectilíneo
 
 <div class="card mb-4">
     <div class="card-body">
-        <h3>2. Explicación Teórica</h3>
+        <h3>2. Explicación teórica</h3>
 
         <p>
             Un conductor recorrido por corriente eléctrica
@@ -74,7 +74,7 @@ Conductor Rectilíneo
 
 <div class="card mb-4">
     <div class="card-body">
-        <h4 class="mb-0"> 2.1 Geometría del Campo Magnético 📐</h4>
+        <h4 class="mb-0"> 2.1 Geometría del campo magnético</h4>
     </div>
 
     <div class="card-body">
@@ -107,45 +107,42 @@ Conductor Rectilíneo
 
 <div class="card mb-4">
     <div class="card-body">
-        <h3>3. Fórmulas Utilizadas</h3>
+        <h3>3. Fórmulas utilizadas</h3>
 
-<p>
-    Para un conductor rectilíneo infinitamente largo,
-    la magnitud del campo magnético se calcula mediante:
-</p>
+        <p>
+            Para un conductor rectilíneo infinitamente largo,
+            la magnitud del campo magnético se calcula mediante:
+        </p>
 
-<div class="alert alert-secondary">
-    B = μ₀ · I / (2π · r)
-</div>
+        <div class="alert alert-secondary">
+            B = μ₀ · I / (2π · r)
+        </div>
 
-<h5>Variables</h5>
+        <h5>Variables</h5>
 
-    <ul>
-        <li><strong>B</strong> = Campo magnético (Tesla)</li>
-        <li><strong>μ₀</strong> = Permeabilidad magnética del vacío (T·m/A)</li>
-        <li><strong>I</strong> = Corriente eléctrica (Ampere)</li>
-        <li><strong>r</strong> = Distancia al conductor (metro)</li>
-    </ul>
+        <ul>
+            <li><strong>B</strong> = Campo magnético (Tesla)</li>
+            <li><strong>μ₀</strong> = Permeabilidad magnética del vacío (T·m/A)</li>
+            <li><strong>I</strong> = Corriente eléctrica (Ampere)</li>
+            <li><strong>r</strong> = Distancia al conductor (metro)</li>
+        </ul>
 
-<p>
-    Esta ecuación permite calcular la magnitud del campo magnético en cualquier punto
-    ubicado a una distancia r del conductor.
-</p>
+        <p>
+            Esta ecuación permite calcular la magnitud del campo magnético en cualquier punto
+            ubicado a una distancia r del conductor.
+        </p>
 
 
     <div class="alert alert-warning">
+        <strong>Interpretación física:</strong>
+        Si la corriente se duplica,
+        el campo magnético también se duplica.
 
-    <strong>Interpretación física:</strong>
-
-    Si la corriente se duplica,
-    el campo magnético también se duplica.
-
-    Si la distancia se duplica,
-    el campo magnético se reduce a la mitad.
-
+        Si la distancia se duplica,
+        el campo magnético se reduce a la mitad.
     </div>
     
-    <h5>Permeabilidad Magnética del Vacío</h5>
+    <h5>Permeabilidad magnética del vacío</h5>
 
     <p>
         La constante μ₀ representa la permeabilidad
@@ -173,7 +170,7 @@ Conductor Rectilíneo
 
 <div class="card mb-4">
     <div class="card-body">
-        <h3>4. Sistema de Unidades</h3>
+        <h3>4. Sistema de unidades</h3>
 
 <p>
     Para utilizar correctamente la fórmula,
@@ -243,7 +240,7 @@ Conductor Rectilíneo
 <div class="card mb-4">
     <div class="card-body">
 
-<h3>5. Visualización Conceptual</h3>
+<h3>5. Visualización conceptual</h3>
 
 <p>
     Los siguientes gráficos muestran
@@ -254,7 +251,7 @@ Conductor Rectilíneo
 <hr>
 
 <h5>
-    Relación entre Campo Magnético y Corriente
+    Relación entre Campo magnético y corriente
 </h5>
 
 <p>
@@ -274,7 +271,7 @@ Conductor Rectilíneo
 
 <hr>
 
-<h5>Relación entre Campo Magnético y Distancia</h5>
+<h5>Relación entre Campo magnético y distancia</h5>
 
 <p>
     Con corriente constante,
@@ -322,11 +319,8 @@ Conductor Rectilíneo
 </div>
 
 <div class="mb-3">
-
     <label class="form-label">
-
         Distancia (m)
-
     </label>
 
     <input
@@ -336,32 +330,22 @@ Conductor Rectilíneo
         name="distancia"
         required
     >
-
 </div>
 
 <button
     class="btn btn-primary"
     type="submit"
 >
-
     Calcular
-
 </button>
 
 
 </form>
-
 {% if resultado %}
-
 <hr>
-
-<h5>
-    Resultado
-</h5>
+<h5>Resultado</h5>
 
 <ul>
-
-
 <li>
     Corriente:
     {{ corriente }} A
@@ -371,13 +355,11 @@ Conductor Rectilíneo
     Distancia:
     {{ distancia }} m
 </li>
-
-
 </ul>
 
 <div class="alert alert-success">
 
-Campo Magnético: <strong>B = {{ resultado_formateado }} T</strong>
+Campo magnético: <strong>B = {{ resultado_formateado }} T</strong>
 </div>
 
 {% endif %}
@@ -386,8 +368,7 @@ Campo Magnético: <strong>B = {{ resultado_formateado }} T</strong>
 
 <div class="card mt-3">
 <div class="card-body">
-
-    <h5>Resolución Paso a Paso</h5>
+    <h5>Resolución paso a paso</h5>
 
     <ol>
         {% for paso in pasos %}
@@ -400,18 +381,13 @@ Campo Magnético: <strong>B = {{ resultado_formateado }} T</strong>
 </div>
 </div>
 {% endif %}
-
 </div>
 </div>
 
 <div class="card mb-4">
-
     <div class="card-body">
-
-        <h3>7. Ejercicio Propuesto</h3>
-
+        <h3>7. Ejercicio propuesto</h3>
         <h4 class="mt-4">Enunciado</h4>
-
         <p>
             Calcule la magnitud del <strong>campo magnético</strong> en un punto a 100 cm de un conductor
             infinitamente largo y delgado que lleva una corriente de 1 A.
@@ -546,10 +522,8 @@ Campo Magnético: <strong>B = {{ resultado_formateado }} T</strong>
             </p>
             <p>Esto confirma experimentalmente que el campo magnético disminuye al alejarnos del conductor según:
             </p>
-            <strong>B ∝ 1/r</strong>
-            
+            <strong>B ∝ 1/r</strong>     
         </div>
-
     </div>
 </div>
 
@@ -557,7 +531,7 @@ Campo Magnético: <strong>B = {{ resultado_formateado }} T</strong>
 
 <div class="card mb-4">
     <div class="card-body">
-        <h3>8. Modo Exploración</h3>
+        <h3>8. Modo exploración</h3>
         <p>
             Modifique los parámetros y observe cómo cambia
             el campo magnético generado por el conductor.
@@ -568,17 +542,11 @@ Campo Magnético: <strong>B = {{ resultado_formateado }} T</strong>
 
     <!-- Controles -->
     <div class="col-lg-6">
-
         <div class="card h-100">
-
-            <div class="card-body">
-                
+            <div class="card-body">     
             <h4>Controles</h4>
-
             <hr>
-
             <label class="form-label">Corriente (A)</label>
-
             <input
                 id="slider-corriente"
                 type="range"
@@ -621,10 +589,8 @@ Campo Magnético: <strong>B = {{ resultado_formateado }} T</strong>
     <!-- Resultado -->
     <div class="col-lg-6">
         <div class="card h-100">
-
         <div class="card-body text-center">
-
-            <h4>Campo Magnético</h4>
+            <h4>Campo magnético</h4>
             <hr>
 
             <div id="resultado-campo" class="exploration-value">
@@ -653,9 +619,7 @@ Campo Magnético: <strong>B = {{ resultado_formateado }} T</strong>
 <!-- FIN 8. Modo Exploración -->
 
 <div class="card mb-4">
-
     <div class="card-body">
-
         <h3>9. Conclusiones</h3>
 
         <p>
@@ -680,39 +644,31 @@ Campo Magnético: <strong>B = {{ resultado_formateado }} T</strong>
             Cerca del conductor pequeños cambios de distancia producen grandes cambios en B.
         </div>
          
-        <h5 class="mt-4">
-            Conceptos clave
-        </h5>
+        <h5 class="mt-4">Conceptos claves</h5>
 
         <ul>
-
             <li>
                 El conductor genera líneas
                 de campo magnético circulares
                 a su alrededor.
             </li>
-
             <li>
                 La dirección del campo puede
                 determinarse mediante la regla
                 de la mano derecha.
             </li>
-
             <li>
                 La intensidad del campo depende
                 únicamente de la corriente y de
                 la distancia al conductor.
             </li>
-
             <li>
                 La permeabilidad magnética del vacío
                 es una constante física.
             </li>
-
         </ul>
 
         <h5 class="mt-4"> Lo observado en los gráficos </h5>
-
         <ul>
             <li> B es proporcional a I.</li>
             <li> B es inversamente proporcional a r.</li>
@@ -725,11 +681,6 @@ Campo Magnético: <strong>B = {{ resultado_formateado }} T</strong>
 
 {% block scripts %}
 
-<script
-    src="{{ url_for(
-        'static',
-        filename='js/tema1.js'
-    ) }}"
-></script>
+<script src="{{ url_for('static',filename='js/tema1.js') }}"></script>
 
 {% endblock %}
