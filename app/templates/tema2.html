@@ -307,7 +307,7 @@
         <p>r1 = {{ "%.4f"|format(r1 / 100) }} m</p>
         
         <div class="alert alert-success mt-3">
-            <h4 class="mb-0">|B<sub>1</sub>| = {{ "%.2e"|format(b1) }} T</h4>
+            <h4 class="mb-0">|B<sub>1</sub>| = {{ datos_p1_formateados.b1.magnitud|safe }} T</h4>
         </div>
     </div>
     <!-- FIN Paso 2 -->
@@ -355,13 +355,13 @@
 
                 <tr>
                     <td><strong>Bx<sub>1</sub></strong></td>
-                    <td>{{ "%.2e"|format(bx1) }}</td>
+                    <td>{{ datos_p1_formateados.b1.bx|safe }}</td>
                     <td>T</td>
                 </tr>
 
                 <tr>
                     <td><strong>By<sub>1</sub></strong></td>
-                    <td>{{ "%.2e"|format(by1) }}</td>
+                    <td>{{ datos_p1_formateados.b1.by|safe }}</td>
                     <td>T</td>
                 </tr>
             </tbody>
@@ -423,7 +423,7 @@
         
         <div class="alert alert-success mt-3">
             <h4 class="mb-0">
-                |B<sub>2</sub>| = {{ "%.2e"|format(b2) }} T
+                |B<sub>2</sub>| = {{ datos_p1_formateados.b2.magnitud|safe }} T
             </h4>
         </div>
     </div>
@@ -460,13 +460,13 @@
             <tbody>
                 <tr>
                     <td><strong>Bx<sub>2</sub></strong></td>
-                    <td>{{ "%.2e"|format(bx2) }}</td>
+                    <td>{{ datos_p1_formateados.b2.bx|safe }}</td>
                     <td>T</td>
                 </tr>
 
                 <tr>
                     <td><strong>By<sub>2</sub></strong></td>
-                    <td>{{ "%.2e"|format(by2) }}</td>
+                    <td>{{ datos_p1_formateados.b2.by|safe }}</td>
                     <td>T</td>
                 </tr>
             </tbody>
@@ -506,14 +506,14 @@
             <tbody>
                 <tr>
                     <td><strong>Bx</strong></td>
-                    <td>{{ "%.2e"|format(bx1) }}</td>
-                    <td>{{ "%.2e"|format(bx2) }}</td>
+                    <td>{{ datos_p1_formateados.b1.bx|safe }}</td>
+                    <td>{{ datos_p1_formateados.b2.bx|safe }}</td>
                     <td>?</td>
                 </tr>
                 <tr>
                     <td><strong>By</strong></td>
-                    <td>{{ "%.2e"|format(by1) }}</td>
-                    <td>{{ "%.2e"|format(by2) }}</td>
+                    <td>{{ datos_p1_formateados.b1.by|safe }}</td>
+                    <td>{{ datos_p1_formateados.b2.by|safe }}</td>
                     <td>?</td>
                 </tr>
             </tbody>
@@ -532,7 +532,7 @@
         <p>Componente horizontal</p>
 
         <div class="alert alert-light">
-            <strong>Bx</strong> = Bx₁ + Bx₂ = {{ "%.2e"|format(bx1) }} + {{ "%.2e"|format(bx2) }} <strong>= {{ "%.2e"|format(bx_total) }}</strong>
+            <strong>Bx</strong> = Bx₁ + Bx₂ = {{ datos_p1_formateados.b1.bx|safe }} + {{ datos_p1_formateados.b2.bx|safe }} <strong>= {{ "%.2e"|format(bx_total) }}</strong>
         </div>
 
         <p class="mt-4">Componente vertical</p>
