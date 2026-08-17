@@ -140,14 +140,18 @@ def calcular_simulacion(corriente1,sentido1,corriente2,sentido2,px,py):
         "sentido1": sentido1,"sentido2": sentido2,
         "px": px,"py": py
     }
-    
+
+    # Convierto a metros para mostrar en SI
+    r1_m = r1 / 100
+    r2_m = r2 / 100
+
     resultado["geometria"] = {
         "conductor1": POSICION_I1,
         "conductor2": POSICION_I2,
         "p": p,
         "dx1": dx1,"dy1": dy1,
         "dx2": dx2,"dy2": dy2,
-        "r1": r1,"r2": r2
+        "r1": r1_m,"r2": r2_m
     }
 
     resultado["b1"] = {"magnitud": b1,"bx": bx1,"by": by1}
