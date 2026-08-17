@@ -690,43 +690,51 @@
                     <tr>
                         <th>Magnitud</th>
                         <th>Valor</th>
+                        <th>Unidad</th>
                     </tr>
                 </thead>
 
                 <tbody>
                     <tr>
                         <td>r₁</td>
-                        <td>{{ "%.4f"|format(r1_p2) }} cm</td>
+                        <td>{{ "%.4f"|format(r1_p2) }}</td>
+                        <td>m</td>
                     </tr>
 
                     <tr>
                         <td>r₂</td>
-                        <td>{{ "%.4f"|format(r2_p2) }} cm</td>
+                        <td>{{ "%.4f"|format(r2_p2) }}</td>
+                        <td>m</td>
                     </tr>
 
                     <tr>
                         <td>B₁</td>
-                        <td>{{ "%.2e"|format(b1_p2) }} T</td>
+                        <td>{{ datos_p2_formateados.b1.magnitud|safe }}</td>
+                        <td>T</td>
                     </tr>
 
                     <tr>
                         <td>B₂</td>
-                        <td>{{ "%.2e"|format(b2_p2) }} T</td>
+                        <td>{{ datos_p2_formateados.b2.magnitud|safe }}</td>
+                        <td>T</td>
                     </tr>
 
                     <tr>
                         <td>Bx</td>
-                        <td>{{ "%.2e"|format(bx_total_p2) }} T</td>
+                        <td>{{ datos_p2_formateados.campo_total.bx|safe }}</td>
+                        <td>T</td>
                     </tr>
 
                     <tr>
                         <td>By</td>
-                        <td>{{ "%.2e"|format(by_total_p2) }} T</td>
+                        <td>{{ datos_p2_formateados.campo_total.by|safe }}</td>
+                        <td>T</td>
                     </tr>
 
                     <tr class="table-success">
                         <td><strong>|B|</strong></td>
-                        <td><strong>{{ "%.2e"|format(b_total_p2) }} T</strong></td>
+                        <td><strong>{{ datos_p2_formateados.campo_total.magnitud|safe }}</strong></td>
+                        <td><strong>T</strong></td>
                     </tr>
                 </tbody>
             </table>
