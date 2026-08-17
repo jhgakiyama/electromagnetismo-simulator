@@ -11,6 +11,7 @@ from app.plots.tema2_plot import (
     )
 
 from app.physics.tema2 import calcular_radio,magnitud_campo,componentes_campo,magnitud_vector
+from app.services.utils import formatear_resultado_laboratorio
 
 
 bp = Blueprint(
@@ -44,6 +45,24 @@ def tema2():
     by_total = by1 + by2
     b_total = magnitud_vector(bx_total,by_total)
 
+    datos_p1 = {
+        "b1": {
+            "magnitud": b1,
+            "bx": bx1,
+            "by": by1
+        },
+        "b2": {
+            "magnitud": b2,
+            "bx": bx2,
+            "by": by2
+        },
+        "campo_total": {
+            "magnitud": b_total,
+            "bx": bx_total,
+            "by": by_total
+        }
+    }
+
     """" calcular_punto_p2 """
     p2 = (1.5, 0)
 
@@ -63,6 +82,28 @@ def tema2():
     by_total_p2 = by1_p2 + by2_p2
 
     b_total_p2 = magnitud_vector(bx_total_p2,by_total_p2)
+
+    datos_p2 = {
+        "b1": {
+            "magnitud": b1_p2,
+            "bx": bx1_p2,
+            "by": by1_p2
+        },
+        "b2": {
+            "magnitud": b2_p2,
+            "bx": bx2_p2,
+            "by": by2_p2
+        },
+        "campo_total": {
+            "magnitud": b_total_p2,
+            "bx": bx_total_p2,
+            "by": by_total_p2
+        }
+    }
+
+    # Obtener datos formateado
+    datos_p1_formateados = formatear_resultado_laboratorio(datos_p1)
+    datos_p2_formateados = formatear_resultado_laboratorio(datos_p2)
 
     # ----- Gráfico -----
 
@@ -110,6 +151,10 @@ def tema2():
         #Agrego todo los puntos para el calculo de P2
         r1_p2=r1_p2,r2_p2=r2_p2,b1_p2=b1_p2,b2_p2=b2_p2,
         bx_total_p2=bx_total_p2,by_total_p2=by_total_p2,b_total_p2=b_total_p2,
+
+        # Datos formateados con notacion cientifica
+        datos_p1_formateados = datos_p1_formateados,
+        datos_p2_formateados = datos_p2_formateados,
 
         grafico_p2=grafico_p2.to_html(
             full_html=False,
