@@ -17,6 +17,7 @@ def tema2_laboratorio():
     # ==========================================================
     template = "tema2_laboratorio.html"
     resultado = None
+    resultado_formateado = None
     grafico = None
     grafico_html = None
     mensaje_error = None

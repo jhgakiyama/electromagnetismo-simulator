@@ -215,7 +215,7 @@
                             <div class="card-body">
                                 <div class="metric-title">|B<sub>1</sub>|</div>
                                 <div class="metric-subtitle">Magnitud del campo</div>
-                                <div class="metric-value">{{ "%.3e"|format(resultado.b1.magnitud) }} T</div>
+                                <div class="metric-value">{{ resultado_formateado.b1.magnitud|safe }} T</div>
                             </div>
                         </div>
                     </div>
@@ -225,7 +225,7 @@
                             <div class="card-body">
                                 <div class="metric-title">Bx<sub>1</sub></div>
                                 <div class="metric-subtitle">Componente horizontal</div>
-                                <div class="metric-value">{{ "%.3e"|format(resultado.b1.bx) }} T</div>
+                                <div class="metric-value">{{ resultado_formateado.b1.bx|safe }} T</div>
                             </div>
                         </div>
                     </div>
@@ -234,11 +234,8 @@
                         <div class="card metric-card metric-i1">
                             <div class="card-body">
                                 <div class="metric-title">By<sub>1</sub></div>
-                                <div class="metric-subtitle">
-                                    Componente vertical </div>
-                                <div class="metric-value">
-                                    {{ "%.3e"|format(resultado.b1.by) }} T
-                                </div>
+                                <div class="metric-subtitle">Componente vertical </div>
+                                <div class="metric-value">{{ resultado_formateado.b1.by|safe }} T</div>
                             </div>
                         </div>
                     </div>
@@ -264,7 +261,7 @@
                             <div class="card-body">
                                 <div class="metric-title">|B<sub>2</sub>|</div>
                                 <div class="metric-subtitle">Magnitud del campo</div>
-                                <div class="metric-value">{{ "%.3e"|format(resultado.b2.magnitud) }}</div>
+                                <div class="metric-value">{{ resultado_formateado.b2.magnitud|safe }} T</div>
                             </div>
                         </div>
                     </div>
@@ -274,7 +271,7 @@
                             <div class="card-body">
                                 <div class="metric-title">Bx<sub>2</sub></div>
                                 <div class="metric-subtitle">Componente horizontal</div>
-                                <div class="metric-value">{{ "%.3e"|format(resultado.b2.bx) }} T</div>
+                                <div class="metric-value">{{ resultado_formateado.b2.bx|safe }} T</div>
                             </div>
                         </div>
                     </div>
@@ -284,7 +281,7 @@
                             <div class="card-body">
                                 <div class="metric-title">By<sub>2</sub></div>
                                 <div class="metric-subtitle">Componente vertical</div>
-                                <div class="metric-value">{{ "%.3e"|format(resultado.b2.by) }}  T</div>
+                                <div class="metric-value">{{ resultado_formateado.b2.by|safe }} T</div>
                             </div>
                         </div>
                     </div>
@@ -300,7 +297,7 @@
                             <div class="card-body">
                                 <div class="metric-title">Bx</div>
                                 <div class="metric-subtitle">Componente horizontal</div>
-                                <div class="metric-value">{{ "%.3e"|format(resultado.campo_total.bx) }} T</div>
+                                <div class="metric-value">{{ resultado_formateado.campo_total.bx|safe }} T</div>
                             </div>
                         </div>
                     </div>
@@ -310,7 +307,7 @@
                             <div class="card-body">
                                 <div class="metric-title">By</div>
                                 <div class="metric-subtitle">Componente vertical</div>
-                                <div class="metric-value">{{ "%.3e"|format(resultado.campo_total.by) }} T</div>
+                                <div class="metric-value">{{ resultado_formateado.campo_total.by|safe }} T</div>
                             </div>
                         </div>
                     </div>
@@ -321,7 +318,7 @@
             <!-- RESULTADO FINAL -->
             <div class="metric-final">
                 <div class="metric-final-title">Campo Magnético Resultante</div>
-                <div class="metric-final-value">|B| = {{ "%.3e"|format(resultado.campo_total.magnitud) }} T</div>
+                <div class="metric-final-value">|B| = {{ resultado_formateado.campo_total.magnitud|safe }} T</div>
             </div>
         </div>
     </div>
