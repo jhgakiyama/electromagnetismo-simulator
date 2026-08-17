@@ -529,16 +529,15 @@
         <div class="card-header">
             <strong>Paso 5 - Suma de componentes</strong>
         </div>
-        <p>Componente horizontal</p>
-
+        
         <div class="alert alert-light">
-            <strong>Bx</strong> = Bx₁ + Bx₂ = {{ datos_p1_formateados.b1.bx|safe }} + {{ datos_p1_formateados.b2.bx|safe }} <strong>= {{ "%.2e"|format(bx_total) }}</strong>
+            <p>Componente horizontal</p>
+            <strong>Bx</strong> = Bx₁ + Bx₂ = {{ datos_p1_formateados.b1.bx|safe }} + {{ datos_p1_formateados.b2.bx|safe }} <strong>= {{ datos_p1_formateados.campo_total.bx|safe }}</strong>
         </div>
 
-        <p class="mt-4">Componente vertical</p>
-
         <div class="alert alert-light">
-            <strong>By</strong> = By₁ + By₂ = {{ "%.2e"|format(by1) }} + {{ "%.2e"|format(by2) }} <strong>= 0</strong>
+            <p>Componente vertical</p>
+            <strong>By</strong> = By₁ + By₂ = {{ datos_p1_formateados.b1.by|safe }} + {{ datos_p1_formateados.b2.by|safe }} <strong>= 0</strong>
         </div>
     
         <div class="alert alert-success mt-3">
@@ -561,14 +560,14 @@
         </p>
 
         <p>
-            Bx = {{ "%.2e"|format(bx_total) }} T
+            Bx = {{ datos_p1_formateados.campo_total.bx|safe }} T
             <br>
             By = 0
         </p>
 
         <div class="alert alert-success mt-3">
             <h4 class="mb-0">
-                |B| = {{ "%.2e"|format(b_total) }} T
+                |B| = {{ datos_p1_formateados.campo_total.magnitud|safe }} T
             </h4>
         </div>
     </div>
@@ -621,9 +620,7 @@
         </p>
         <br>
         <div class="alert alert-success">
-            <p>
-                <strong>Conceptos claves:</strong>
-            </p>
+            <p><strong>Conceptos claves:</strong></p>
 
             <ul>
                 <li>Cada conductor genera su propio campo magnético.</li>
