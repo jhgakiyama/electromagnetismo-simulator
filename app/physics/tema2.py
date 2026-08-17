@@ -30,8 +30,10 @@ def magnitud_campo(i, r):
 
     if r <= 0:
         raise ValueError("La distancia r debe ser mayor que cero.")
-    
-    return (MU0 * i) / (2 * pi * r / 100)
+
+    rm = r / 100
+
+    return (MU0 * i) / (2 * pi * rm )
 
 
 def vector_perpendicular(x, y, sentido):
