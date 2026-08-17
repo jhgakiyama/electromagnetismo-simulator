@@ -283,7 +283,7 @@
 
         <div class="alert alert-success mt-3">
             <h4 class="mb-0">
-                r<sub>1</sub> = {{ "%.2f"|format(r1) }} cm = 0,0141 m
+                r<sub>1</sub> = {{ "%.2f"|format(r1) }} cm = {{ "%.4f"|format(r1 / 100) }} m
             </h4>
         </div>
     </div>
@@ -397,7 +397,7 @@
 
         <div class="alert alert-success mt-3">
             <h4 class="mb-0">
-                r<sub>2</sub> = {{ "%.2f"|format(r2) }} cm = 0,0141 m
+                r<sub>2</sub> = {{ "%.2f"|format(r2) }} cm = {{ "%.4f"|format(r2 / 100) }} m
             </h4>
         </div>
     </div>
@@ -697,13 +697,13 @@
                 <tbody>
                     <tr>
                         <td>r₁</td>
-                        <td>{{ "%.4f"|format(r1_p2) }}</td>
+                        <td>{{ "%.3f"|format(r1_p2 / 100) }}</td>
                         <td>m</td>
                     </tr>
 
                     <tr>
                         <td>r₂</td>
-                        <td>{{ "%.4f"|format(r2_p2) }}</td>
+                        <td>{{ "%.3f"|format(r2_p2 / 100) }}</td>
                         <td>m</td>
                     </tr>
 
