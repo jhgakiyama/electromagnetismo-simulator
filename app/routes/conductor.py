@@ -18,6 +18,7 @@ def conductor():
     distancia = None
     resultado = None
     resultado_formateado = None
+    error = None
     pasos = []
     # Cargo por defecto siempre los 2 graficos
     grafico_b_vs_i = generar_grafico_b_vs_i()
@@ -26,15 +27,18 @@ def conductor():
     # Cargo el grafico del ejercicio resuelto
     grafico_ejercicio_1 = (generar_grafico_ejercicio_1())
 
-
     if request.method == "POST": 
         corriente = float(request.form.get("corriente"))
         distancia = float(request.form.get("distancia"))
-        datos_calculo = calcular_campo_magnetico(corriente,distancia)
 
-        resultado = datos_calculo["resultado"]
-        pasos = datos_calculo["pasos"]
-        resultado_formateado = formatear_cientifico(resultado)
+        try:
+            datos_calculo = calcular_campo_magnetico(corriente,distancia)
+            resultado = datos_calculo["resultado"]
+            pasos = datos_calculo["pasos"]
+            resultado_formateado = formatear_cientifico(resultado)
+            
+        except ValueError as e:
+            error = str(e)
 
     return render_template(
         "conductor.html",
@@ -43,10 +47,10 @@ def conductor():
         resultado=resultado,
         resultado_formateado=resultado_formateado,
         pasos=pasos,
+        error=error,
         grafico_b_vs_i=grafico_b_vs_i,
         grafico_b_vs_r=grafico_b_vs_r,
         grafico_ejercicio_1=grafico_ejercicio_1
     )
-
 
 
