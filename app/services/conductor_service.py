@@ -3,6 +3,9 @@ import math
 MU_0 = 4 * math.pi * 1e-7
 
 def calcular_campo_magnetico(corriente,distancia):
+    if distancia <= 0:
+        raise ValueError("La distancia debe ser mayor que 0.")
+
     campo = (MU_0 * corriente) / (2 * math.pi * distancia)
     
     # Muestro los pasos para la proxima seccion
