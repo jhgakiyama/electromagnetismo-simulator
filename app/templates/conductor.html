@@ -309,7 +309,6 @@ Conductor Rectilíneo
     <input
         type="number"
         step="any"
-        min="0.0000001"
         class="form-control"
         name="corriente"
         required
@@ -325,6 +324,7 @@ Conductor Rectilíneo
     <input
         type="number"
         step="any"
+        min="0.0000001"
         class="form-control"
         name="distancia"
         required
@@ -340,6 +340,11 @@ Conductor Rectilíneo
 
 
 </form>
+{% if error %}
+<div class="alert alert-danger mt-3">
+    <strong>Dato no válido:</strong> {{ error }}
+</div>
+{% endif %}
 {% if resultado %}
 <hr>
 <h5>Datos de entrada</h5>
