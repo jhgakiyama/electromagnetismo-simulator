@@ -8,8 +8,8 @@ def calcular_campo_magnetico(corriente,distancia):
     # Muestro los pasos para la proxima seccion
     pasos = [
         "B = μ₀ · I / (2π · r)",
-        f"B = ({MU_0:.6e} × {corriente}) / (2π × {distancia})", # puede ser mejor a la vista >> 4π × 10⁻⁷
-        f"B = {campo:.6e} T"
+        f"B = ({MU_0:.3e} × {corriente}) / (2π × {distancia})", # puede ser mejor a la vista >> 4π × 10⁻⁷
+        f"B = {campo:.3e} T"
     ]
     
     return { 

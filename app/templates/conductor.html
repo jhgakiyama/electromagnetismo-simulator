@@ -303,9 +303,7 @@ Conductor Rectilíneo
 <div class="mb-3">
 
     <label class="form-label">
-
         Corriente (A)
-
     </label>
 
     <input
@@ -343,25 +341,12 @@ Conductor Rectilíneo
 </form>
 {% if resultado %}
 <hr>
-<h5>Resultado</h5>
+<h5>Datos de entrada</h5>
 
 <ul>
-<li>
-    Corriente:
-    {{ corriente }} A
-</li>
-
-<li>
-    Distancia:
-    {{ distancia }} m
-</li>
+    <li>Corriente: {{ corriente }} A</li>
+    <li>Distancia:{{ distancia }} m</li>
 </ul>
-
-<div class="alert alert-success">
-
-Campo magnético: <strong>B = {{ resultado_formateado }} T</strong>
-</div>
-
 {% endif %}
 
 {% if pasos %}
@@ -372,13 +357,17 @@ Campo magnético: <strong>B = {{ resultado_formateado }} T</strong>
 
     <ol>
         {% for paso in pasos %}
-            <li>
-                {{ paso }}
-            </li>
+            <li> {{ paso }} </li>
         {% endfor %}
     </ol>
 
 </div>
+</div>
+{% endif %}
+<br>
+{% if resultado %}
+<div class="alert alert-success">
+    Campo magnético: <strong>B = {{ resultado_formateado }} T</strong>
 </div>
 {% endif %}
 </div>
